@@ -1,0 +1,18 @@
+# Netlify configuration for this Next.js (App Router) site.
+#
+# Netlify auto-detects Next.js and provisions its OpenNext-based adapter
+# (the `@netlify/plugin-nextjs` runtime) on every build. The adapter handles
+# SSR, dynamic routes (e.g. /go/[linkId]), the App Router, and the native
+# /sitemap.xml and /robots.txt outputs — no manual wiring required.
+#
+# Netlify recommends NOT pinning the adapter version so your site always builds
+# with the latest tested release. That's why it is referenced here as a plugin
+# but is intentionally NOT added to package.json.
+
+[build]
+  command = "next build"
+  # The adapter reads Next's build output; .next is the conventional publish dir.
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
