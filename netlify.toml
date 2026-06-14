@@ -14,5 +14,10 @@
   # The adapter reads Next's build output; .next is the conventional publish dir.
   publish = ".next"
 
+[build.environment]
+  # Next.js 16 requires Node.js >= 20.9. Pin a supported version so the build
+  # doesn't fail if Netlify's default runtime is older.
+  NODE_VERSION = "22"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"

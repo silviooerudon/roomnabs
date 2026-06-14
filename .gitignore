@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# netlify (build output / local adapter artifacts)
+/.netlify/
+
 # production
 /build
 
