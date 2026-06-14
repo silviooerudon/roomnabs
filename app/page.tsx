@@ -1,33 +1,38 @@
 import Link from "next/link";
-import { LINKS } from "@/lib/site";
+import { CATEGORIES } from "@/lib/site";
 
 export default function Home() {
   return (
-    <main
-      style={{
-        maxWidth: 640,
-        margin: "0 auto",
-        padding: "4rem 1.5rem",
-        fontFamily: "var(--font-geist-sans)",
-        lineHeight: 1.6,
-      }}
-    >
-      <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>roomnabs</h1>
-      <p style={{ color: "#666", marginBottom: "2rem" }}>
-        Next.js App Router app deployed on Netlify. SSR, dynamic routes,{" "}
-        <code>/sitemap.xml</code> and <code>/robots.txt</code> are all wired up.
-      </p>
+    <>
+      <section className="hero">
+        <div className="container">
+          <h1>Small space? Big upgrade.</h1>
+          <p>
+            roomnabs finds compact home and tech products that actually fit
+            small, rented apartments in Ireland and across Europe — no drilling,
+            no wasted space, no clutter. We test and curate so you can buy once
+            and buy right.
+          </p>
+        </div>
+      </section>
 
-      <h2 style={{ fontSize: "1.1rem", marginBottom: "0.75rem" }}>
-        Example short links
-      </h2>
-      <ul style={{ lineHeight: 2 }}>
-        {LINKS.map((link) => (
-          <li key={link.id}>
-            <Link href={`/go/${link.id}`}>/go/{link.id}</Link> → {link.label}
-          </li>
-        ))}
-      </ul>
-    </main>
+      <section className="section">
+        <div className="container">
+          <h2>Browse by category</h2>
+          <div className="category-grid">
+            {CATEGORIES.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/${category.slug}`}
+                className="category-card"
+              >
+                <h3>{category.name}</h3>
+                <p>{category.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SITE_URL } from "@/lib/site";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +17,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "roomnabs",
-  description: "roomnabs — deployed on Netlify with Next.js App Router.",
+  title: {
+    default: `${SITE_NAME} — compact home & tech for small rentals`,
+    template: `%s · ${SITE_NAME}`,
+  },
+  description:
+    "Hand-picked compact home and tech products for small, rented apartments in Ireland and across Europe.",
 };
 
 export default function RootLayout({
@@ -25,8 +31,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <Header />
+        <main className="site-main">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
