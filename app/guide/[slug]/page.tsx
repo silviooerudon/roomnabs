@@ -1,14 +1,41 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { AnchorHTMLAttributes } from "react";
 import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import CheckPrice from "@/components/CheckPrice";
 import EmailSignup from "@/components/EmailSignup";
-import { getGuide, getGuideSlugs } from "@/lib/guides";
+import { getGuide, getGuideCategory, getGuideSlugs } from "@/lib/guides";
 import { findCategory, SITE_NAME, SITE_URL } from "@/lib/site";
 
+/**
+ * Anchor override for MDX content. Outbound "Check price" CTAs are written as
+ * plain markdown links to `/go/[linkId]`; we tag every such link with
+ * rel="sponsored nofollow" (and open it in a new tab) so the redirect endpoint
+ * gets the right link semantics no matter how the author wrote the link.
+ */
+function MdxAnchor({
+  href = "",
+  children,
+  ...props
+}: AnchorHTMLAttributes<HTMLAnchorElement>) {
+  if (href.startsWith("/go/")) {
+    return (
+      <a href={href} rel="sponsored nofollow" target="_blank" {...props}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <a href={href} {...props}>
+      {children}
+    </a>
+  );
+}
+
 // Components made available to every guide's MDX body.
-const mdxComponents = { EmailSignup, CheckPrice };
+const mdxComponents = { EmailSignup, CheckPrice, a: MdxAnchor };
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -52,14 +79,18 @@ export default async function GuidePage({ params }: Props) {
     notFound();
   }
 
-  const { title, description, category, updated } = guide.frontmatter;
-  const categoryInfo = category ? findCategory(category) : undefined;
+  const { title, description, updated } = guide.frontmatter;
+  const categorySlug = getGuideCategory(guide.frontmatter);
+  const categoryInfo = categorySlug ? findCategory(categorySlug) : undefined;
   const url = `${SITE_URL}/guide/${slug}`;
 
   const { content } = await compileMDX({
     source: guide.source,
     components: mdxComponents,
-    options: { parseFrontmatter: true },
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: { remarkPlugins: [remarkGfm] },
+    },
   });
 
   // schema.org Article — only fields we can back with real frontmatter data.
@@ -93,11 +124,7 @@ export default async function GuidePage({ params }: Props) {
           </ol>
         </nav>
 
-        <h1>{title}</h1>
-        {updated ? (
-          <p className="page__updated">Last updated {updated}</p>
-        ) : null}
-
+        {/* The MDX body supplies its own <h1> and last-updated line. */}
         <div className="guide__body">{content}</div>
       </div>
 

@@ -19,7 +19,14 @@ export type GuideFrontmatter = {
   title: string;
   description: string;
   slug?: string;
+  /**
+   * Category slug the guide belongs to. Authors may use either `category` or
+   * `cluster` (the content team's term) — both map to the same thing.
+   */
   category?: string;
+  cluster?: string;
+  intent?: string;
+  status?: string;
   updated?: string;
 };
 
@@ -54,6 +61,13 @@ function parseFrontmatter(raw: string): GuideFrontmatter {
   }
 
   return data as GuideFrontmatter;
+}
+
+/** The category slug a guide belongs to (`category` or its alias `cluster`). */
+export function getGuideCategory(
+  frontmatter: GuideFrontmatter,
+): string | undefined {
+  return frontmatter.category ?? frontmatter.cluster;
 }
 
 function guidesDirExists(): boolean {
@@ -95,6 +109,6 @@ export function getAllGuides(): Guide[] {
 /** Guides that belong to a given category slug. */
 export function getGuidesByCategory(category: string): Guide[] {
   return getAllGuides().filter(
-    (guide) => guide.frontmatter.category === category,
+    (guide) => getGuideCategory(guide.frontmatter) === category,
   );
 }
