@@ -70,6 +70,15 @@ export function getGuideCategory(
   return frontmatter.category ?? frontmatter.cluster;
 }
 
+/**
+ * Drafts stay reachable by their direct URL (so they can be reviewed live) but
+ * are kept out of the sitemap and on-site listings and rendered with a noindex
+ * tag. A guide is a draft when its frontmatter `status` is "draft".
+ */
+export function isGuideDraft(frontmatter: GuideFrontmatter): boolean {
+  return frontmatter.status?.toLowerCase() === "draft";
+}
+
 function guidesDirExists(): boolean {
   try {
     return fs.statSync(GUIDES_DIR).isDirectory();
@@ -106,9 +115,14 @@ export function getAllGuides(): Guide[] {
     .filter((guide): guide is Guide => guide !== undefined);
 }
 
-/** Guides that belong to a given category slug. */
+/** Published (non-draft) guides — the set safe to list and index. */
+export function getPublishedGuides(): Guide[] {
+  return getAllGuides().filter((guide) => !isGuideDraft(guide.frontmatter));
+}
+
+/** Published guides that belong to a given category slug. */
 export function getGuidesByCategory(category: string): Guide[] {
-  return getAllGuides().filter(
+  return getPublishedGuides().filter(
     (guide) => getGuideCategory(guide.frontmatter) === category,
   );
 }

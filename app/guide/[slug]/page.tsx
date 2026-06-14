@@ -6,7 +6,12 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import CheckPrice from "@/components/CheckPrice";
 import EmailSignup from "@/components/EmailSignup";
-import { getGuide, getGuideCategory, getGuideSlugs } from "@/lib/guides";
+import {
+  getGuide,
+  getGuideCategory,
+  getGuideSlugs,
+  isGuideDraft,
+} from "@/lib/guides";
 import { findCategory, SITE_NAME, SITE_URL } from "@/lib/site";
 
 /**
@@ -61,6 +66,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical },
+    // Drafts stay reachable by direct URL for review, but must not be indexed.
+    ...(isGuideDraft(guide.frontmatter)
+      ? { robots: { index: false, follow: false } }
+      : {}),
     openGraph: {
       type: "article",
       title,
