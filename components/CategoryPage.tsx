@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getGuidesByCategory } from "@/lib/guides";
 import { findCategory } from "@/lib/site";
 
 /**
@@ -14,11 +15,28 @@ export default function CategoryPage({ slug }: { slug: string }) {
     notFound();
   }
 
+  const guides = getGuidesByCategory(slug);
+
   return (
     <article className="page">
       <div className="container">
         <h1>{category.name}</h1>
         <p>{category.description}</p>
+
+        {guides.length > 0 ? (
+          <>
+            <h2>Guides</h2>
+            <ul>
+              {guides.map((guide) => (
+                <li key={guide.slug}>
+                  <Link href={`/guide/${guide.slug}`}>
+                    {guide.frontmatter.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
 
         <h2>Coming soon</h2>
         <p>
