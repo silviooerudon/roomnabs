@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { AnchorHTMLAttributes } from "react";
-import { compileMDX } from "next-mdx-remote/rsc";
+import { evaluate } from "@mdx-js/mdx";
+import * as jsxRuntime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
 import CheckPrice from "@/components/CheckPrice";
+import ComparisonTable from "@/components/ComparisonTable";
 import EmailSignup from "@/components/EmailSignup";
+import ProductCard from "@/components/ProductCard";
 import {
   getGuide,
   getGuideCategory,
@@ -40,7 +43,13 @@ function MdxAnchor({
 }
 
 // Components made available to every guide's MDX body.
-const mdxComponents = { EmailSignup, CheckPrice, a: MdxAnchor };
+const mdxComponents = {
+  EmailSignup,
+  CheckPrice,
+  ComparisonTable,
+  ProductCard,
+  a: MdxAnchor,
+};
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -93,13 +102,12 @@ export default async function GuidePage({ params }: Props) {
   const categoryInfo = categorySlug ? findCategory(categorySlug) : undefined;
   const url = `${SITE_URL}/guide/${slug}`;
 
-  const { content } = await compileMDX({
-    source: guide.source,
-    components: mdxComponents,
-    options: {
-      parseFrontmatter: true,
-      mdxOptions: { remarkPlugins: [remarkGfm] },
-    },
+  // Compile the MDX body with @mdx-js/mdx directly. (next-mdx-remote's RSC
+  // helper silently drops object/array expression props such as ProductCard's
+  // `specs`, so we evaluate the MDX ourselves to keep full prop support.)
+  const { default: MdxContent } = await evaluate(guide.body, {
+    ...jsxRuntime,
+    remarkPlugins: [remarkGfm],
   });
 
   // schema.org Article — only fields we can back with real frontmatter data.
@@ -134,7 +142,9 @@ export default async function GuidePage({ params }: Props) {
         </nav>
 
         {/* The MDX body supplies its own <h1> and last-updated line. */}
-        <div className="guide__body">{content}</div>
+        <div className="guide__body">
+          <MdxContent components={mdxComponents} />
+        </div>
       </div>
 
       <script

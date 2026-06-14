@@ -1,17 +1,32 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  color-scheme: dark;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Surfaces (dark theme is the baseline) */
+  --background: #0c0d10;
+  --surface: #16181d;
+  --surface-2: #1b1e24;
+  --foreground: #e8e9ec;
+  --border: color-mix(in srgb, var(--foreground) 12%, transparent);
+
+  /* One strong accent, reserved for purchase CTAs and badges */
+  --accent: #ff7a1a;
+  --accent-hover: #ff8d3c;
+  --accent-ink: #1a1003;
+
+  /* Normal links are a cool tone, distinct from the accent */
+  --link: #74b4ff;
+
+  /* Semantic colours for pros/cons */
+  --good: #46d18a;
+  --bad: #f4736e;
+
+  --radius: 14px;
+  --radius-sm: 10px;
 }
 
 html {
   height: 100%;
+  color-scheme: dark;
 }
 
 html,
@@ -26,7 +41,10 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI,
+    Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -42,27 +60,32 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
 a:hover {
   text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 /* Shared page width */
 .container {
   width: 100%;
-  max-width: 960px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
 /* Header */
 .site-header {
-  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--border);
 }
 
 .site-header__inner {
@@ -89,7 +112,7 @@ a:hover {
 }
 
 .site-nav a {
-  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+  color: color-mix(in srgb, var(--foreground) 72%, transparent);
 }
 
 .site-nav a:hover {
@@ -108,17 +131,17 @@ a:hover {
 }
 
 .hero h1 {
-  font-size: 2.25rem;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
   margin-bottom: 1rem;
 }
 
 .hero p {
-  font-size: 1.125rem;
+  font-size: 1.15rem;
   line-height: 1.6;
-  max-width: 46ch;
-  color: color-mix(in srgb, var(--foreground) 75%, transparent);
+  max-width: 48ch;
+  color: color-mix(in srgb, var(--foreground) 72%, transparent);
 }
 
 /* Generic page content (legal + category pages) */
@@ -127,8 +150,9 @@ a:hover {
 }
 
 .page h1 {
-  font-size: 2rem;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   margin-bottom: 0.5rem;
 }
 
@@ -139,7 +163,8 @@ a:hover {
 }
 
 .page h2 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
   margin: 2rem 0 0.75rem;
 }
 
@@ -159,6 +184,20 @@ a:hover {
 
 .page li {
   margin-bottom: 0.5rem;
+}
+
+/* Prose links (legal pages + guide body), never the CTA button */
+.page:not(.guide) a,
+.guide__body a:not(.cta-button) {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+.page:not(.guide) a:hover,
+.guide__body a:not(.cta-button):hover {
+  color: color-mix(in srgb, var(--link) 75%, white);
 }
 
 /* Category grid on the home page */
@@ -181,12 +220,15 @@ a:hover {
 .category-card {
   display: block;
   padding: 1.25rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
-  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color 0.15s ease, transform 0.1s ease;
 }
 
 .category-card:hover {
   border-color: color-mix(in srgb, var(--foreground) 35%, transparent);
+  transform: translateY(-2px);
   text-decoration: none;
 }
 
@@ -233,27 +275,44 @@ a:hover {
   color: color-mix(in srgb, var(--foreground) 75%, transparent);
 }
 
+.breadcrumbs a:hover {
+  color: var(--foreground);
+}
+
 .breadcrumbs li[aria-current="page"] {
   color: var(--foreground);
 }
 
 /* Guide article body */
+.guide__body {
+  font-size: 1.05rem;
+}
+
 .guide__body h1 {
-  font-size: 2rem;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4.5vw, 2.5rem);
+  letter-spacing: -0.025em;
   margin: 0.5rem 0 1rem;
-  line-height: 1.2;
+  line-height: 1.12;
 }
 
 .guide__body h2 {
-  font-size: 1.4rem;
-  margin: 2.25rem 0 0.75rem;
-  letter-spacing: -0.01em;
+  font-size: 1.55rem;
+  margin: 2.5rem 0 0.85rem;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
 }
 
 .guide__body h3 {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   margin: 1.75rem 0 0.6rem;
+}
+
+/* Constrain plain prose for readability; let rich blocks span full width */
+.guide__body > p,
+.guide__body > ul,
+.guide__body > ol,
+.guide__body > blockquote {
+  max-width: 70ch;
 }
 
 .guide__body p,
@@ -275,10 +334,15 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
+.guide__body strong {
+  color: var(--foreground);
+  font-weight: 650;
+}
+
 .guide__body blockquote {
   margin: 0 0 1.5rem;
   padding: 0.85rem 1.1rem;
-  border-left: 3px solid color-mix(in srgb, var(--foreground) 30%, transparent);
+  border-left: 3px solid color-mix(in srgb, var(--accent) 60%, transparent);
   background: color-mix(in srgb, var(--foreground) 4%, transparent);
   border-radius: 0 8px 8px 0;
 }
@@ -291,61 +355,377 @@ a:hover {
 
 .guide__body hr {
   border: none;
-  border-top: 1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
+  border-top: 1px solid var(--border);
   margin: 2rem 0;
 }
 
-/* Quick-picks table */
-.guide__body .table-scroll,
-.guide__body table {
-  width: 100%;
-}
-
+/* Base table styling (also the fallback for any unwrapped table) */
 .guide__body table {
   border-collapse: collapse;
-  margin: 0 0 1.5rem;
+  width: 100%;
   font-size: 0.9rem;
-  display: block;
-  overflow-x: auto;
+  margin: 0;
 }
 
 .guide__body th,
 .guide__body td {
   text-align: left;
-  padding: 0.6rem 0.75rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--border);
   vertical-align: top;
 }
 
 .guide__body thead th {
-  border-bottom: 2px solid color-mix(in srgb, var(--foreground) 30%, transparent);
   white-space: nowrap;
 }
 
-/* "Check price" call-to-action */
+/* Comparison table component */
+.comparison-table {
+  margin: 1.5rem 0 2rem;
+}
+
+.comparison-table__caption {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: color-mix(in srgb, var(--foreground) 55%, transparent);
+  margin-bottom: 0.6rem;
+}
+
+.comparison-table__scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  -webkit-overflow-scrolling: touch;
+}
+
+.comparison-table__scroll:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+.comparison-table table {
+  min-width: 720px;
+  font-size: 0.88rem;
+}
+
+.comparison-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+  border-bottom: 1px solid var(--border-strong, color-mix(in srgb, var(--foreground) 22%, transparent));
+}
+
+.comparison-table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--foreground) 3%, transparent);
+}
+
+.comparison-table tbody tr:hover {
+  background: color-mix(in srgb, var(--foreground) 7%, transparent);
+}
+
+.comparison-table th:first-child,
+.comparison-table tbody td:first-child {
+  font-weight: 650;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+/* Product grid + cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+@media (max-width: 560px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Light, neutral image panel so white-background product photos sit natively */
+.product-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-card__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.product-card__placeholder-icon {
+  color: #9ca3af;
+}
+
+.product-card__placeholder-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: #374151;
+  max-width: 90%;
+}
+
+.product-card__placeholder-hint {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  flex: 1 0 auto;
+}
+
+.product-card__name {
+  font-size: 1.2rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.product-card__tagline {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--foreground) 62%, transparent);
+  margin: -0.5rem 0 0;
+}
+
+.product-card__desc p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  color: color-mix(in srgb, var(--foreground) 82%, transparent);
+}
+
+/* Scannable specs */
+.product-card__specs {
+  list-style: none;
+  margin: 0;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1rem;
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 0.85rem;
+  min-width: 0;
+}
+
+.spec--full {
+  grid-column: 1 / -1;
+}
+
+.spec__label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--foreground) 50%, transparent);
+}
+
+.spec__value {
+  color: var(--foreground);
+  font-weight: 550;
+}
+
+.spec--full .spec__value {
+  font-weight: 600;
+}
+
+/* Pros / cons */
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+@media (max-width: 420px) {
+  .pros-cons {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pros-cons__col {
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.pros-cons__col--pro {
+  border-color: color-mix(in srgb, var(--good) 35%, transparent);
+}
+
+.pros-cons__col--con {
+  border-color: color-mix(in srgb, var(--bad) 35%, transparent);
+}
+
+.pros-cons__head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+
+.pros-cons__col--pro .pros-cons__head {
+  color: var(--good);
+}
+
+.pros-cons__col--con .pros-cons__head {
+  color: var(--bad);
+}
+
+.pros-cons__icon {
+  flex: 0 0 auto;
+}
+
+.pros-cons__text {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  color: color-mix(in srgb, var(--foreground) 85%, transparent);
+}
+
+.product-card__note {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: color-mix(in srgb, var(--foreground) 55%, transparent);
+  margin: 0;
+}
+
+.product-card__cta {
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+/* Strong accent purchase button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.cta-button:hover {
+  background: var(--accent-hover);
+  text-decoration: none;
+}
+
+.cta-button:active {
+  transform: translateY(1px);
+}
+
+.cta-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 55%, white);
+  outline-offset: 2px;
+}
+
+.cta-button__icon {
+  transition: transform 0.15s ease;
+}
+
+.cta-button:hover .cta-button__icon {
+  transform: translateX(2px);
+}
+
+/* Accent badge / seal */
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 20%, var(--surface));
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+/* "Check price" call-to-action (legacy text-link variant) */
 .check-price {
   display: inline-block;
   margin: 0.25rem 0 1.5rem;
   padding: 0.7rem 1.25rem;
-  border-radius: 10px;
-  background: var(--foreground);
-  color: var(--background);
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--accent-ink);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .check-price:hover {
   text-decoration: none;
-  opacity: 0.9;
+  background: var(--accent-hover);
 }
 
 /* Email signup */
 .email-signup {
-  margin: 2rem 0;
+  margin: 2.5rem 0;
   padding: 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
 }
 
 .email-signup__heading {
@@ -357,7 +737,7 @@ a:hover {
 }
 
 .email-signup__magnet {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
   line-height: 1.3;
@@ -381,7 +761,7 @@ a:hover {
   min-width: 0;
   padding: 0.7rem 0.85rem;
   font-size: 1rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
   background: var(--background);
   color: var(--foreground);
@@ -398,7 +778,7 @@ a:hover {
   font-size: 0.95rem;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: var(--foreground);
   color: var(--background);
   cursor: pointer;
@@ -411,7 +791,7 @@ a:hover {
 .email-signup__error {
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: #d33;
+  color: var(--bad);
 }
 
 .email-signup__success {
@@ -428,10 +808,11 @@ a:hover {
 /* Footer */
 .site-footer {
   flex-shrink: 0;
-  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
-  margin-top: 2rem;
-  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+  padding: 2.5rem 0;
   font-size: 0.9rem;
+  background: color-mix(in srgb, var(--foreground) 2%, transparent);
 }
 
 .site-footer__links {
@@ -443,6 +824,10 @@ a:hover {
 
 .site-footer__links a {
   color: color-mix(in srgb, var(--foreground) 75%, transparent);
+}
+
+.site-footer__links a:hover {
+  color: var(--foreground);
 }
 
 .site-footer__note {

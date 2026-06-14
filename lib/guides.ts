@@ -34,8 +34,10 @@ export type Guide = {
   /** The canonical slug, taken from the filename (frontmatter `slug` must match). */
   slug: string;
   frontmatter: GuideFrontmatter;
-  /** Raw file contents, frontmatter included — passed straight to compileMDX. */
+  /** Raw file contents, frontmatter included. */
   source: string;
+  /** MDX body with the frontmatter block removed — ready to compile/evaluate. */
+  body: string;
 };
 
 /**
@@ -105,7 +107,8 @@ export function getGuide(slug: string): Guide | undefined {
   if (!fs.existsSync(filePath)) return undefined;
 
   const source = fs.readFileSync(filePath, "utf8");
-  return { slug, frontmatter: parseFrontmatter(source), source };
+  const body = source.replace(/^---\s*\n[\s\S]*?\n---\s*\n?/, "");
+  return { slug, frontmatter: parseFrontmatter(source), source, body };
 }
 
 /** All guides, loaded and ready to list (e.g. on category pages). */
