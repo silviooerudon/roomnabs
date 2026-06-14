@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllGuides } from "@/lib/guides";
 import { CATEGORIES, LEGAL_PAGES, SITE_URL } from "@/lib/site";
 
 // Next.js App Router serves this at /sitemap.xml automatically.
@@ -19,6 +20,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+    })),
+    ...getAllGuides().map((guide) => ({
+      url: `${SITE_URL}/guide/${guide.slug}`,
+      lastModified: guide.frontmatter.updated
+        ? new Date(guide.frontmatter.updated)
+        : now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
     ...LEGAL_PAGES.map((page) => ({
       url: `${SITE_URL}/${page.slug}`,

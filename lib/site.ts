@@ -96,6 +96,40 @@ export const LINKS: ShortLink[] = [
   { id: "github", url: "https://github.com/silviooerudon/roomnabs", label: "GitHub repo" },
   { id: "netlify", url: "https://www.netlify.com/", label: "Netlify" },
   { id: "nextjs", url: "https://nextjs.org/", label: "Next.js" },
+
+  // Retailer "Check price" links used by the guides. These are plain store
+  // URLs for now (no affiliate deeplinks yet); they are rendered with
+  // rel="sponsored nofollow" and reached via the 302 /go/[linkId] redirect.
+  {
+    id: "af100uk-hn",
+    label: "Ninja 3.8L Air Fryer (AF100UK) at Harvey Norman",
+    url: "https://www.harveynorman.ie/small-appliances/small-cooking-appliances/fryers/ninja-3.8l-air-fryer-af100uk-grey.html",
+  },
+  {
+    id: "af180uk-currys",
+    label: "Ninja Max Pro (AF180UK) at Currys",
+    url: "https://www.currys.ie/products/ninja-max-pro-af180uk-air-fryer-black-10260190.html",
+  },
+  {
+    id: "crispi-fn101-euronics",
+    label: "Ninja Crispi 4-in-1 Portable (FN101) at Euronics",
+    url: "https://euronics.ie/products/ninja-crispi-4-in-1-portable-glass-air-fryer-cooking-system-blue-fn101ukgy",
+  },
+  {
+    id: "morphy-480005-currys",
+    label: "Morphy Richards 480005 Air Fryer at Currys",
+    url: "https://www.currys.ie/ieen/household-appliances/small-kitchen-appliances/small-cooking-appliances/fryers/morphy-richards-480005-air-fryer-black-10195164-pdt.html",
+  },
+  {
+    id: "philips-na230-amazon",
+    label: "Philips 2000 Series (NA230) Air Fryer at Currys",
+    url: "https://www.currys.ie/products/philips-2000-series-na23009-air-fryer-black-10268603.html",
+  },
+  {
+    id: "tefal-eyf-amazon",
+    label: "Tefal Easy Fry (EY245840) Air Fryer at Amazon",
+    url: "https://www.amazon.ie/Tefal-Dehydrate-Non-Stick-Dishwasher-EY245840/dp/B0CKLMQMYJ",
+  },
 ];
 
 export function findLink(id: string): ShortLink | undefined {
