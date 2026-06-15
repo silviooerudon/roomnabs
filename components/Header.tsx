@@ -35,6 +35,8 @@ export default function Header() {
         <Brand />
         <nav className="site-nav" aria-label="Primary">
           <Link href="/">Home</Link>
+          <Link href="/best-picks">Best picks</Link>
+          <Link href="/compare">Compare</Link>
           {CATEGORIES.map((category) => (
             <Link key={category.slug} href={`/${category.slug}`}>
               {category.name}
