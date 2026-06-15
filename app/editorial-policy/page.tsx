@@ -26,15 +26,22 @@ export default function EditorialPolicyPage() {
           commissions (see our{" "}
           <Link href="/affiliate-disclosure">Affiliate Disclosure</Link>),
           commission rates never influence whether or how we recommend a
-          product. Brands cannot pay for a positive review or for placement in
+          product. Brands cannot pay for favourable coverage or for placement in
           our rankings.
         </p>
 
         <h2>How we research</h2>
+        <p>
+          We don&rsquo;t test products ourselves, and we never claim to. Our
+          picks come from:
+        </p>
         <ul>
-          <li>Hands-on testing wherever possible, with a focus on small spaces</li>
           <li>Analysis of specifications, dimensions and setup requirements</li>
-          <li>Review of verified buyer feedback and reputable third-party tests</li>
+          <li>
+            Manufacturer and Irish/European retailer information, with prices
+            and dimensions re-checked before we publish
+          </li>
+          <li>A broad read of verified buyer feedback</li>
           <li>
             A renter-first lens: we weight ease of installation, portability and
             whether a product needs permanent changes to your home
@@ -53,8 +60,8 @@ export default function EditorialPolicyPage() {
         <p>
           We aim to be accurate, but mistakes happen. If you spot an error,
           please tell us at{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and we&rsquo;ll
-          review and correct it promptly.
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and
+          we&rsquo;ll review and correct it promptly.
         </p>
       </div>
     </article>

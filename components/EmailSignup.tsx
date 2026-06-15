@@ -11,7 +11,7 @@ import { useId, useState, type FormEvent } from "react";
  * validates the address format client-side and shows a success message. No data
  * is sent anywhere and nothing is persisted (no localStorage/sessionStorage).
  */
-type Variant = "inline" | "footer";
+type Variant = "inline" | "footer" | "newsletter";
 
 // Basic, permissive email shape check — good enough for a format hint without
 // rejecting valid-but-unusual addresses.
@@ -22,7 +22,8 @@ export default function EmailSignup({
   magnet,
 }: {
   variant?: Variant;
-  magnet: string;
+  /** Lead-magnet headline. Optional for the "newsletter" variant. */
+  magnet?: string;
 }) {
   const inputId = useId();
   const [email, setEmail] = useState("");
@@ -45,11 +46,14 @@ export default function EmailSignup({
 
   const heading =
     variant === "footer" ? "Get the free checklist" : "Free download";
+  const isNewsletter = variant === "newsletter";
 
   if (done) {
     return (
       <aside className={`email-signup email-signup--${variant}`} role="status">
-        <p className="email-signup__success">Thanks, you&rsquo;re on the list</p>
+        <p className="email-signup__success">
+          Thanks, you&rsquo;re on the list
+        </p>
       </aside>
     );
   }
@@ -57,8 +61,12 @@ export default function EmailSignup({
   return (
     <aside className={`email-signup email-signup--${variant}`}>
       <form className="email-signup__form" onSubmit={handleSubmit} noValidate>
-        <p className="email-signup__heading">{heading}</p>
-        <p className="email-signup__magnet">{magnet}</p>
+        {isNewsletter ? null : (
+          <>
+            <p className="email-signup__heading">{heading}</p>
+            {magnet ? <p className="email-signup__magnet">{magnet}</p> : null}
+          </>
+        )}
 
         <label className="email-signup__label" htmlFor={inputId}>
           Email address
@@ -79,7 +87,7 @@ export default function EmailSignup({
             required
           />
           <button className="email-signup__button" type="submit">
-            Send it to me
+            {isNewsletter ? "Subscribe" : "Send it to me"}
           </button>
         </div>
 

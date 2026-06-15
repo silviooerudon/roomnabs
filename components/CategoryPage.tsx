@@ -40,9 +40,9 @@ export default function CategoryPage({ slug }: { slug: string }) {
 
         <h2>Coming soon</h2>
         <p>
-          We&rsquo;re still testing and curating our {category.name.toLowerCase()}{" "}
-          picks. Reviews and recommendations for this category will appear here
-          shortly.
+          We&rsquo;re still researching and comparing our{" "}
+          {category.name.toLowerCase()} picks. Recommendations for this category
+          will appear here shortly.
         </p>
         <p>
           In the meantime, <Link href="/">explore the other categories</Link> or{" "}
