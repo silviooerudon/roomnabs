@@ -16,11 +16,11 @@
   --surface: #f8fafc; /* slate-50 */
   --surface-2: #f1f5f9; /* slate-100 */
 
-  --accent: #d97706; /* amber-600 — accent text/links */
-  --accent-strong: #b45309; /* amber-700 */
-  --btn-bg: #f59e0b; /* amber-500 */
-  --btn-bg-hover: #fbbf24; /* amber-400 */
-  --btn-fg: #1f2937; /* slate-800 — AA on amber */
+  --accent: #c68b30; /* amber/gold — accent text/links */
+  --accent-strong: #b7791f; /* darker gold — hover / strong accent */
+  --btn-bg: #c68b30; /* primary CTA background */
+  --btn-bg-hover: #b7791f; /* primary CTA hover (darkens) */
+  --btn-fg: #0f172a; /* slate-900 — keeps AA on the gold in both states */
   --accent-soft: #fef3c7; /* amber-100 */
   --accent-softer: #fffbeb; /* amber-50 */
 
