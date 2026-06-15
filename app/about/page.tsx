@@ -25,17 +25,18 @@ export default function AboutPage() {
         <h2>Who we&rsquo;re for</h2>
         <p>
           Renters, students, young professionals and anyone furnishing a small
-          space they can&rsquo;t permanently modify. If &ldquo;no drilling&rdquo;
-          and &ldquo;does it fit?&rdquo; are constant questions, this site is for
-          you.
+          space they can&rsquo;t permanently modify. If &ldquo;no
+          drilling&rdquo; and &ldquo;does it fit?&rdquo; are constant questions,
+          this site is for you.
         </p>
 
         <h2>How we choose products</h2>
         <p>
           We prioritise size, ease of setup, and whether something works without
-          permanent changes to your home. We combine hands-on testing, verified
-          buyer feedback and specification research to shortlist products worth
-          your money. Read more about our standards in our{" "}
+          permanent changes to your home. We don&rsquo;t test products
+          ourselves; we shortlist them by comparing manufacturer specifications,
+          retailer information and verified buyer feedback. Read more about our
+          standards in our{" "}
           <Link href="/editorial-policy">Editorial Policy</Link>.
         </p>
 
