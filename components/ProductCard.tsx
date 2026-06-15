@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Badge from "@/components/Badge";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
-import type { Product } from "@/lib/products";
+import { getProductHref, type Product } from "@/lib/products";
 
 /**
  * A single featured product pick.
@@ -10,6 +10,9 @@ import type { Product } from "@/lib/products";
  * where a rating would on a typical review site. The "Check price" CTA routes
  * through the /go/[linkId] redirect (rel="sponsored nofollow"). When the guide
  * hasn't confirmed a price we show "Check price" rather than invent a number.
+ *
+ * The product name links to the product's own page when it has one, otherwise
+ * back to the source guide — so there are never dead-end links.
  */
 export default function ProductCard({
   product,
@@ -18,6 +21,7 @@ export default function ProductCard({
   product: Product;
   guideSlug: string;
 }) {
+  const href = getProductHref(product, guideSlug);
   return (
     <article className="product-card">
       <div className="product-card__media">
@@ -29,7 +33,7 @@ export default function ProductCard({
 
       <div className="product-card__body">
         <h3 className="product-card__name">
-          <Link href={`/guide/${guideSlug}`}>{product.name}</Link>
+          <Link href={href}>{product.name}</Link>
         </h3>
 
         <dl className="product-card__specs">

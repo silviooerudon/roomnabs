@@ -16,11 +16,11 @@
   --surface: #f8fafc; /* slate-50 */
   --surface-2: #f1f5f9; /* slate-100 */
 
-  --accent: #d97706; /* amber-600 — accent text/links */
-  --accent-strong: #b45309; /* amber-700 */
-  --btn-bg: #f59e0b; /* amber-500 */
-  --btn-bg-hover: #fbbf24; /* amber-400 */
-  --btn-fg: #1f2937; /* slate-800 — AA on amber */
+  --accent: #c68b30; /* amber/gold — accent text/links */
+  --accent-strong: #b7791f; /* darker gold — hover / strong accent */
+  --btn-bg: #c68b30; /* primary CTA background */
+  --btn-bg-hover: #b7791f; /* primary CTA hover (darkens) */
+  --btn-fg: #0f172a; /* slate-900 — keeps AA on the gold in both states */
   --accent-soft: #fef3c7; /* amber-100 */
   --accent-softer: #fffbeb; /* amber-50 */
 
@@ -1073,4 +1073,244 @@ a:hover {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Confidence strip (honest trust line) ---------------------------------- */
+.confidence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+}
+
+.confidence__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.confidence__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+/* Honest empty state (no fake content) ---------------------------------- */
+.empty-state {
+  margin: 1.5rem 0;
+  padding: 2rem 1.5rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.empty-state h2 {
+  margin-top: 0;
+}
+
+.empty-state p:last-child {
+  margin-bottom: 0;
+}
+
+/* Price-checked note ----------------------------------------------------- */
+.price-note {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--muted-soft);
+}
+
+/* Compare page wrapper --------------------------------------------------- */
+.compare-wrap {
+  margin: 1.5rem 0 0.5rem;
+}
+
+/* Best Picks category filter -------------------------------------------- */
+.bp-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.bp-tab {
+  padding: 0.5rem 0.9rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.bp-tab:hover {
+  background: var(--surface-2);
+  color: var(--fg);
+}
+
+.bp-tab--active {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* Product page ----------------------------------------------------------- */
+.product-page {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0.5rem 0 2.5rem;
+}
+
+@media (min-width: 760px) {
+  .product-page {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+
+.product-page__media .img-ph {
+  aspect-ratio: 4 / 3;
+}
+
+.product-page__main h1 {
+  margin: 0.75rem 0 0;
+}
+
+.product-page__tagline {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.product-page__specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+@media (min-width: 480px) {
+  .product-page__specs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.product-page__price {
+  margin: 0 0 1rem;
+  color: var(--fg);
+}
+
+.product-page__price strong {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.product-page__price-note {
+  font-size: 0.85rem;
+  color: var(--muted-soft);
+}
+
+.product-page__body {
+  max-width: 70ch;
+}
+
+.product-page__body h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+}
+
+.product-page__body p {
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.product-page__body a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.product-page__body a:hover {
+  color: var(--accent-strong);
+}
+
+/* Pros / cons ------------------------------------------------------------ */
+.proscons {
+  display: grid;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+@media (min-width: 560px) {
+  .proscons {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.proscons__col {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.proscons__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.proscons__list {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.proscons__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  line-height: 1.5;
+  color: var(--fg);
+  margin: 0;
+}
+
+.proscons__mark {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: 0.1rem;
+  border-radius: 999px;
+}
+
+.proscons__col--pros .proscons__mark {
+  background: #dcfce7; /* green-100 */
+  color: #15803d; /* green-700 */
+}
+
+.proscons__col--cons .proscons__mark {
+  background: var(--surface-2);
+  color: var(--muted);
 }

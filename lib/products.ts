@@ -15,11 +15,33 @@
  * rating. We don't test products and show no stars/scores.
  */
 
+/**
+ * Editorial detail used by the `/product/[slug]` page. This is honest copy
+ * *derived from the real specs* (footprint, capacity, run cost, confirmed
+ * price) — never a test result, score or star rating. Only products that have
+ * a `details` block get a product page; everyone else routes to the guide so we
+ * never ship a thin, content-light page just to fill a URL.
+ */
+export type ProductDetails = {
+  /** One line on why it earns its `badge` — positioning, not a verdict. */
+  tagline: string;
+  /** A couple of honest paragraphs built from the spec sheet, no test claims. */
+  overview: string[];
+  /** Concrete strengths, each one traceable to a real spec. */
+  pros: string[];
+  /** Honest trade-offs, each one traceable to a real spec. */
+  cons: string[];
+  /** Who the footprint/capacity actually suits. */
+  bestFor: string;
+};
+
 export type Product = {
   id: string;
   name: string;
   /** Editorial "best for" label shown in place of a rating. */
   badge: string;
+  /** Category slug (see lib/site.ts CATEGORIES) this product belongs to. */
+  category: string;
   capacity: string;
   /** Worktop footprint, width × depth. */
   footprint: string;
@@ -33,16 +55,26 @@ export type Product = {
   /** Retailer name for the "Check price at …" CTA. */
   retailer: string;
   imageAlt: string;
+  /** Present only when we have enough real content for a product page. */
+  details?: ProductDetails;
 };
 
 /** Slug of the guide these picks come from. */
 export const AIR_FRYER_GUIDE_SLUG = "best-air-fryers-small-kitchens-ireland";
+
+/**
+ * When the prices in this file were last verified. Shown next to every price so
+ * a number always carries a date — we never display a bare "price" as if it
+ * were live. Re-check and bump this on each publish.
+ */
+export const PRICE_CHECKED = "June 2026";
 
 export const AIR_FRYERS: Product[] = [
   {
     id: "ninja-af100uk",
     name: "Ninja Air Fryer 3.8L (AF100UK)",
     badge: "Best overall",
+    category: "small-kitchen",
     capacity: "3.8 L",
     footprint: "28 × 34 cm",
     height: "35 cm",
@@ -51,11 +83,31 @@ export const AIR_FRYERS: Product[] = [
     linkId: "af100uk-hn",
     retailer: "Harvey Norman",
     imageAlt: "Placeholder image of the Ninja 3.8L Air Fryer (AF100UK)",
+    details: {
+      tagline:
+        "The pick we point most small-kitchen renters at: a genuinely compact footprint, a confirmed price, and one of the lowest running costs here.",
+      overview: [
+        "At 28 × 34 cm the AF100UK takes up less worktop than most of the air fryers we compared, which is the spec that matters first when you only have a strip of counter to work with. Its 3.8 L drawer is sized for one person or a couple rather than a family batch-cook.",
+        "Running cost works out at roughly €0.19 for a 20-minute cook on current Irish electricity prices — among the cheapest in this guide — and we have a confirmed price of about €94.95 at Harvey Norman as of June 2026.",
+      ],
+      pros: [
+        "Compact 28 × 34 cm footprint fits most small worktops",
+        "Low running cost (~€0.19 per 20-minute cook)",
+        "Confirmed price (~€94.95) rather than an estimate",
+      ],
+      cons: [
+        "3.8 L drawer suits one person or a couple, not big batches",
+        "35 cm tall — measure your under-cabinet clearance first",
+      ],
+      bestFor:
+        "Solo renters and couples who want the smallest sensible footprint without overpaying.",
+    },
   },
   {
     id: "philips-na230",
     name: "Philips 2000 Series (NA230/09)",
     badge: "Best value",
+    category: "small-kitchen",
     capacity: "6.2 L",
     footprint: "30.9 × 40.4 cm",
     height: "30.8 cm",
@@ -65,11 +117,31 @@ export const AIR_FRYERS: Product[] = [
     retailer: "Currys",
     imageAlt:
       "Placeholder image of the Philips 2000 Series air fryer (NA230/09)",
+    details: {
+      tagline:
+        "The most capacity per euro here: a 6.2 L drawer at the lowest confirmed price in the guide, if you can spare the worktop depth.",
+      overview: [
+        "The NA230/09 pairs a large 6.2 L drawer with the lowest confirmed price we found (about €92.68 at Currys as of June 2026), which is why it earns the value badge — you get family-sized capacity without paying a family-sized premium.",
+        "The trade-off is depth: at 30.9 × 40.4 cm it needs a deeper run of worktop than the Ninja AF100UK. Its 30.8 cm height is low, though, so it slips under standard wall cabinets more easily than the taller models.",
+      ],
+      pros: [
+        "Large 6.2 L drawer handles full batches",
+        "Lowest confirmed price in the guide (~€92.68)",
+        "Low 30.8 cm height clears most wall cabinets",
+      ],
+      cons: [
+        "40.4 cm deep — needs a deeper worktop than the compact picks",
+        "Bigger overall footprint than the Ninja AF100UK",
+      ],
+      bestFor:
+        "Sharers and small households who want batch capacity and the lowest price, with worktop depth to spare.",
+    },
   },
   {
     id: "tefal-ey245840",
     name: "Tefal Easy Fry Max 5L (EY245840)",
     badge: "Smallest footprint",
+    category: "small-kitchen",
     capacity: "5 L",
     footprint: "27.3 × 32.4 cm",
     height: "37.5 cm",
@@ -83,6 +155,7 @@ export const AIR_FRYERS: Product[] = [
     id: "morphy-480005",
     name: "Morphy Richards Digital 3L (480005)",
     badge: "Cheapest to run",
+    category: "small-kitchen",
     capacity: "3 L",
     footprint: "33.7 × 27.9 cm",
     height: "31.3 cm",
@@ -96,6 +169,7 @@ export const AIR_FRYERS: Product[] = [
     id: "ninja-af180uk",
     name: "Ninja MAX PRO 6.2L (AF180UK)",
     badge: "Best for batches",
+    category: "small-kitchen",
     capacity: "6.2 L",
     footprint: "28 × 36 cm",
     height: "30.5 cm",
@@ -109,6 +183,7 @@ export const AIR_FRYERS: Product[] = [
     id: "ninja-crispi-fn101",
     name: "Ninja CRISPi Glass (FN101UKGY)",
     badge: "Premium pick",
+    category: "small-kitchen",
     capacity: "1.4 + 3.8 L",
     footprint: "30.4 × 34 cm",
     height: "34.5 cm",
@@ -123,4 +198,36 @@ export const AIR_FRYERS: Product[] = [
 /** Featured picks shown on the homepage (all current air-fryer picks). */
 export function getFeaturedProducts(): Product[] {
   return AIR_FRYERS;
+}
+
+/** Every product we currently have, across all categories. */
+export function getAllProducts(): Product[] {
+  return AIR_FRYERS;
+}
+
+/** Products belonging to a category slug (e.g. "small-kitchen"). */
+export function getProductsByCategory(category: string): Product[] {
+  return AIR_FRYERS.filter((product) => product.category === category);
+}
+
+/** A single product by its id, or `undefined`. */
+export function getProductById(id: string): Product | undefined {
+  return AIR_FRYERS.find((product) => product.id === id);
+}
+
+/**
+ * Products that have enough real content for a `/product/[slug]` page. These are
+ * the only product pages we generate and index — everything else routes to the
+ * guide rather than shipping a thin page.
+ */
+export function getProductsWithDetails(): Product[] {
+  return AIR_FRYERS.filter((product) => product.details);
+}
+
+/**
+ * Where a product card / link should point. Products with a real detail page go
+ * there; the rest fall back to the source guide so there are no dead-end links.
+ */
+export function getProductHref(product: Product, guideSlug: string): string {
+  return product.details ? `/product/${product.id}` : `/guide/${guideSlug}`;
 }

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { AnchorHTMLAttributes } from "react";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import Breadcrumbs, { type Crumb } from "@/components/Breadcrumbs";
 import CheckPrice from "@/components/CheckPrice";
 import EmailSignup from "@/components/EmailSignup";
 import {
@@ -116,22 +116,18 @@ export default async function GuidePage({ params }: Props) {
     articleSchema.datePublished = updated;
   }
 
+  const crumbs: Crumb[] = [
+    { label: "Home", href: "/" },
+    ...(categoryInfo
+      ? [{ label: categoryInfo.name, href: `/${categoryInfo.slug}` }]
+      : []),
+    { label: title },
+  ];
+
   return (
     <article className="page guide">
       <div className="container">
-        <nav className="breadcrumbs" aria-label="Breadcrumb">
-          <ol>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            {categoryInfo ? (
-              <li>
-                <Link href={`/${categoryInfo.slug}`}>{categoryInfo.name}</Link>
-              </li>
-            ) : null}
-            <li aria-current="page">{title}</li>
-          </ol>
-        </nav>
+        <Breadcrumbs items={crumbs} />
 
         {/* The MDX body supplies its own <h1> and last-updated line. */}
         <div className="guide__body">{content}</div>
