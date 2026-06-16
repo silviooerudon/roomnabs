@@ -16,11 +16,17 @@
   --surface: #f8fafc; /* slate-50 */
   --surface-2: #f1f5f9; /* slate-100 */
 
-  --accent: #c68b30; /* amber/gold — accent text/links */
-  --accent-strong: #b7791f; /* darker gold — hover / strong accent */
-  --btn-bg: #c68b30; /* primary CTA background */
-  --btn-bg-hover: #b7791f; /* primary CTA hover (darkens) */
-  --btn-fg: #0f172a; /* slate-900 — keeps AA on the gold in both states */
+  --accent: #c68b30; /* amber/gold — accent text/links (unchanged) */
+  --accent-strong: #b7791f; /* darker gold — hover / strong accent (unchanged) */
+  /*
+   * Primary CTA buttons use WHITE text, so the button background is a deeper
+   * gold than the accent colour to keep WCAG AA (≥4.5:1) in both states.
+   * White on #c68b30 is only 2.94:1; these deepened tones pass:
+   *   #9c6a1c + #fff = 4.68:1, #8f6219 + #fff = 5.34:1.
+   */
+  --btn-bg: #9c6a1c; /* primary CTA background (deep gold) */
+  --btn-bg-hover: #8f6219; /* primary CTA hover (darker still) */
+  --btn-fg: #ffffff; /* white — AA on the deepened gold in both states */
   --accent-soft: #fef3c7; /* amber-100 */
   --accent-softer: #fffbeb; /* amber-50 */
 

@@ -130,6 +130,50 @@ export const LINKS: ShortLink[] = [
     label: "Tefal Easy Fry (EY245840) Air Fryer at Amazon",
     url: "https://www.amazon.ie/Tefal-Dehydrate-Non-Stick-Dishwasher-EY245840/dp/B0CKLMQMYJ",
   },
+
+  // Compact coffee machines guide (Ireland). Plain Irish-retailer store URLs
+  // for now — affiliate deeplinks land in Phase 3. Same 302 + sponsored nofollow
+  // treatment as the air-fryer links above.
+  {
+    id: "essenza-mini",
+    label: "Nespresso by Krups Essenza Mini (XN110840) at Currys",
+    url: "https://www.currys.ie/ieen/household-appliances/small-kitchen-appliances/coffee-machines-and-accessories/coffee-machines/nespresso-by-krups-essenza-mini-xn110840-coffee-machine-piano-black-10159576-pdt.html",
+  },
+  {
+    id: "vertuo-pop-hn",
+    label: "De'Longhi Nespresso Vertuo Pop (ENV90.B) at Harvey Norman",
+    url: "https://www.harveynorman.ie/small-appliances/coffee-machines/nespresso-en/delonghi-nespresso-vertuo-pop-coffee-machine-env90.b-black.html",
+  },
+  {
+    id: "pixie-hn",
+    label: "Krups Nespresso Pixie (XN306T40) at Harvey Norman",
+    url: "https://www.harveynorman.ie/small-appliances/coffee-machines/nespresso-en/krups-nespresso-pixie-coffee-machine-xn306t40-titanium.html",
+  },
+  {
+    id: "dedica",
+    label: "De'Longhi Dedica (EC685M) at Currys",
+    url: "https://www.currys.ie/products/delonghi-dedica-ec685m-coffee-machine-silver-10172671.html",
+  },
+  {
+    id: "bambino-plus-hn",
+    label: "Sage the Bambino Plus (SES500) at Harvey Norman",
+    url: "https://www.harveynorman.ie/small-appliances/coffee-machines/espresso/sage-the-bambino-plus-coffee-machine-ses500bss4guk1-brushed-stainless-steel.html",
+  },
+  {
+    id: "magnifica-s",
+    label: "De'Longhi Magnifica S (ECAM22.320.SB) at Currys",
+    url: "https://www.currys.ie/ieen/household-appliances/small-kitchen-appliances/coffee-machines-and-accessories/coffee-machines/delonghi-magnifica-s-ecam-22-320-sb-bean-to-cup-coffee-machine-silver-21485747-pdt.html",
+  },
+  {
+    id: "dolce-gusto-genio",
+    label: "NESCAFÉ Dolce Gusto Genio S Plus at Amazon",
+    url: "https://www.amazon.ie/dp/B08KZZJ94V",
+  },
+  {
+    id: "rh-buckingham-did",
+    label: "Russell Hobbs Buckingham Filter Coffee Maker (20680) at DID",
+    url: "https://www.did.ie/products/russell-hobbs-125l-buckingham-filter-coffee-maker-stainless-steel-20680",
+  },
 ];
 
 export function findLink(id: string): ShortLink | undefined {
