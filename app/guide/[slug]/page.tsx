@@ -6,6 +6,10 @@ import remarkGfm from "remark-gfm";
 import Breadcrumbs, { type Crumb } from "@/components/Breadcrumbs";
 import CheckPrice from "@/components/CheckPrice";
 import EmailSignup from "@/components/EmailSignup";
+import GuideCards from "@/components/GuideCards";
+import GuideComparison from "@/components/GuideComparison";
+import GuideProductCard from "@/components/GuideProductCard";
+import GuideProsCons from "@/components/GuideProsCons";
 import {
   getGuide,
   getGuideCategory,
@@ -40,7 +44,15 @@ function MdxAnchor({
 }
 
 // Components made available to every guide's MDX body.
-const mdxComponents = { EmailSignup, CheckPrice, a: MdxAnchor };
+const mdxComponents = {
+  EmailSignup,
+  CheckPrice,
+  GuideCards,
+  GuideComparison,
+  GuideProductCard,
+  GuideProsCons,
+  a: MdxAnchor,
+};
 
 type Props = {
   params: Promise<{ slug: string }>;

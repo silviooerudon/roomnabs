@@ -1320,3 +1320,94 @@ a:hover {
   background: var(--surface-2);
   color: var(--muted);
 }
+
+/* ----------------------------------------------------------------------------
+ * Guide MDX components — quick-picks comparison, product cards and pros/cons
+ * rendered inside `.guide__body`. These re-assert the design-system styling so
+ * the generic `.guide__body table` / `ul` rules above don't override them.
+ * ------------------------------------------------------------------------- */
+
+/* Quick-picks comparison: keep the `.compare` look inside the guide body. */
+.guide__body .compare {
+  margin: 1.25rem 0 2rem;
+}
+
+.guide__body .compare table {
+  display: table;
+  width: 100%;
+  min-width: 720px;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+.guide__body .compare thead th {
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.guide__body .compare tbody td,
+.guide__body .compare tbody th {
+  border-bottom: 1px solid var(--surface-2);
+  vertical-align: middle;
+}
+
+.guide__body .compare tbody tr:last-child td,
+.guide__body .compare tbody tr:last-child th {
+  border-bottom: none;
+}
+
+/* Product cards: stack full-width down the guide's reading column. */
+.guide-cards {
+  display: grid;
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.product-card--guide .product-card__media {
+  padding: 0.85rem 0.85rem 0;
+}
+
+.product-card--guide .product-card__lede p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+/* Specs grid inside the card: beat `.guide__body ul/li` spacing rules. */
+.guide__body .product-card__specs {
+  margin: 0;
+}
+
+.guide__body .product-card__specs .spec dd {
+  color: var(--fg);
+}
+
+/* Value-only spec (a bold spec phrase the guide writes without a label). */
+.spec--value-only {
+  display: flex;
+  align-items: center;
+}
+
+.product-card__note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted-soft);
+}
+
+/* Good-for / not-for: neutralise the generic guide list indentation. */
+.guide__body .proscons--guide {
+  margin: 0;
+}
+
+.guide__body .proscons--guide ul {
+  margin: 0;
+  list-style: none;
+}
+
+.guide__body .proscons--guide li {
+  margin-bottom: 0;
+}
+
+.proscons--guide .proscons__title {
+  font-size: 0.9rem;
+}
