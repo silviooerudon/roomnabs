@@ -1,11 +1,18 @@
 import Link from "next/link";
-import { CATEGORIES, LEGAL_PAGES, SITE_NAME } from "@/lib/site";
+import SocialIcon from "@/components/SocialIcon";
+import {
+  EXPLORE_LINKS,
+  LEGAL_PAGES,
+  SITE_NAME,
+  SOCIAL_LINKS,
+} from "@/lib/site";
 
 /**
- * Site footer: brand + Browse (categories) and Company (legal) columns, plus
- * the standing affiliate disclosure shown on every page.
+ * Site footer: brand + Explore / Company columns and a Follow Us row, plus the
+ * standing affiliate disclosure shown on every page. Mirrors the reference
+ * footer layout (Explore / Company / Follow Us).
  *
- * No social icons — we don't have real accounts yet, so we don't link to any.
+ * Social handles are placeholders until real accounts exist (see SOCIAL_LINKS).
  */
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -22,7 +29,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container">
         <div className="site-footer__top">
-          <div>
+          <div className="site-footer__intro">
             <p className="site-footer__brand">
               {prefix}
               {accent ? <span className="brand__accent">{accent}</span> : null}
@@ -33,12 +40,12 @@ export default function Footer() {
             </p>
           </div>
 
-          <nav aria-label="Browse">
-            <h2 className="site-footer__col-title">Browse</h2>
+          <nav aria-label="Explore">
+            <h2 className="site-footer__col-title">Explore</h2>
             <ul className="site-footer__list">
-              {CATEGORIES.map((category) => (
-                <li key={category.slug}>
-                  <Link href={`/${category.slug}`}>{category.name}</Link>
+              {EXPLORE_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -54,6 +61,26 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
+
+          <div>
+            <h2 className="site-footer__col-title">Follow Us</h2>
+            <ul className="site-footer__social">
+              {SOCIAL_LINKS.map((social) => (
+                <li key={social.id}>
+                  <a
+                    href={social.href}
+                    className="site-footer__social-link"
+                    aria-label={social.label}
+                    {...(social.id !== "email"
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    <SocialIcon id={social.id} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="site-footer__bottom">

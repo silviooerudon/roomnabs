@@ -8,11 +8,7 @@ import TrustStrip from "@/components/TrustStrip";
 import { AIR_FRYER_GUIDE_SLUG, getFeaturedProducts } from "@/lib/products";
 import { CATEGORIES, SITE_NAME } from "@/lib/site";
 
-const HERO_BADGES = [
-  "Researched & compared",
-  "Chosen on specs & space",
-  "Honest picks, clearly disclosed",
-];
+const HERO_BADGES = ["Researched picks", "Expert comparisons", "Real deals"];
 
 function Tick() {
   return (
@@ -42,13 +38,11 @@ export default function Home() {
       <section className="hero">
         <div className="hero__grid">
           <div className="hero__copy container">
-            <p className="eyebrow">Small-space living, sorted</p>
-            <h1>Compact home &amp; tech for small flats</h1>
+            <h1>Smart finds for your home</h1>
             <p className="hero__lede">
-              {SITE_NAME} researches and compares space-savvy products for
-              people renting small flats across Ireland and Europe — from
-              foldable desks to counter-friendly kitchen gear and smart-home kit
-              that landlords won&rsquo;t mind.
+              We research, compare, and curate the best home and tech products
+              so you can buy with confidence — chosen on specs, fit and value,
+              with every affiliate link clearly disclosed.
             </p>
             <ul className="hero__badges">
               {HERO_BADGES.map((badge) => (
@@ -71,23 +65,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured picks — real air-fryer guide products */}
+      {/* Featured picks — real guide products */}
       <section className="section">
         <div className="container">
           <div className="section__head">
             <div>
-              <h2 className="section__title">Featured picks</h2>
+              <h2 className="section__title">Featured Picks</h2>
               <p className="section__intro">
-                Our current picks from the air-fryer guide, chosen on footprint,
-                running cost and value — not star ratings.
+                Our current picks, chosen on footprint, running cost and value —
+                researched and compared, never guessed.
               </p>
             </div>
-            <Link className="link-more" href={`/guide/${AIR_FRYER_GUIDE_SLUG}`}>
-              View the full guide →
+            <Link className="link-more" href="/best-picks">
+              View all picks →
             </Link>
           </div>
 
-          <div className="product-grid">
+          <div className="product-grid product-grid--featured">
             {featured.map((product) => (
               <ProductCard
                 key={product.id}
@@ -99,28 +93,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Top picks table beside Browse by category */}
-      <section className="section section--alt">
+      {/* Top picks table beside Shop by category */}
+      <section className="section">
         <div className="container split">
           <div>
             <div className="section__head">
               <div>
-                <h2 className="section__title">Top picks at a glance</h2>
+                <h2 className="section__title">Top Picks This Week</h2>
                 <p className="section__intro">
-                  Compared on capacity, footprint and running cost. No ratings —
-                  we don&rsquo;t test products.
+                  Compared on capacity, footprint and running cost — no star
+                  ratings, because we don&rsquo;t test products.
                 </p>
               </div>
             </div>
             <ComparisonTable
-              products={featured}
-              caption="Comparison of picks from the air-fryer guide"
+              products={featured.slice(0, 3)}
+              caption="This week's top picks, compared"
             />
           </div>
 
           <div>
             <div className="section__head">
-              <h2 className="section__title">Shop by category</h2>
+              <h2 className="section__title">Shop by Category</h2>
+              <Link className="link-more" href="/best-picks">
+                View all categories →
+              </Link>
             </div>
             <div className="cat-grid">
               {CATEGORIES.map((category) => (
@@ -131,8 +128,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust strip */}
-      <section className="section">
+      {/* Trust strip — shaded band */}
+      <section className="section section--alt">
         <div className="container">
           <TrustStrip />
         </div>
@@ -144,12 +141,13 @@ export default function Home() {
           <div className="newsletter__copy">
             <h2 className="section__title">Stay in the loop</h2>
             <p className="section__intro">
-              New guides and price drops for small-space living, now and then —
-              no spam, unsubscribe any time.
+              Get the best deals, new guides, and expert picks straight to your
+              inbox.
             </p>
           </div>
           <div className="newsletter__form">
             <EmailSignup variant="newsletter" />
+            <p className="newsletter__note">No spam, unsubscribe anytime.</p>
           </div>
         </div>
       </section>
