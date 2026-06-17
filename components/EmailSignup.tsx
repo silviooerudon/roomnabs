@@ -68,7 +68,10 @@ export default function EmailSignup({
           </>
         )}
 
-        <label className="email-signup__label" htmlFor={inputId}>
+        <label
+          className={`email-signup__label${isNewsletter ? " sr-only" : ""}`}
+          htmlFor={inputId}
+        >
           Email address
         </label>
         <div className="email-signup__row">
@@ -79,7 +82,9 @@ export default function EmailSignup({
             name="email"
             inputMode="email"
             autoComplete="email"
-            placeholder="you@example.com"
+            placeholder={
+              isNewsletter ? "Enter your email address" : "you@example.com"
+            }
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             aria-invalid={error ? true : undefined}

@@ -179,3 +179,33 @@ export const LINKS: ShortLink[] = [
 export function findLink(id: string): ShortLink | undefined {
   return LINKS.find((link) => link.id === id);
 }
+
+/**
+ * Footer "Explore" column — the primary destinations, mirroring the reference
+ * footer (Best Picks / Comparisons / Guides / Deals).
+ */
+export const EXPLORE_LINKS: { href: string; label: string }[] = [
+  { href: "/best-picks", label: "Best Picks" },
+  { href: "/compare", label: "Comparisons" },
+  { href: "/guides", label: "Guides" },
+  { href: "/deals", label: "Deals" },
+];
+
+/**
+ * Social links shown in the footer "Follow Us" column.
+ *
+ * Only the email link is live. The social handles are placeholders ("#") until
+ * the real accounts exist — replace the `href`s when they do.
+ */
+export type SocialLink = {
+  id: "instagram" | "youtube" | "pinterest" | "email";
+  label: string;
+  href: string;
+};
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  { id: "instagram", label: "Instagram", href: "#" },
+  { id: "youtube", label: "YouTube", href: "#" },
+  { id: "pinterest", label: "Pinterest", href: "#" },
+  { id: "email", label: "Email us", href: `mailto:${CONTACT_EMAIL}` },
+];

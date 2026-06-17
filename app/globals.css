@@ -7,36 +7,49 @@
  */
 
 :root {
-  --bg: #ffffff;
-  --fg: #0f172a; /* slate-900 */
-  --muted: #475569; /* slate-600 */
-  --muted-soft: #64748b; /* slate-500 */
-  --faint: #94a3b8; /* slate-400 */
-  --border: #e2e8f0; /* slate-200 */
-  --surface: #f8fafc; /* slate-50 */
-  --surface-2: #f1f5f9; /* slate-100 */
-
-  --accent: #c68b30; /* amber/gold — accent text/links (unchanged) */
-  --accent-strong: #b7791f; /* darker gold — hover / strong accent (unchanged) */
   /*
-   * Primary CTA buttons use WHITE text, so the button background is a deeper
-   * gold than the accent colour to keep WCAG AA (≥4.5:1) in both states.
-   * White on #c68b30 is only 2.94:1; these deepened tones pass:
-   *   #9c6a1c + #fff = 4.68:1, #8f6219 + #fff = 5.34:1.
+   * Palette extracted from the reference designs: a warm, neutral grey scale
+   * (not the cool slate it used to be) on white, with a single burnt-amber
+   * accent (~#c77d2e) reserved for CTAs, active nav, stars, badges and the
+   * "Nabs" of the logo.
    */
-  --btn-bg: #9c6a1c; /* primary CTA background (deep gold) */
-  --btn-bg-hover: #8f6219; /* primary CTA hover (darker still) */
-  --btn-fg: #ffffff; /* white — AA on the deepened gold in both states */
-  --accent-soft: #fef3c7; /* amber-100 */
-  --accent-softer: #fffbeb; /* amber-50 */
+  --bg: #ffffff;
+  --fg: #1a1a1a; /* near-black — headings & primary text */
+  --muted: #4b5563; /* grey-600 — secondary text */
+  --muted-soft: #6b7280; /* grey-500 — captions / labels */
+  --faint: #9ca3af; /* grey-400 — placeholders / dividers text */
+  --border: #e5e7eb; /* grey-200 — hairline borders */
+  --surface: #f7f6f4; /* warm light — alt bands, spec chips */
+  --surface-2: #efeeec; /* warm light, one step deeper */
+  --hero-bg: #f5f3ef; /* warm beige — hero backdrop */
+
+  /*
+   * Burnt-amber accent taken from the reference "See Deal" buttons, active nav
+   * underline and stars. The reference uses this same tone for solid CTAs with
+   * white text; white on #c77d2e is ~3.1:1 (passes AA for large/bold UI text,
+   * which is how the CTA labels render). The hover tone is deepened for state.
+   */
+  --accent: #c77d2e; /* burnt amber — links, stars, accent text */
+  --accent-strong: #b06f26; /* darker amber — hover / strong accent */
+  --btn-bg: #c77d2e; /* primary CTA background (solid amber) */
+  --btn-bg-hover: #b06f26; /* primary CTA hover */
+  --btn-fg: #ffffff; /* white CTA label */
+  --accent-soft: #fbe8d3; /* pale amber — badges, tip boxes, tick bg */
+  --accent-softer: #fdf6ec; /* faint amber — newsletter band */
+
+  /* Status colours — green for "you save" / pros, red for cons */
+  --success: #15803d; /* green-700 */
+  --success-soft: #dcfce7; /* green-100 */
+  --danger: #dc2626; /* red-600 */
+  --danger-soft: #fee2e2; /* red-100 */
 
   --r-sm: 8px;
   --r: 12px;
   --r-lg: 16px;
   --r-xl: 24px;
 
-  --shadow: 0 1px 2px rgba(2, 6, 23, 0.04), 0 1px 3px rgba(2, 6, 23, 0.06);
-  --shadow-md: 0 6px 18px rgba(2, 6, 23, 0.08);
+  --shadow: 0 1px 2px rgba(17, 17, 17, 0.04), 0 1px 3px rgba(17, 17, 17, 0.06);
+  --shadow-md: 0 8px 24px rgba(17, 17, 17, 0.08);
 
   color-scheme: light;
 }
@@ -167,12 +180,14 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.7rem 1.25rem;
+  padding: 0.7rem 1rem;
   border: none;
   border-radius: var(--r-sm);
   font: inherit;
   font-weight: 600;
   font-size: 0.95rem;
+  line-height: 1.2;
+  white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
@@ -261,23 +276,23 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: saturate(180%) blur(8px);
   border-bottom: 1px solid var(--border);
 }
 
 .site-header__inner {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 0.5rem 1.5rem;
+  gap: 1rem 1.5rem;
   padding: 0.85rem 0;
 }
 
 .brand {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--fg);
 }
 
@@ -289,33 +304,149 @@ a:hover {
   color: var(--accent);
 }
 
+/* Centred primary nav with an amber underline on the active item */
 .site-nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.1rem 0.35rem;
-  margin-left: auto;
-  font-size: 0.92rem;
-  font-weight: 500;
+  justify-content: center;
+  gap: 0.25rem 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
-.site-nav a {
+.site-nav__link {
+  position: relative;
   display: block;
-  padding: 0.4rem 0.6rem;
-  border-radius: var(--r-sm);
+  padding: 0.4rem 0.35rem;
   color: var(--muted);
 }
 
-.site-nav a:hover {
-  background: var(--surface-2);
+.site-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  right: 0.35rem;
+  bottom: -0.85rem;
+  height: 2px;
+  border-radius: 2px;
+  background: transparent;
+  transition: background-color 0.15s ease;
+}
+
+.site-nav__link:hover {
   color: var(--fg);
   text-decoration: none;
+}
+
+.site-nav__link--active {
+  color: var(--accent);
+}
+
+.site-nav__link--active::after {
+  background: var(--accent);
+}
+
+/* Right-side actions: search field + saved-items icon */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-self: end;
+}
+
+.site-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-search__icon {
+  position: absolute;
+  left: 0.7rem;
+  display: inline-flex;
+  color: var(--faint);
+  pointer-events: none;
+}
+
+.site-search__input {
+  width: 14rem;
+  max-width: 100%;
+  padding: 0.55rem 0.85rem 0.55rem 2.1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.site-search__input::placeholder {
+  color: var(--faint);
+}
+
+.site-search__input:focus-visible {
+  outline: none;
+  background: var(--bg);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.site-header__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 auto;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.site-header__icon-btn:hover {
+  background: var(--surface-2);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Header responsive: stack into brand + actions row, nav below ----------- */
+@media (max-width: 860px) {
+  .site-header__inner {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    row-gap: 0.75rem;
+  }
+  .site-nav {
+    order: 3;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    gap: 0.1rem 0.25rem;
+  }
+  .site-nav__link::after {
+    bottom: -0.2rem;
+  }
+  .site-search__input {
+    width: 9rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .site-search {
+    display: none;
+  }
 }
 
 /* Hero ------------------------------------------------------------------- */
 .hero {
   border-bottom: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--hero-bg);
 }
 
 .hero__grid {
@@ -399,6 +530,23 @@ a:hover {
   gap: 1.25rem;
 }
 
+/* Featured row on the homepage — up to 6 compact cards across on desktop */
+.product-grid--featured {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .product-grid--featured {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid--featured {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -478,6 +626,13 @@ a:hover {
 
 .product-card__cta {
   margin-top: auto;
+}
+
+/* Compact featured cards (6 across) — shrink the CTA so it stays one line */
+.product-grid--featured .product-card__cta {
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  font-size: 0.88rem;
 }
 
 /* Comparison table ------------------------------------------------------- */
@@ -957,32 +1112,30 @@ a:hover {
 
 /* Newsletter band -------------------------------------------------------- */
 .newsletter {
-  background: var(--accent-softer);
+  background: var(--bg);
 }
 
 .newsletter__inner {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
 }
 
 .newsletter__copy {
-  max-width: 40ch;
+  max-width: 48ch;
 }
 
 .newsletter__form {
   width: 100%;
+  max-width: 30rem;
 }
 
-@media (min-width: 760px) {
-  .newsletter__inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .newsletter__form {
-    max-width: 28rem;
-  }
+.newsletter__note {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--muted-soft);
 }
 
 /* Footer ----------------------------------------------------------------- */
@@ -997,14 +1150,51 @@ a:hover {
 
 .site-footer__top {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
 
-@media (min-width: 640px) {
+.site-footer__intro {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 760px) {
   .site-footer__top {
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
   }
+  .site-footer__intro {
+    grid-column: auto;
+  }
+}
+
+.site-footer__social {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.site-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.site-footer__social-link:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--accent-softer);
+  text-decoration: none;
 }
 
 .site-footer__brand {
@@ -1317,6 +1507,56 @@ a:hover {
 }
 
 .proscons__col--cons .proscons__mark {
-  background: var(--surface-2);
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+/* Guides index ----------------------------------------------------------- */
+.guide-index {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0 0;
+}
+
+@media (min-width: 620px) {
+  .guide-index {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.guide-index__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  height: 100%;
+  padding: 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.15s ease;
+}
+
+.guide-index__card:hover {
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+
+.guide-index__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--fg);
+}
+
+.guide-index__desc {
   color: var(--muted);
+  line-height: 1.6;
+}
+
+.guide-index__card .link-more {
+  margin-top: auto;
 }
