@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal"><Alignment ss:Vertical="Top" ss:WrapText="1"/></Style>
+  <Style ss:ID="hdr"><Font ss:Bold="1" ss:Color="#FFFFFF"/><Interior ss:Color="#2F5496" ss:Pattern="Solid"/><Alignment ss:Vertical="Top" ss:Horizontal="Left" ss:WrapText="1"/></Style>
+  <Style ss:ID="title"><Font ss:Bold="1" ss:Size="14"/></Style>
+  <Style ss:ID="sub"><Font ss:Bold="1" ss:Size="11"/></Style>
+  <Style ss:ID="nv"><Font ss:Color="#C00000" ss:Bold="1"/><Alignment ss:Vertical="Top" ss:WrapText="1"/></Style>
+  <Style ss:ID="num"><Alignment ss:Vertical="Top" ss:Horizontal="Right"/></Style>
+  <Style ss:ID="link"><Font ss:Color="#0563C1" ss:Underline="Single"/><Alignment ss:Vertical="Top" ss:WrapText="1"/></Style>
+ </Styles>
+ <Worksheet ss:Name="Products">
+  <Table>
+   <Column ss:Width="36"/>
+   <Column ss:Width="190"/>
+   <Column ss:Width="80"/>
+   <Column ss:Width="60"/>
+   <Column ss:Width="130"/>
+   <Column ss:Width="55"/>
+   <Column ss:Width="75"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="60"/>
+   <Column ss:Width="95"/>
+   <Column ss:Width="90"/>
+   <Column ss:Width="90"/>
+   <Column ss:Width="70"/>
+   <Column ss:Width="60"/>
+   <Column ss:Width="65"/>
+   <Column ss:Width="170"/>
+   <Column ss:Width="150"/>
+   <Column ss:Width="120"/>
+   <Column ss:Width="240"/>
+   <Column ss:Width="240"/>
+   <Column ss:Width="320"/>
+   <Row ss:Height="28">
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">#</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Modelo + no exato</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Marca</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Capacidade (L)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Dimensoes externas LxPxA (cm)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Altura (cm)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Footprint LxP (cm2)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Cabe sob armario (&lt;45 cm)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Potencia (W)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Custo por uso (EUR, 20 min)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Single ou dual drawer</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Pecas lavaveis maquina (s/n)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Ruido (dB)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Janela (s/n)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Garantia (anos)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Onde vende na IE</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Preco atual (EUR) + data</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Rede afiliada provavel</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Fonte specs (URL)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Fonte preco (URL)</Data></Cell>
+    <Cell ss:StyleID="hdr"><Data ss:Type="String">Notas e divergencias de fonte</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">Ninja Air Fryer 3.8L (AF100UK)</Data></Cell>
+    <Cell><Data ss:Type="String">Ninja</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">3.8</Data></Cell>
+    <Cell><Data ss:Type="String">28 x 34 x 35</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">952</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1550</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.19</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell><Data ss:Type="String">s</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Harvey Norman IE, Euronics IE, Ninja IE, Very IE</Data></Cell>
+    <Cell><Data ss:Type="String">EUR 94.95 (Harvey Norman IE, 14 Jun 2026); Ninja IE EUR 119.99</Data></Cell>
+    <Cell><Data ss:Type="String">Awin (Harvey Norman/Currys); Amazon.ie se listado</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.ninjakitchen.ie/products/ninja-air-fryer-af100uk</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.harveynorman.ie/small-appliances/small-cooking-appliances/fryers/ninja-3.8l-air-fryer-af100uk-grey.html</Data></Cell>
+    <Cell><Data ss:Type="String">Dims/potencia do fabricante (35x28x34 H x L x P). Potencia: fabricante 1550 W; Harvey Norman cita 1500 W em texto corrido e garantia "12 meses" no quadro (garantia real = 2 anos com registro). Ruido nao publicado.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Ninja MAX PRO 6.2L (AF180UK)</Data></Cell>
+    <Cell><Data ss:Type="String">Ninja</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">6.2</Data></Cell>
+    <Cell><Data ss:Type="String">28 x 36 x 30.5</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">30.5</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1008</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2470</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.30</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell><Data ss:Type="String">s</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Currys IE, Ninja IE, Euronics IE, Harvey Norman IE, Very IE</Data></Cell>
+    <Cell><Data ss:Type="String">EUR 149.99 (Currys IE, 14 Jun 2026); Euronics IE EUR 179.00</Data></Cell>
+    <Cell><Data ss:Type="String">Awin (Currys); Amazon.ie se listado</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.ninjakitchen.ie/products/ninja-air-fryer-max-pro-6-2l-af180uk</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.currys.ie/products/ninja-max-pro-af180uk-air-fryer-black-10260190.html</Data></Cell>
+    <Cell><Data ss:Type="String">Categoria 6.2L (best for shared house). CONFLITO potencia: fabricante 2470 W vs Currys IE 2000 W -> usado 2470 W (fabricante). Ruido nao publicado.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">Ninja CRISPi 4-in-1 Portable Glass (FN101UKGY)</Data></Cell>
+    <Cell><Data ss:Type="String">Ninja</Data></Cell>
+    <Cell><Data ss:Type="String">3.8 + 1.4 (dois recipientes)</Data></Cell>
+    <Cell><Data ss:Type="String">30.4 x 34 x 34.5</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">34.5</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1033.6</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1700</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.21</Data></Cell>
+    <Cell><Data ss:Type="String">N/A (modular, recipientes de vidro)</Data></Cell>
+    <Cell><Data ss:Type="String">s (recipientes/tampas/placas; base lavar a mao)</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">s (vidro transparente)</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Euronics IE, Currys IE, Ninja IE, Harvey Norman IE</Data></Cell>
+    <Cell><Data ss:Type="String">EUR 179.00 (Euronics IE, 14 Jun 2026); Currys IE EUR 179.99</Data></Cell>
+    <Cell><Data ss:Type="String">Awin (Euronics/Currys); Amazon.ie se listado</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.ninjakitchen.ie/products/ninja-crispi-4-in-1-portable-glass-air-fryer-stone-fn101ukst</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://euronics.ie/products/ninja-crispi-4-in-1-portable-glass-air-fryer-cooking-system-blue-fn101ukgy</Data></Cell>
+    <Cell><Data ss:Type="String">Spec do fabricante via pagina compartilhada FN101UKST (specs identicas entre cores). Sem gaveta: 2 recipientes de vidro (1.4L + 3.8L). NAO confundir com CRISPi PRO 7-in-1 AS101UK. Ruido nao publicado.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">Philips 2000 Series (NA230/09)</Data></Cell>
+    <Cell><Data ss:Type="String">Philips</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">6.2</Data></Cell>
+    <Cell><Data ss:Type="String">30.9 x 40.4 x 30.8</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">30.8</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1248.4</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1700</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.21</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell><Data ss:Type="String">s</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">s</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Currys IE; Amazon (envia p/ IE)</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">EUR 92.68 (oferta Amazon via Kelkoo.ie, 13 Jun 2026); Currys.ie needs verification (pagina JS)</Data></Cell>
+    <Cell><Data ss:Type="String">Amazon.ie; Currys via Awin</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.philips.ie/c-p/NA230_00/2000-series-airfryer-2000-series-62l</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.currys.ie/products/philips-2000-series-na23009-air-fryer-black-10268603.html</Data></Cell>
+    <Cell><Data ss:Type="String">Variante vendida na IE = NA230/09 (nao /00; mesmo airfryer 6.2L). Categoria 6.2L (best for shared house). ATENCAO: dims/potencia/garantia vieram do quadro da AO.com (espelho da spec Philips) porque a pagina Philips.ie renderiza via JS e nao confirmou - tratar como a confirmar no fabricante. Preco Currys.ie nao legivel por maquina (JS); usada oferta Amazon via Kelkoo. Ruido nao publicado. URL spec AO: https://ao.com/product/na23009-philips-2000-series-air-fryer-black-106634-672.aspx</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">Daewoo Single Pot Air Fryer 2L (SDA2609GE)</Data></Cell>
+    <Cell><Data ss:Type="String">Daewoo</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">19 x 27 x 29</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">29</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">513</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">900</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.11</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">Lenehans.ie (OUT OF STOCK); nao encontrado em Currys/DID/HN/Euronics IE</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">EUR 99.99 (Lenehans.ie, 14 Jun 2026, sem estoque) - alto vs UK GBP 29.99; needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">Lenehans direto (sem rede grande); Amazon.ie se listado</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.daewooelectricals.com/downloads/67b490ef3df4d578SDA2609_(AF-201)_2L_Single_Pot_Air_Fryer_IM_Daewoo_23-10-2024.pdf</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.lenehans.ie/daewoo-single-pot-air-fryer-2l.html</Data></Cell>
+    <Cell><Data ss:Type="String">CONFLITO capacidade: nome/manual = 2L vs quadro Currys = 3L -> usado 2L (fabricante). Dims/potencia/garantia do quadro Currys.co.uk (UK) por falta de quadro em loja IE. DISPONIBILIDADE IE FRACA: unico vendedor IE (Lenehans) sem estoque -> ver sugestao de substituto no resumo. Ruido nao publicado. URL dims/potencia: https://www.currys.co.uk/products/daewoo-sda2609ge-air-fryer-black-10260583.html</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="String">Tefal Easy Fry Max 5L (EY245840)</Data></Cell>
+    <Cell><Data ss:Type="String">Tefal</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">27.3 x 32.4 x 37.5</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">37.5</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">884.5</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1500</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.18</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell><Data ss:Type="String">s</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Amazon.ie; tefal.ie; Currys.ie (linha Easy Fry)</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification (Amazon.ie JS; sem preco EUR legivel). Ref UK GBP 78-94</Data></Cell>
+    <Cell><Data ss:Type="String">Amazon.ie</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.tefal.ie/Easy-Fry/Easy-Fry-Max-5L-Black/p/7211419106</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.amazon.ie/Tefal-Dehydrate-Non-Stick-Dishwasher-EY245840/dp/B0CKLMQMYJ</Data></Cell>
+    <Cell><Data ss:Type="String">ESCOLHA DE MODELO: os Easy Fry single pequenos (3.5/4.2L) sairam do catalogo IE atual; o single sem grill vigente na tefal.ie/Amazon.ie e o Easy Fry Max 5L (maior que o ideal "compacto"). Dims de e-catalog (agregador), nao do fabricante. Garantia ROI 2 anos. Ruido nao publicado. Possivel alternativa menor: Tefal Easy Fry Compact EY101827 1.6L (ver no resumo).</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="String">Tower Vortx Compact Manual 2.2L (T17023)</Data></Cell>
+    <Cell><Data ss:Type="String">Tower</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2.2</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">20.5 x 25.5 x 28.1 (eechardware) - CONFLITO: 24 x 18.5 x 26.5 (BuyItDirect); needs verification</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">28.1 (vs 26.5); needs verification</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">522.75</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.12</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification (listagem sugere lavar a mao)</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">eechardware.ie (em estoque); BuyItDirect.ie (indisponivel)</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification (eechardware.ie JS, sem preco EUR legivel)</Data></Cell>
+    <Cell><Data ss:Type="String">Awin (BuyItDirect); eechardware provavel direto</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.eechardware.ie/p/tower-vortx-compact-single-basket-manual-air-fryer-22l-black/t17023</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.eechardware.ie/p/tower-vortx-compact-single-basket-manual-air-fryer-22l-black/t17023</Data></Cell>
+    <Cell><Data ss:Type="String">ESCOLHA DE MODELO: T17023 (2.2L, 1000W, manual single) e o Vortx compacto vigente na IE; os menores 1.8L (T17066) e 2L (T17087) estao sem estoque/descontinuados. Pagina oficial Tower nao renderizou dims. Garantia 3 anos = 12 meses + registro. Footprint calculado com dims eechardware (incertas). Ruido nao publicado. URL oficial: https://www.towerhousewares.co.uk/t17023-1000w-2-2-litre-manual-air-fryer.html</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="String">Russell Hobbs SatisFry Small 1.8L (26500 / 26500-56)</Data></Cell>
+    <Cell><Data ss:Type="String">Russell Hobbs</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1.8</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">Altura 31.1; L e P nao publicados pelo fabricante; needs verification</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">31.1</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification (sem LxP)</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1500</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.18</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell><Data ss:Type="String">s (placa e cesto, testado 100+ ciclos)</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification (RH oferece 2 anos com registro em geral, nao no quadro deste modelo)</Data></Cell>
+    <Cell><Data ss:Type="String">Beattys.ie (em estoque), Harvey Norman IE, e outros eletro IE</Data></Cell>
+    <Cell><Data ss:Type="String">EUR 59.99 (promo; normal EUR 99.99) - Beattys.ie, 14 Jun 2026</Data></Cell>
+    <Cell><Data ss:Type="String">Awin (Beattys/HN); Amazon.ie</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://uk.russellhobbs.com/satisfry-small-air-fryer-1-8-litre-air-fryer</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.beattys.ie/products/russell-hobbs-satisfry-air-fryer-1-8-litre-small-26500</Data></Cell>
+    <Cell><Data ss:Type="String">ESCOLHA DE MODELO: SatisFry Small 1.8L (digital) e o compacto single vigente na IE. Pagina oficial so publica altura (311mm), capacidade, potencia e lavavel; LxP e ruido nao publicados. Footprint nao calculavel sem LxP.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="String">Morphy Richards Digital 3L (480005)</Data></Cell>
+    <Cell><Data ss:Type="String">Morphy Richards</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">33.7 x 27.9 x 31.3</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">31.3</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">940.2</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1400</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.17</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell><Data ss:Type="String">s</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Currys IE; grange.ie</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification (Currys.ie JS); grange.ie EUR 129.00 (14 Jun 2026, loja fora da lista)</Data></Cell>
+    <Cell><Data ss:Type="String">Awin (Currys)</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.morphyrichards.co.uk/products/rose-gold-digital-health-fryer</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.currys.ie/ieen/household-appliances/small-kitchen-appliances/small-cooking-appliances/fryers/morphy-richards-480005-air-fryer-black-10195164-pdt.html</Data></Cell>
+    <Cell><Data ss:Type="String">ESCOLHA DE MODELO: 480005 (Digital 3L, EAN 5011832067470) e o single ~3L vigente da MR na IE. Dims do fabricante. Potencia 1400 W de spec de revendedor/distribuidor (pagina do fabricante omite) - confirmar. Garantia 2 anos (+1 com registro). 3L sem janela (o 4L 480010 tem). Ruido nao publicado.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="String">Salter Compact Air Fryer 2L (EK2817)</Data></Cell>
+    <Cell><Data ss:Type="String">Salter</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">25 x 25 x 34.6 (de listagem de loja, nao confirmado no fabricante); needs verification</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">34.6 (nao confirmado no fabricante); needs verification</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">625</Data></Cell>
+    <Cell><Data ss:Type="String">Sim</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">0.12</Data></Cell>
+    <Cell><Data ss:Type="String">Single</Data></Cell>
+    <Cell><Data ss:Type="String">s (cesto/rack antiaderente removivel)</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">Amazon.ie (ASIN B07NY34113)</Data></Cell>
+    <Cell ss:StyleID="nv"><Data ss:Type="String">needs verification (Amazon.ie JS, sem preco EUR legivel)</Data></Cell>
+    <Cell><Data ss:Type="String">Amazon.ie</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.amazon.ie/Salter-EK2817-Compact-Air-Fryer/dp/B07NY34113</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://www.amazon.ie/Salter-EK2817-Compact-Air-Fryer/dp/B07NY34113</Data></Cell>
+    <Cell><Data ss:Type="String">CORINGA escolhido (Salter sobre Instant/Nutribullet): unico dos tres com single ~2L confirmado vivo em loja IE (Amazon.ie). Instant Vortex compacto so apareceu em Currys.co.uk (UK); menor IE = 5.7L (grande demais). Capacidade/potencia/lavavel da listagem Amazon.ie; dims do fabricante nao confirmadas (salter.com JS). Garantia 1 ano. Ruido nao publicado.</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <SplitVertical>2</SplitVertical>
+   <LeftColumnRightPane>2</LeftColumnRightPane>
+   <ActivePane>3</ActivePane>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Electricity">
+  <Table>
+   <Column ss:Width="280"/>
+   <Column ss:Width="430"/>
+   <Row ss:Height="22"><Cell ss:StyleID="title"><Data ss:Type="String">Tarifa eletrica residencial - Irlanda (coleta 14 Jun 2026)</Data></Cell></Row>
+   <Row/>
+   <Row>
+    <Cell ss:StyleID="sub"><Data ss:Type="String">Tarifa media residencial (EUR/kWh)</Data></Cell>
+    <Cell ss:StyleID="sub"><Data ss:Type="Number">0.363</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Equivalente em cents/kWh</Data></Cell>
+    <Cell><Data ss:Type="String">~36.3 c/kWh (incl. VAT 9%)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Tipo de medidor</Data></Cell>
+    <Cell><Data ss:Type="String">Standard 24h, urbano</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Fonte</Data></Cell>
+    <Cell><Data ss:Type="String">Selectra Ireland - "Electricity Prices Ireland: Price per kWh - June 2026", atualizado 13 Jun 2026</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">URL</Data></Cell>
+    <Cell ss:StyleID="link"><Data ss:Type="String">https://selectra.ie/energy/guides/electricity-prices-ireland</Data></Cell>
+   </Row>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">Como o valor foi obtido</Data></Cell>
+    <Cell><Data ss:Type="String">A manchete numerica da pagina renderiza via JS (apareceu como "-c"). O valor 0.363 foi derivado da tabela de custo de aparelhos da MESMA pagina, internamente consistente: forno 2.5 kW x 1h = ~EUR 0.91 -> 0.364/kWh; maq. lavar louca 1.5 kW = ~EUR 0.55 -> 0.367/kWh; secadora 3.0 kW x 1h = ~EUR 1.09 -> 0.363/kWh.</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="String">Referencia adicional</Data></Cell>
+    <Cell><Data ss:Type="String">Eurostat H2 2025 ~40 c/kWh incl. impostos (media anterior, tende a ser mais alta). SEAI publica precos oficiais com defasagem.</Data></Cell>
+   </Row>
+   <Row/>
+   <Row ss:Height="20"><Cell ss:StyleID="sub"><Data ss:Type="String">Premissa do calculo "Custo por uso" (aba Products)</Data></Cell></Row>
+   <Row ss:Height="45">
+    <Cell><Data ss:Type="String">Formula</Data></Cell>
+    <Cell><Data ss:Type="String">Custo = (Potencia_W / 1000) x horas x tarifa. Horas tipicas assumidas = 20 min (0.3333 h). Tarifa = EUR 0.363/kWh. Ex.: 1500 W -> 0.5 kWh x 0.363 = EUR 0.18 por uso.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Observacao</Data></Cell>
+    <Cell><Data ss:Type="String">20 min e uma estimativa de uso tipico (reaquecer/porcao 1-2 pessoas). Ajuste as horas conforme o uso real para recalcular.</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>
