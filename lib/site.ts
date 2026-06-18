@@ -53,6 +53,12 @@ export const CATEGORIES: Category[] = [
       "Space-saving storage that helps you fit a full life into a small, shared or temporary home.",
   },
   {
+    slug: "cleaning",
+    name: "Cleaning",
+    description:
+      "Compact, renter-friendly cleaning gear — robot vacuums and the like that fit a small flat, slip under low furniture and won't mark a rented floor.",
+  },
+  {
     slug: "deals",
     name: "Deals",
     description:
@@ -174,6 +180,42 @@ export const LINKS: ShortLink[] = [
     id: "rh-buckingham-did",
     label: "Russell Hobbs Buckingham Filter Coffee Maker (20680) at DID",
     url: "https://www.did.ie/products/russell-hobbs-125l-buckingham-filter-coffee-maker-stainless-steel-20680",
+  },
+
+  // Compact robot vacuums guide (small / rented apartments, Ireland-EU). We
+  // aren't an Amazon Associate yet, so each `url` is an honest Amazon.ie SEARCH
+  // for the model name — never a fabricated product page. Same 302 + sponsored
+  // nofollow treatment as the links above.
+  // TODO: trocar pelo deeplink de afiliado real após aprovação Amazon Associates.
+  {
+    id: "eufy-11s-max",
+    label: "Eufy RoboVac 11S MAX at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Eufy+RoboVac+11S+MAX",
+  },
+  {
+    id: "lefant-m210-pro",
+    label: "Lefant M210 Pro at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Lefant+M210+Pro+robot+vacuum",
+  },
+  {
+    id: "eufy-c10",
+    label: "Eufy C10 at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Eufy+C10+robot+vacuum",
+  },
+  {
+    id: "roborock-q5",
+    label: "Roborock Q5 at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Roborock+Q5",
+  },
+  {
+    id: "tapo-rv30-max-plus",
+    label: "TP-Link Tapo RV30 Max Plus at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=TP-Link+Tapo+RV30+Max+Plus",
+  },
+  {
+    id: "roomba-694",
+    label: "iRobot Roomba 694 at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=iRobot+Roomba+694",
   },
 ];
 
