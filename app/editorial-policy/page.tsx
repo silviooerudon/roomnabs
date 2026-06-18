@@ -60,8 +60,9 @@ export default function EditorialPolicyPage() {
         <p>
           We aim to be accurate, but mistakes happen. If you spot an error,
           please tell us at{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and
-          we&rsquo;ll review and correct it promptly.
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or via our{" "}
+          <Link href="/contact">contact page</Link>, and we&rsquo;ll review and
+          correct it promptly.
         </p>
       </div>
     </article>

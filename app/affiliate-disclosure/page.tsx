@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CONTACT_EMAIL, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -58,8 +59,9 @@ export default function AffiliateDisclosurePage() {
         <h2>Questions</h2>
         <p>
           If anything here is unclear, please email us at{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> — we&rsquo;re
-          happy to explain.
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or visit our{" "}
+          <Link href="/contact">contact page</Link> — we&rsquo;re happy to
+          explain.
         </p>
       </div>
     </article>

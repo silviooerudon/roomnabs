@@ -88,7 +88,9 @@ export default async function GuidePage({ params }: Props) {
     notFound();
   }
 
-  const { title, description, updated } = guide.frontmatter;
+  const { title, description } = guide.frontmatter;
+  // Content team uses `updated`; the newer guides supply `date` instead.
+  const publishedDate = guide.frontmatter.updated ?? guide.frontmatter.date;
   const categorySlug = getGuideCategory(guide.frontmatter);
   const categoryInfo = categorySlug ? findCategory(categorySlug) : undefined;
   const url = `${SITE_URL}/guide/${slug}`;
@@ -111,9 +113,9 @@ export default async function GuidePage({ params }: Props) {
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
   };
-  if (updated) {
-    articleSchema.dateModified = updated;
-    articleSchema.datePublished = updated;
+  if (publishedDate) {
+    articleSchema.dateModified = publishedDate;
+    articleSchema.datePublished = publishedDate;
   }
 
   const crumbs: Crumb[] = [

@@ -13,8 +13,8 @@ export const SITE_URL = (
 /** Display name used across the UI and metadata. */
 export const SITE_NAME = "roomnabs";
 
-/** Single contact address used on legal pages and the contact form. */
-export const CONTACT_EMAIL = "hello@roomnabs.com";
+/** Single contact address used on the contact page and across legal pages. */
+export const CONTACT_EMAIL = "contact@roomnabs.com";
 
 /**
  * Product categories shown in the header navigation. Each one currently points
@@ -74,6 +74,7 @@ export const LEGAL_PAGES: LegalPage[] = [
   { slug: "about", title: "About" },
   { slug: "contact", title: "Contact" },
   { slug: "privacy-policy", title: "Privacy Policy" },
+  { slug: "terms-of-use", title: "Terms of Use" },
   { slug: "cookie-policy", title: "Cookie Policy" },
   { slug: "affiliate-disclosure", title: "Affiliate Disclosure" },
   { slug: "editorial-policy", title: "Editorial Policy" },

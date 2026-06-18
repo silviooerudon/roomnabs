@@ -28,6 +28,12 @@ export type GuideFrontmatter = {
   intent?: string;
   status?: string;
   updated?: string;
+  /** Display byline supplied by the content team's MDX frontmatter. */
+  author?: string;
+  /** Publication date as authored (ISO-ish string, e.g. "2026-06-17"). */
+  date?: string;
+  /** Human-readable reading estimate, e.g. "7 min read". */
+  readingTime?: string;
 };
 
 export type Guide = {

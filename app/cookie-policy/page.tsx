@@ -61,7 +61,8 @@ export default function CookiePolicyPage() {
         <h2>Contact</h2>
         <p>
           Questions about our use of cookies? Email{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or visit our{" "}
+          <Link href="/contact">contact page</Link>.
         </p>
       </div>
     </article>
