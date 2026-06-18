@@ -231,3 +231,193 @@ export function getProductsWithDetails(): Product[] {
 export function getProductHref(product: Product, guideSlug: string): string {
   return product.details ? `/product/${product.id}` : `/guide/${guideSlug}`;
 }
+
+/* ------------------------------------------------------------------------- *
+ * Robot vacuums (compact / rented-apartment guide)
+ *
+ * Robot-vacuum specs (suction, navigation, height, noise, dock, runtime) don't
+ * fit the air-fryer `Product` shape (capacity / footprint / run cost), so
+ * rather than bend those fields we model the spec sheet as a generic ordered
+ * `label`/`value` list. Same honesty rules as above: no scores/stars, `price`
+ * is `null` until confirmed (UI shows "Check price"), each `linkId` resolves in
+ * lib/site.ts and routes through `/go/[linkId]` (rel="sponsored nofollow"), and
+ * the `badge` is an editorial "best for" label, not a rating.
+ *
+ * ⚠️ SOURCE OF TRUTH IS THE GUIDE ⚠️
+ * Figures are transcribed from the guide's comparison table in
+ * `content/guides/best-compact-robot-vacuums-small-rented-apartments.mdx`.
+ * Where a spec couldn't be confirmed the guide uses "—" and so do we — never an
+ * invented number. Re-check before publish.
+ * ------------------------------------------------------------------------- */
+
+/** One row of a generic spec sheet: a label and its display value. */
+export type Spec = {
+  label: string;
+  /** Display value; "—" when the guide hasn't confirmed the figure. */
+  value: string;
+};
+
+/**
+ * A robot vacuum pick. Mirrors the honest, rating-free shape of `Product` but
+ * carries its specs as a generic list instead of the air-fryer fields. No
+ * `details` block by design — these route back to the guide rather than ship a
+ * thin product page.
+ */
+export type RobotVacuum = {
+  id: string;
+  name: string;
+  /** Editorial "best for" label shown in place of a rating. */
+  badge: string;
+  /** Category slug (see lib/site.ts CATEGORIES) — "cleaning". */
+  category: string;
+  /** The spec sheet, in display order. "—" where a figure isn't confirmed. */
+  specs: Spec[];
+  /** Approx. price as a string, or null when no price is confirmed (all null for now). */
+  price: string | null;
+  /** Affiliate link id (see lib/site.ts) used by the /go redirect. */
+  linkId: string;
+  /** Retailer name for the "Check price at …" CTA. */
+  retailer: string;
+  imageAlt: string;
+};
+
+/** Slug of the guide these picks come from. */
+export const ROBOT_VACUUM_GUIDE_SLUG =
+  "best-compact-robot-vacuums-small-rented-apartments";
+
+export const ROBOT_VACUUMS: RobotVacuum[] = [
+  {
+    id: "eufy-robovac-11s-max",
+    name: "Eufy RoboVac 11S MAX",
+    badge: "Best for low furniture",
+    category: "cleaning",
+    specs: [
+      { label: "Type", value: "Vacuum only" },
+      { label: "Suction", value: "—" },
+      { label: "Navigation", value: "Gyro / random (no mapping)" },
+      { label: "Height", value: '7.2 cm (2.85")' },
+      { label: "Noise", value: "~51–55 dB" },
+      { label: "Self-empty dock", value: "No" },
+      { label: "Runtime", value: "~100 min" },
+      { label: "Control", value: "Remote only (no app)" },
+    ],
+    price: null,
+    linkId: "eufy-11s-max",
+    retailer: "Amazon.ie",
+    imageAlt: "Placeholder image of the Eufy RoboVac 11S MAX robot vacuum",
+  },
+  {
+    id: "lefant-m210-pro",
+    name: "Lefant M210 Pro",
+    badge: "Cheapest with app",
+    category: "cleaning",
+    specs: [
+      { label: "Type", value: "Vacuum only" },
+      { label: "Suction", value: "4,000 Pa" },
+      { label: "Navigation", value: "Gyro (minimal mapping)" },
+      { label: "Height", value: "7.6 cm" },
+      { label: "Noise", value: "~52 dB" },
+      { label: "Self-empty dock", value: "No" },
+      { label: "Runtime", value: "—" },
+      { label: "Control", value: "Wi-Fi app + Alexa" },
+    ],
+    price: null,
+    linkId: "lefant-m210-pro",
+    retailer: "Amazon.ie",
+    imageAlt: "Placeholder image of the Lefant M210 Pro robot vacuum",
+  },
+  {
+    id: "eufy-c10",
+    name: "Eufy C10",
+    badge: "Quietest + small dock",
+    category: "cleaning",
+    specs: [
+      { label: "Type", value: "Vacuum" },
+      { label: "Suction", value: "—" },
+      { label: "Navigation", value: "—" },
+      { label: "Height", value: "—" },
+      { label: "Noise", value: "~51 dB (quietest here)" },
+      { label: "Self-empty dock", value: "Yes — smallest dock here" },
+      { label: "Runtime", value: "—" },
+      { label: "Control", value: "Wi-Fi app + voice" },
+    ],
+    price: null,
+    linkId: "eufy-c10",
+    retailer: "Amazon.ie",
+    imageAlt: "Placeholder image of the Eufy C10 robot vacuum",
+  },
+  {
+    id: "roborock-q5",
+    name: "Roborock Q5",
+    badge: "Best mapping (budget)",
+    category: "cleaning",
+    specs: [
+      { label: "Type", value: "Vacuum only (Q5+ adds an auto-empty dock)" },
+      { label: "Suction", value: "—" },
+      { label: "Navigation", value: "LiDAR mapping + room segmentation" },
+      { label: "Height", value: '~9.6 cm (3.8")' },
+      { label: "Noise", value: "—" },
+      { label: "Self-empty dock", value: "No (available on the Q5+)" },
+      { label: "Runtime", value: "180 min" },
+      { label: "Control", value: "Wi-Fi app + voice" },
+    ],
+    price: null,
+    linkId: "roborock-q5",
+    retailer: "Amazon.ie",
+    imageAlt: "Placeholder image of the Roborock Q5 robot vacuum",
+  },
+  {
+    id: "tapo-rv30-max-plus",
+    name: "TP-Link Tapo RV30 Max Plus",
+    badge: "Most features for the money",
+    category: "cleaning",
+    specs: [
+      { label: "Type", value: "Vacuum + mop (single pad)" },
+      { label: "Suction", value: "12,000 Pa" },
+      { label: "Navigation", value: "LiDAR" },
+      { label: "Height", value: "—" },
+      { label: "Noise", value: "66 dB (loudest here)" },
+      { label: "Self-empty dock", value: "Yes" },
+      { label: "Runtime", value: "—" },
+      { label: "Control", value: "Wi-Fi app + voice" },
+    ],
+    price: null,
+    linkId: "tapo-rv30-max-plus",
+    retailer: "Amazon.ie",
+    imageAlt:
+      "Placeholder image of the TP-Link Tapo RV30 Max Plus robot vacuum",
+  },
+  {
+    id: "irobot-roomba-694",
+    name: "iRobot Roomba 694",
+    badge: "Best for pet hair",
+    category: "cleaning",
+    specs: [
+      { label: "Type", value: "Vacuum only" },
+      { label: "Suction", value: "3-stage brush (strong on pet hair)" },
+      { label: "Navigation", value: "Random / reactive (no mapping)" },
+      { label: "Height", value: "—" },
+      { label: "Noise", value: "—" },
+      { label: "Self-empty dock", value: "No" },
+      { label: "Runtime", value: "—" },
+      { label: "Control", value: "Wi-Fi app + voice (well-rated app)" },
+    ],
+    price: null,
+    linkId: "roomba-694",
+    retailer: "Amazon.ie",
+    imageAlt: "Placeholder image of the iRobot Roomba 694 robot vacuum",
+  },
+];
+
+/**
+ * All robot-vacuum picks. Kept separate from `getAllProducts()` /
+ * `getProductsByCategory()` on purpose: the source guide is still a draft, so
+ * these must NOT surface on public pages (homepage, /compare, /best-picks, the
+ * Cleaning category) yet — exactly like a draft guide stays reachable but
+ * unlisted. When the guide is published, wire these into the category queries
+ * (and build a spec-aware comparison, since the air-fryer `ComparisonTable`
+ * columns don't fit this shape).
+ */
+export function getRobotVacuums(): RobotVacuum[] {
+  return ROBOT_VACUUMS;
+}
