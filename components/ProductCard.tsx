@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AffiliateLink from "@/components/AffiliateLink";
 import Badge from "@/components/Badge";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { getProductHref, type Product } from "@/lib/products";
@@ -47,14 +48,12 @@ export default function ProductCard({
           </div>
         </dl>
 
-        <a
+        <AffiliateLink
           className="btn btn--primary btn--block product-card__cta"
-          href={`/go/${product.linkId}`}
-          rel="sponsored nofollow"
-          target="_blank"
+          linkId={product.linkId}
         >
           Check price
-        </a>
+        </AffiliateLink>
       </div>
     </article>
   );

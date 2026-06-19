@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { AnchorHTMLAttributes } from "react";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import AffiliateLink from "@/components/AffiliateLink";
 import Breadcrumbs, { type Crumb } from "@/components/Breadcrumbs";
 import CheckPrice from "@/components/CheckPrice";
 import EmailSignup from "@/components/EmailSignup";
@@ -16,9 +17,10 @@ import { findCategory, SITE_NAME, SITE_URL } from "@/lib/site";
 
 /**
  * Anchor override for MDX content. Outbound "Check price" CTAs are written as
- * plain markdown links to `/go/[linkId]`; we tag every such link with
- * rel="sponsored nofollow" (and open it in a new tab) so the redirect endpoint
- * gets the right link semantics no matter how the author wrote the link.
+ * plain markdown links to `/go/[linkId]`; we route every such link through
+ * `AffiliateLink` so it gets rel="sponsored nofollow", opens in a new tab, and
+ * fires the `AffiliateClick` analytics event — no matter how the author wrote
+ * the link.
  */
 function MdxAnchor({
   href = "",
@@ -26,10 +28,11 @@ function MdxAnchor({
   ...props
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   if (href.startsWith("/go/")) {
+    const linkId = href.slice("/go/".length);
     return (
-      <a href={href} rel="sponsored nofollow" target="_blank" {...props}>
+      <AffiliateLink linkId={linkId} {...props}>
         {children}
-      </a>
+      </AffiliateLink>
     );
   }
   return (
