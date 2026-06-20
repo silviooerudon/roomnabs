@@ -141,6 +141,9 @@ export const LINKS: ShortLink[] = [
   // Compact coffee machines guide (Ireland). Plain Irish-retailer store URLs
   // for now — affiliate deeplinks land in Phase 3. Same 302 + sponsored nofollow
   // treatment as the air-fryer links above.
+  // TODO: trocar estas URLs de loja pelos deeplinks de afiliado reais
+  // (essenza-mini, vertuo-pop-hn, pixie-hn, dedica, bambino-plus-hn,
+  // magnifica-s, dolce-gusto-genio, rh-buckingham-did) após aprovação da rede.
   {
     id: "essenza-mini",
     label: "Nespresso by Krups Essenza Mini (XN110840) at Currys",
