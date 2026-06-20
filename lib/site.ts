@@ -13,6 +13,36 @@ export const SITE_URL = (
 /** Display name used across the UI and metadata. */
 export const SITE_NAME = "roomnabs";
 
+/**
+ * Amazon Associates tracking tag (Ireland store), appended automatically to any
+ * amazon.* destination by the `/go/[linkId]` redirect — see `appendAmazonTag`.
+ * Kept in one place so the tag is never repeated link-by-link in `LINKS`.
+ * Overridable via the `AMAZON_ASSOCIATE_TAG` env var (server-only) so it can be
+ * changed without a code edit; defaults to our approved tag.
+ */
+export const AMAZON_ASSOCIATE_TAG =
+  process.env.AMAZON_ASSOCIATE_TAG ?? "roomnabs-21";
+
+/**
+ * Append our Amazon Associates `tag` to an amazon.* URL, unless it already has
+ * one. Non-Amazon URLs (and anything unparseable) are returned untouched. The
+ * `/go` redirect uses this so affiliate attribution lives in one place.
+ */
+export function appendAmazonTag(rawUrl: string): string {
+  let url: URL;
+  try {
+    url = new URL(rawUrl);
+  } catch {
+    return rawUrl;
+  }
+
+  const isAmazon = /(^|\.)amazon\./i.test(url.hostname);
+  if (isAmazon && !url.searchParams.has("tag")) {
+    url.searchParams.set("tag", AMAZON_ASSOCIATE_TAG);
+  }
+  return url.toString();
+}
+
 /** Single contact address used on the contact page and across legal pages. */
 export const CONTACT_EMAIL = "contact@roomnabs.com";
 
@@ -104,38 +134,41 @@ export const LINKS: ShortLink[] = [
   { id: "netlify", url: "https://www.netlify.com/", label: "Netlify" },
   { id: "nextjs", url: "https://nextjs.org/", label: "Next.js" },
 
-  // Retailer "Check price" links used by the guides. These are plain store
-  // URLs for now (no affiliate deeplinks yet); they are rendered with
-  // rel="sponsored nofollow" and reached via the 302 /go/[linkId] redirect.
+  // Air-fryer guide "Check price" links. Now point to Amazon.ie product pages
+  // (base /dp/ASIN URLs) — the Amazon Associates tag is appended automatically
+  // by the /go redirect (see appendAmazonTag), so it's never repeated here.
+  // Rendered with rel="sponsored nofollow" and reached via the 302 /go redirect.
   {
-    id: "af100uk-hn",
-    label: "Ninja 3.8L Air Fryer (AF100UK) at Harvey Norman",
-    url: "https://www.harveynorman.ie/small-appliances/small-cooking-appliances/fryers/ninja-3.8l-air-fryer-af100uk-grey.html",
+    id: "af100uk-amazon",
+    label: "Ninja Air Fryer 3.8L (AF100UK) at Amazon.ie",
+    url: "https://www.amazon.ie/dp/B07PBBW4XF",
   },
   {
-    id: "af180uk-currys",
-    label: "Ninja Max Pro (AF180UK) at Currys",
-    url: "https://www.currys.ie/products/ninja-max-pro-af180uk-air-fryer-black-10260190.html",
+    id: "af180uk-amazon",
+    label: "Ninja MAX PRO 6.2L (AF180UK) at Amazon.ie",
+    url: "https://www.amazon.ie/dp/B0CP43NP25",
   },
   {
+    // TODO: Amazon.ie ASIN não confirmado — pegar via SiteStripe e migrar para
+    // uma URL /dp/ASIN do Amazon.ie (como os demais). Mantido no Euronics por ora.
     id: "crispi-fn101-euronics",
     label: "Ninja Crispi 4-in-1 Portable (FN101) at Euronics",
     url: "https://euronics.ie/products/ninja-crispi-4-in-1-portable-glass-air-fryer-cooking-system-blue-fn101ukgy",
   },
   {
-    id: "morphy-480005-currys",
-    label: "Morphy Richards 480005 Air Fryer at Currys",
-    url: "https://www.currys.ie/ieen/household-appliances/small-kitchen-appliances/small-cooking-appliances/fryers/morphy-richards-480005-air-fryer-black-10195164-pdt.html",
+    id: "morphy-480005-amazon",
+    label: "Morphy Richards 3L (480005) at Amazon.ie",
+    url: "https://www.amazon.ie/dp/B09WR31JC5",
   },
   {
     id: "philips-na230-amazon",
-    label: "Philips 2000 Series (NA230) Air Fryer at Currys",
-    url: "https://www.currys.ie/products/philips-2000-series-na23009-air-fryer-black-10268603.html",
+    label: "Philips 2000 (NA230/09) at Amazon.ie",
+    url: "https://www.amazon.ie/dp/B0CWP7WXB6",
   },
   {
     id: "tefal-eyf-amazon",
-    label: "Tefal Easy Fry (EY245840) Air Fryer at Amazon",
-    url: "https://www.amazon.ie/Tefal-Dehydrate-Non-Stick-Dishwasher-EY245840/dp/B0CKLMQMYJ",
+    label: "Tefal Easy Fry Max 5L (EY245840) at Amazon.ie",
+    url: "https://www.amazon.ie/dp/B0CKLMQMYJ",
   },
 
   // Compact coffee machines guide (Ireland). Plain Irish-retailer store URLs

@@ -3,7 +3,7 @@ import { findLink } from "@/lib/site";
 /**
  * "Check price" call-to-action used inside guide MDX:
  *
- *   <CheckPrice linkId="af100uk-hn" retailer="Harvey Norman" />
+ *   <CheckPrice linkId="af100uk-amazon" retailer="Amazon.ie" />
  *
  * It links to the internal `/go/[linkId]` redirect (a 302 to the retailer) and
  * is rendered with rel="sponsored nofollow" so search engines don't pass link

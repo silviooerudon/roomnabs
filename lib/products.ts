@@ -80,8 +80,8 @@ export const AIR_FRYERS: Product[] = [
     height: "35 cm",
     runCost: "~€0.19",
     price: "~€94.95",
-    linkId: "af100uk-hn",
-    retailer: "Harvey Norman",
+    linkId: "af100uk-amazon",
+    retailer: "Amazon.ie",
     imageAlt: "Placeholder image of the Ninja 3.8L Air Fryer (AF100UK)",
     details: {
       tagline:
@@ -114,7 +114,7 @@ export const AIR_FRYERS: Product[] = [
     runCost: "~€0.21",
     price: "~€92.68",
     linkId: "philips-na230-amazon",
-    retailer: "Currys",
+    retailer: "Amazon.ie",
     imageAlt:
       "Placeholder image of the Philips 2000 Series air fryer (NA230/09)",
     details: {
@@ -148,7 +148,7 @@ export const AIR_FRYERS: Product[] = [
     runCost: "~€0.18",
     price: null,
     linkId: "tefal-eyf-amazon",
-    retailer: "Amazon",
+    retailer: "Amazon.ie",
     imageAlt: "Placeholder image of the Tefal Easy Fry Max 5L air fryer",
   },
   {
@@ -161,8 +161,8 @@ export const AIR_FRYERS: Product[] = [
     height: "31.3 cm",
     runCost: "~€0.17",
     price: null,
-    linkId: "morphy-480005-currys",
-    retailer: "Currys",
+    linkId: "morphy-480005-amazon",
+    retailer: "Amazon.ie",
     imageAlt: "Placeholder image of the Morphy Richards Digital 3L air fryer",
   },
   {
@@ -175,8 +175,8 @@ export const AIR_FRYERS: Product[] = [
     height: "30.5 cm",
     runCost: "~€0.30",
     price: "~€149.99",
-    linkId: "af180uk-currys",
-    retailer: "Currys",
+    linkId: "af180uk-amazon",
+    retailer: "Amazon.ie",
     imageAlt: "Placeholder image of the Ninja MAX PRO 6.2L air fryer (AF180UK)",
   },
   {
