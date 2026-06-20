@@ -12,7 +12,7 @@ export default function CookiePolicyPage() {
     <article className="page">
       <div className="container">
         <h1>Cookie Policy</h1>
-        <p className="page__updated">Last updated: 14 June 2026</p>
+        <p className="page__updated">Last updated: 19 June 2026</p>
 
         <p>
           This Cookie Policy explains how {SITE_NAME} uses cookies and similar
@@ -33,10 +33,6 @@ export default function CookiePolicyPage() {
             correctly.
           </li>
           <li>
-            <strong>Analytics cookies:</strong> help us understand how visitors
-            use the site so we can improve it.
-          </li>
-          <li>
             <strong>Affiliate cookies:</strong> set when you click an affiliate
             link, so our partners can attribute a qualifying purchase to us.
             Learn more in our{" "}
@@ -44,11 +40,23 @@ export default function CookiePolicyPage() {
           </li>
         </ul>
 
+        <h2>Analytics</h2>
+        <p>
+          We use privacy-first, <strong>cookieless</strong> analytics to
+          understand how visitors use the site so we can improve it. It does not
+          set tracking cookies, does not store identifiers on your device, and
+          does not track you across other websites &mdash; so it needs no cookie
+          consent banner. We also record when an affiliate{" "}
+          &ldquo;Check price&rdquo; link is clicked, as an aggregate, anonymous
+          event with no personal data.
+        </p>
+
         <h2>Third-party cookies</h2>
         <p>
-          Some cookies are placed by third parties, such as analytics services
-          and affiliate networks. We do not control these cookies; please refer
-          to the relevant third party&rsquo;s policy for more information.
+          When you click an affiliate link, the partner network may set its own
+          cookies to attribute a qualifying purchase to us. We do not control
+          these cookies; please refer to the relevant third party&rsquo;s policy
+          for more information. Our analytics provider does not set cookies.
         </p>
 
         <h2>Managing cookies</h2>

@@ -52,3 +52,31 @@ Set `NEXT_PUBLIC_SITE_URL` in the Netlify site settings to your production URL
 (e.g. `https://roomnabs.com` or the generated `*.netlify.app` URL). It is used
 for canonical URLs, the sitemap, and `robots.txt`. It defaults to
 `http://localhost:3000` for local development.
+
+## Analytics (privacy-first, optional)
+
+Analytics is **provider-agnostic and cookieless** — compatible with
+[Plausible](https://plausible.io) and [Umami](https://umami.is), neither of
+which sets tracking cookies, so no consent banner is required. It loads only
+when configured: if `NEXT_PUBLIC_ANALYTICS_SRC` is unset, nothing is loaded and
+no requests are made (the site works exactly as before).
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `NEXT_PUBLIC_ANALYTICS_SRC` | yes (to enable) | URL of the analytics script, e.g. `https://plausible.io/js/script.js` or your self-hosted Umami `script.js`. |
+| `NEXT_PUBLIC_ANALYTICS_DOMAIN` | Plausible | Your site host for Plausible's `data-domain`, e.g. `roomnabs.com`. |
+| `NEXT_PUBLIC_ANALYTICS_WEBSITE_ID` | Umami | Your Umami site ID for `data-website-id`. |
+
+These are all `NEXT_PUBLIC_*` (inlined at build time), so set them in the
+Netlify site settings before a build.
+
+The script is injected by [`components/Analytics.tsx`](./components/Analytics.tsx)
+in the root layout.
+
+### Affiliate click tracking
+
+Every "Check price" CTA (product cards, comparison tables, and guide CTAs) is a
+single [`AffiliateLink`](./components/AffiliateLink.tsx) component that fires an
+**`AffiliateClick`** event with a `{ linkId }` property when clicked, via the
+`trackEvent` helper in [`lib/analytics.ts`](./lib/analytics.ts). With no
+provider configured, `trackEvent` is a no-op. No tracking cookies are set.

@@ -5,8 +5,12 @@ import EmailSignup from "@/components/EmailSignup";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import ProductCard from "@/components/ProductCard";
 import TrustStrip from "@/components/TrustStrip";
-import { AIR_FRYER_GUIDE_SLUG, getFeaturedProducts } from "@/lib/products";
-import { CATEGORIES, SITE_NAME } from "@/lib/site";
+import {
+  AIR_FRYER_GUIDE_SLUG,
+  getFeaturedProducts,
+  getWeeklyPicks,
+} from "@/lib/products";
+import { CATEGORIES } from "@/lib/site";
 
 const HERO_BADGES = ["Researched picks", "Expert comparisons", "Real deals"];
 
@@ -31,6 +35,7 @@ function Tick() {
 
 export default function Home() {
   const featured = getFeaturedProducts();
+  const weeklyPicks = getWeeklyPicks();
 
   return (
     <>
@@ -40,9 +45,8 @@ export default function Home() {
           <div className="hero__copy container">
             <h1>Smart finds for your home</h1>
             <p className="hero__lede">
-              We research, compare, and curate the best home and tech products
-              so you can buy with confidence — chosen on specs, fit and value,
-              with every affiliate link clearly disclosed.
+              We research, compare and curate compact home &amp; tech so you can
+              buy with confidence. Every affiliate link is clearly disclosed.
             </p>
             <ul className="hero__badges">
               {HERO_BADGES.map((badge) => (
@@ -96,21 +100,24 @@ export default function Home() {
       {/* Top picks table beside Shop by category */}
       <section className="section">
         <div className="container split">
-          <div>
-            <div className="section__head">
-              <div>
-                <h2 className="section__title">Top Picks This Week</h2>
-                <p className="section__intro">
-                  Compared on capacity, footprint and running cost — no star
-                  ratings, because we don&rsquo;t test products.
-                </p>
+          {weeklyPicks.length > 0 && (
+            <div>
+              <div className="section__head">
+                <div>
+                  <h2 className="section__title">Top Picks This Week</h2>
+                  <p className="section__intro">
+                    A different set from our featured picks — compared on
+                    capacity, footprint and running cost. No star ratings,
+                    because we don&rsquo;t test products.
+                  </p>
+                </div>
               </div>
+              <ComparisonTable
+                products={weeklyPicks}
+                caption="This week's top picks, compared"
+              />
             </div>
-            <ComparisonTable
-              products={featured.slice(0, 3)}
-              caption="This week's top picks, compared"
-            />
-          </div>
+          )}
 
           <div>
             <div className="section__head">

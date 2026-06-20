@@ -1,3 +1,4 @@
+import AffiliateLink from "@/components/AffiliateLink";
 import { findLink } from "@/lib/site";
 
 /**
@@ -28,13 +29,8 @@ export default function CheckPrice({
   }
 
   return (
-    <a
-      className="check-price"
-      href={`/go/${link.id}`}
-      rel="sponsored nofollow"
-      target="_blank"
-    >
+    <AffiliateLink className="check-price" linkId={link.id}>
       Check price{retailer ? ` at ${retailer}` : ""}
-    </a>
+    </AffiliateLink>
   );
 }

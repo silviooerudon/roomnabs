@@ -1,3 +1,4 @@
+import AffiliateLink from "@/components/AffiliateLink";
 import Badge from "@/components/Badge";
 import type { Product } from "@/lib/products";
 
@@ -42,14 +43,9 @@ export default function ComparisonTable({
               <td>{product.runCost}</td>
               <td>{product.price ?? "—"}</td>
               <td className="compare__cta">
-                <a
-                  className="btn btn--primary"
-                  href={`/go/${product.linkId}`}
-                  rel="sponsored nofollow"
-                  target="_blank"
-                >
+                <AffiliateLink className="btn btn--primary" linkId={product.linkId}>
                   Check price
-                </a>
+                </AffiliateLink>
               </td>
             </tr>
           ))}

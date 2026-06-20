@@ -195,14 +195,69 @@ export const AIR_FRYERS: Product[] = [
   },
 ];
 
-/** Featured picks shown on the homepage (all current air-fryer picks). */
-export function getFeaturedProducts(): Product[] {
-  return AIR_FRYERS;
-}
-
 /** Every product we currently have, across all categories. */
 export function getAllProducts(): Product[] {
   return AIR_FRYERS;
+}
+
+/**
+ * A curated, category-diversified ordering of all published products.
+ *
+ * We interleave categories (take one pick from each in turn, then a second) and
+ * cap each category at `perCategory`, so the homepage shows a *mix* rather than
+ * flooding the page with one category's whole catalogue. Within a category we
+ * surface products that have a real `/product` detail page first. Today only
+ * air fryers are published, so this returns the strongest one or two of those;
+ * when another category goes live (e.g. robot vacuums) the mix spreads across
+ * them automatically with no change here.
+ */
+function curatedProducts(perCategory: number): Product[] {
+  const byCategory = new Map<string, Product[]>();
+  for (const product of getAllProducts()) {
+    const list = byCategory.get(product.category) ?? [];
+    list.push(product);
+    byCategory.set(product.category, list);
+  }
+
+  // Within each category, prefer products with a detail page (richer landing),
+  // keeping source order otherwise (Array.sort is stable).
+  const queues = [...byCategory.values()].map((list) =>
+    [...list].sort(
+      (a, b) => Number(Boolean(b.details)) - Number(Boolean(a.details)),
+    ),
+  );
+
+  const picks: Product[] = [];
+  for (let round = 0; round < perCategory; round++) {
+    for (const queue of queues) {
+      const product = queue[round];
+      if (product) picks.push(product);
+    }
+  }
+  return picks;
+}
+
+/**
+ * Featured picks shown in the homepage grid: a curated mix, at most two per
+ * category and ~6 in total, so the grid stays tight instead of repeating a
+ * whole category. See {@link curatedProducts}.
+ */
+export function getFeaturedProducts(): Product[] {
+  return curatedProducts(2).slice(0, 6);
+}
+
+/**
+ * A *different* set of picks for the homepage "Top Picks This Week" table — the
+ * next-best published products that aren't already in the featured grid, so the
+ * same card never appears twice on the page. Returns an empty array when
+ * everything published is already featured (the caller then hides the table
+ * rather than duplicate cards).
+ */
+export function getWeeklyPicks(): Product[] {
+  const featuredIds = new Set(getFeaturedProducts().map((product) => product.id));
+  return getAllProducts()
+    .filter((product) => !featuredIds.has(product.id))
+    .slice(0, 4);
 }
 
 /** Products belonging to a category slug (e.g. "small-kitchen"). */
