@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { AnchorHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes, TableHTMLAttributes } from "react";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import Breadcrumbs, { type Crumb } from "@/components/Breadcrumbs";
@@ -39,8 +39,21 @@ function MdxAnchor({
   );
 }
 
+/**
+ * Wrap every MDX table in a scroll container so wide tables (e.g. the "Quick
+ * picks" comparison) scroll horizontally on small screens instead of breaking
+ * the layout. Styling lives in `.guide-table` / `.guide__body table`.
+ */
+function MdxTable(props: TableHTMLAttributes<HTMLTableElement>) {
+  return (
+    <div className="guide-table">
+      <table {...props} />
+    </div>
+  );
+}
+
 // Components made available to every guide's MDX body.
-const mdxComponents = { EmailSignup, CheckPrice, a: MdxAnchor };
+const mdxComponents = { EmailSignup, CheckPrice, a: MdxAnchor, table: MdxTable };
 
 type Props = {
   params: Promise<{ slug: string }>;
