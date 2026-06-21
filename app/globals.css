@@ -879,13 +879,14 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
-.page a {
+/* Prose links inside a page — but never buttons (.btn keeps its own colour). */
+.page a:not(.btn) {
   color: var(--fg);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.page a:hover {
+.page a:not(.btn):hover {
   color: var(--accent-strong);
 }
 
@@ -1433,9 +1434,15 @@ a:hover {
 }
 
 .bp-tab--active {
-  background: var(--accent-soft);
-  color: var(--accent-strong);
-  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border-color: var(--btn-bg);
+}
+
+.bp-tab--active:hover {
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-bg-hover);
+  color: var(--btn-fg);
 }
 
 /* Product page ----------------------------------------------------------- */
