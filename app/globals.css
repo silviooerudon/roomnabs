@@ -1049,27 +1049,99 @@ a:hover {
 }
 
 /*
- * "Check price" links inside a guide table render as a compact amber button
- * (same accent tokens as the .check-price / .btn--primary CTAs) instead of a
- * raw text link. They still route through /go/[linkId] with the
- * rel="sponsored nofollow" target="_blank" added by the MDX anchor.
+ * Every "Check price" link (`/go/[linkId]`) renders as an amber button —
+ * whether it sits inside the quick-picks table or in a product's prose. They
+ * still route through the /go redirect with rel="sponsored nofollow" added by
+ * the MDX anchor. In tables they're rendered compact; in prose they're a full
+ * standalone CTA so the action is never a faint underlined link.
  */
-.guide__body table a[href^="/go/"] {
-  display: inline-block;
+.guide__body a[href^="/go/"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
   white-space: nowrap;
-  padding: 0.4rem 0.85rem;
+  padding: 0.7rem 1.15rem;
   border-radius: var(--r-sm);
   background: var(--btn-bg);
   color: var(--btn-fg);
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.92rem;
+  font-weight: 700;
   text-decoration: none;
+  box-shadow: var(--shadow);
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
 }
 
-.guide__body table a[href^="/go/"]:hover {
+.guide__body a[href^="/go/"]:hover {
   background: var(--btn-bg-hover);
   color: var(--btn-fg);
   text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Compact variant inside the comparison table. */
+.guide__body table a[href^="/go/"] {
+  padding: 0.42rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.guide__body table a[href^="/go/"]:hover {
+  transform: none;
+}
+
+/* Guide reading comfort & scannability ----------------------------------- */
+/* Slightly larger, airier body copy for long-form reading. */
+.guide__body p,
+.guide__body li {
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+/* Anchored headings clear the sticky header when jumped to. */
+.guide__body h2,
+.guide__body h3 {
+  scroll-margin-top: 90px;
+}
+
+/* Each product (h3) reads as its own block, separated by a hairline. */
+.guide__body h3 {
+  margin-top: 2.5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--border);
+  font-size: 1.25rem;
+}
+
+/* Spec bullet labels ("Width:", "Type:"…) sit in ink so specs scan fast. */
+.guide__body li strong {
+  color: var(--fg);
+}
+
+/* A standalone /go CTA in prose gets room to breathe above and below. */
+.guide__body p > a[href^="/go/"] {
+  margin-top: 0.25rem;
+}
+
+/* Comparison table: emphasise the "Best for" column and right-align CTAs. */
+.guide__body tbody td:first-child {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.guide__body th,
+.guide__body td {
+  padding: 0.8rem 1rem;
+}
+
+.guide__body td:last-child {
+  text-align: right;
+}
+
+/* Sourcing notes (italic) read as quiet captions. */
+.guide__body em {
+  color: var(--muted-soft);
 }
 
 /* "Check price" CTA (used in MDX) — amber accent ------------------------- */
