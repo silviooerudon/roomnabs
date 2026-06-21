@@ -1,0 +1,18 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kettle">
+  <ellipse cx="110" cy="196" rx="62" ry="10" fill="#000" opacity=".07"/>
+  <!-- base -->
+  <ellipse cx="110" cy="176" rx="56" ry="12" fill="#2b313c"/>
+  <rect x="58" y="166" width="104" height="12" rx="6" fill="#3a4150"/>
+  <!-- body -->
+  <path d="M68 92c0-8 10-12 42-12s42 4 42 12l-6 70a10 10 0 0 1-10 9H84a10 10 0 0 1-10-9z" fill="#cfd3da"/>
+  <path d="M68 92c0-8 10-12 42-12s42 4 42 12l-2 22H70z" fill="#dfe2e7"/>
+  <!-- water window -->
+  <rect x="128" y="110" width="10" height="44" rx="5" fill="#9fd0e0" opacity=".7"/>
+  <!-- spout -->
+  <path d="M68 96 L44 84 L46 94 L66 108 Z" fill="#cfd3da"/>
+  <!-- handle -->
+  <path d="M150 96c22 0 26 18 26 36s-4 34-26 34" fill="none" stroke="#3a4150" stroke-width="10" stroke-linecap="round"/>
+  <!-- lid -->
+  <ellipse cx="110" cy="80" rx="30" ry="8" fill="#3a4150"/>
+  <rect x="100" y="66" width="20" height="12" rx="6" fill="#5a6473"/>
+</svg>
