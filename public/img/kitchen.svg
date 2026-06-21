@@ -1,0 +1,21 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Small kitchen">
+  <ellipse cx="110" cy="196" rx="82" ry="10" fill="#000" opacity=".07"/>
+  <!-- pot -->
+  <path d="M52 120h70l-5 46a10 10 0 0 1-10 9H67a10 10 0 0 1-10-9z" fill="#3a4150"/>
+  <rect x="48" y="112" width="78" height="12" rx="6" fill="#454c5c"/>
+  <ellipse cx="87" cy="118" rx="34" ry="5" fill="#2b313c"/>
+  <rect x="80" y="100" width="14" height="14" rx="4" fill="#5a6473"/>
+  <!-- pot handles -->
+  <path d="M52 132c-9 0-12 8-12 8" fill="none" stroke="#5a6473" stroke-width="6" stroke-linecap="round"/>
+  <path d="M122 132c9 0 12 8 12 8" fill="none" stroke="#5a6473" stroke-width="6" stroke-linecap="round"/>
+  <!-- utensils -->
+  <g transform="rotate(18 158 120)">
+    <rect x="153" y="60" width="8" height="80" rx="4" fill="#caa978"/>
+    <ellipse cx="157" cy="58" rx="13" ry="18" fill="#9aa0ab"/>
+  </g>
+  <g transform="rotate(-12 138 120)">
+    <rect x="134" y="64" width="7" height="76" rx="3.5" fill="#caa978"/>
+    <path d="M131 50h6v18h-6zm5 0h2v18h-2zm5 0h2v18h-2" fill="#9aa0ab"/>
+    <rect x="131" y="48" width="12" height="6" rx="3" fill="#9aa0ab"/>
+  </g>
+</svg>

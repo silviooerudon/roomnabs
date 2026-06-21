@@ -1,0 +1,17 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Smart home device">
+  <ellipse cx="110" cy="194" rx="58" ry="9" fill="#000" opacity=".07"/>
+  <!-- wall plate -->
+  <circle cx="110" cy="100" r="66" fill="#2b313c"/>
+  <circle cx="110" cy="100" r="54" fill="#3a4150"/>
+  <!-- dial ring -->
+  <circle cx="110" cy="100" r="44" fill="#11151d"/>
+  <circle cx="110" cy="100" r="44" fill="none" stroke="#E8A93C" stroke-width="4" stroke-dasharray="160 120" stroke-dashoffset="40" transform="rotate(-120 110 100)" stroke-linecap="round"/>
+  <!-- temperature readout -->
+  <text x="110" y="96" font-family="monospace" font-size="30" font-weight="bold" fill="#fff" text-anchor="middle">21°</text>
+  <text x="110" y="118" font-family="monospace" font-size="11" fill="#9fb0c0" text-anchor="middle">HEAT</text>
+  <!-- wifi waves -->
+  <g stroke="#5a6473" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M150 52a26 26 0 0 1 16 16"/>
+    <path d="M156 44a38 38 0 0 1 22 22"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Home office desk">
+  <ellipse cx="110" cy="196" rx="84" ry="10" fill="#000" opacity=".07"/>
+  <!-- monitor -->
+  <rect x="58" y="40" width="104" height="66" rx="6" fill="#2b313c"/>
+  <rect x="64" y="46" width="92" height="54" rx="3" fill="#9fd0e0" opacity=".5"/>
+  <rect x="64" y="46" width="92" height="54" rx="3" fill="url(#s)"/>
+  <rect x="100" y="106" width="20" height="14" fill="#3a4150"/>
+  <rect x="86" y="120" width="48" height="7" rx="3" fill="#2b313c"/>
+  <!-- desk top -->
+  <rect x="30" y="138" width="160" height="12" rx="4" fill="#caa978"/>
+  <rect x="30" y="138" width="160" height="5" rx="2" fill="#d8bb91"/>
+  <!-- legs -->
+  <rect x="44" y="150" width="9" height="40" rx="3" fill="#b7905f"/>
+  <rect x="167" y="150" width="9" height="40" rx="3" fill="#b7905f"/>
+  <!-- desk items: mug + book -->
+  <rect x="150" y="122" width="16" height="16" rx="3" fill="#cf7a52"/>
+  <path d="M166 125h4a4 4 0 0 1 0 8h-4" fill="none" stroke="#cf7a52" stroke-width="3"/>
+  <rect x="52" y="128" width="26" height="10" rx="2" fill="#5e8a63"/>
+</svg>

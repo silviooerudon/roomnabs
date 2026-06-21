@@ -1,0 +1,16 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Robot vacuum">
+  <ellipse cx="110" cy="170" rx="80" ry="20" fill="#000" opacity=".07"/>
+  <!-- body disc -->
+  <ellipse cx="110" cy="120" rx="82" ry="44" fill="#2b313c"/>
+  <ellipse cx="110" cy="108" rx="82" ry="44" fill="#3a4150"/>
+  <ellipse cx="110" cy="104" rx="70" ry="36" fill="#454c5c"/>
+  <!-- lidar tower -->
+  <ellipse cx="110" cy="92" rx="20" ry="11" fill="#11151d"/>
+  <ellipse cx="110" cy="88" rx="20" ry="11" fill="#232934"/>
+  <circle cx="110" cy="86" r="5" fill="#E8A93C"/>
+  <!-- buttons -->
+  <circle cx="86" cy="104" r="4" fill="#5a6473"/>
+  <circle cx="134" cy="104" r="4" fill="#5a6473"/>
+  <!-- side highlight -->
+  <path d="M44 108a66 36 0 0 1 30-28" fill="none" stroke="#5a6473" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+</svg>
