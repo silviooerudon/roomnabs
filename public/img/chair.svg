@@ -1,0 +1,22 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Office chair">
+  <ellipse cx="110" cy="198" rx="62" ry="9" fill="#000" opacity=".07"/>
+  <!-- backrest -->
+  <rect x="74" y="34" width="68" height="86" rx="20" fill="#2b313c"/>
+  <rect x="82" y="42" width="52" height="70" rx="16" fill="#3a4150"/>
+  <!-- headrest -->
+  <rect x="88" y="26" width="40" height="18" rx="9" fill="#454c5c"/>
+  <!-- seat -->
+  <rect x="70" y="118" width="80" height="20" rx="9" fill="#2b313c"/>
+  <rect x="70" y="118" width="80" height="9" rx="4" fill="#3a4150"/>
+  <!-- gas lift -->
+  <rect x="105" y="138" width="10" height="30" rx="3" fill="#5a6473"/>
+  <!-- base star -->
+  <g stroke="#3a4150" stroke-width="7" stroke-linecap="round">
+    <line x1="110" y1="168" x2="78" y2="186"/>
+    <line x1="110" y1="168" x2="142" y2="186"/>
+    <line x1="110" y1="168" x2="110" y2="190"/>
+  </g>
+  <circle cx="76" cy="188" r="6" fill="#5a6473"/>
+  <circle cx="144" cy="188" r="6" fill="#5a6473"/>
+  <circle cx="110" cy="192" r="6" fill="#5a6473"/>
+</svg>

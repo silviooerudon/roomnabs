@@ -13,9 +13,15 @@ type Art = { src: string; cover?: boolean };
 const ART_RULES: { test: RegExp; art: Art }[] = [
   { test: /lifestyle|apartment|\broom\b|interior|living|tidy|cosy|cozy/, art: { src: "/img/hero-room.svg", cover: true } },
   { test: /air ?fry|fryer/, art: { src: "/img/airfryer.svg" } },
-  { test: /coffee|espresso|nespresso|vertuo|dedica|barista|magnifica|dolce|pod/, art: { src: "/img/coffee.svg" } },
+  { test: /coffee|espresso|nespresso|vertuo|dedica|barista|magnifica|dolce|\bpod\b/, art: { src: "/img/coffee.svg" } },
   { test: /kettle/, art: { src: "/img/kettle.svg" } },
   { test: /\blamp\b|desk light/, art: { src: "/img/lamp.svg" } },
+  { test: /vacuum|robovac|roomba|roborock|eufy|lefant|hoover|cleaning/, art: { src: "/img/vacuum.svg" } },
+  { test: /\bchair\b|ergonomic|seat/, art: { src: "/img/chair.svg" } },
+  { test: /\bdesk\b|monitor|home office|riser|standing/, art: { src: "/img/desk.svg" } },
+  { test: /smart home|thermostat|speaker|\bhub\b|sensor|plug|bulb/, art: { src: "/img/smarthome.svg" } },
+  { test: /storage|\bbox\b|boxes|shelf|shelving|drawer|organiser|organizer|basket/, art: { src: "/img/storage.svg" } },
+  { test: /kitchen|cookware|\bpot\b|\bpan\b|utensil/, art: { src: "/img/kitchen.svg" } },
 ];
 
 function pickArt(text: string): Art | null {
