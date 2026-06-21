@@ -1,0 +1,21 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Air fryer">
+  <defs>
+    <linearGradient id="afBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a4150"/><stop offset="1" stop-color="#232934"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="110" cy="196" rx="70" ry="10" fill="#000" opacity=".07"/>
+  <!-- body -->
+  <path d="M62 44h96a10 10 0 0 1 10 10l-8 120a14 14 0 0 1-14 13H74a14 14 0 0 1-14-13L52 54a10 10 0 0 1 10-10z" fill="url(#afBody)"/>
+  <!-- top lid -->
+  <rect x="58" y="38" width="104" height="20" rx="9" fill="#454c5c"/>
+  <ellipse cx="110" cy="44" rx="40" ry="7" fill="#2c323d"/>
+  <!-- control panel -->
+  <rect x="80" y="70" width="60" height="34" rx="7" fill="#11151d"/>
+  <text x="110" y="92" font-family="monospace" font-size="15" fill="#E8A93C" text-anchor="middle" font-weight="bold">180°</text>
+  <circle cx="92" cy="116" r="4" fill="#E8A93C"/><circle cx="110" cy="116" r="4" fill="#5a6473"/><circle cx="128" cy="116" r="4" fill="#5a6473"/>
+  <!-- basket seam -->
+  <rect x="64" y="138" width="92" height="3" rx="1.5" fill="#1a1f28" opacity=".6"/>
+  <!-- handle -->
+  <rect x="92" y="150" width="36" height="12" rx="6" fill="#5a6473"/>
+</svg>

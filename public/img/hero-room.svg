@@ -1,0 +1,71 @@
+<svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Cozy living room">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efe9df"/><stop offset="1" stop-color="#e7e0d4"/>
+    </linearGradient>
+    <linearGradient id="win" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf6e6"/><stop offset="1" stop-color="#f3e6c9"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dccab0"/><stop offset="1" stop-color="#d2bd9d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- wall + floor -->
+  <rect width="800" height="520" fill="url(#wall)"/>
+  <rect y="372" width="800" height="148" fill="url(#floor)"/>
+
+  <!-- window with warm light -->
+  <rect x="486" y="46" width="252" height="248" rx="6" fill="#cbb89a"/>
+  <rect x="496" y="56" width="232" height="228" rx="3" fill="url(#win)"/>
+  <line x1="612" y1="56" x2="612" y2="284" stroke="#cbb89a" stroke-width="6"/>
+  <line x1="496" y1="170" x2="728" y2="170" stroke="#cbb89a" stroke-width="6"/>
+  <!-- light beam -->
+  <path d="M512 70 L300 372 L470 372 L640 70 Z" fill="#fff6e2" opacity=".35"/>
+
+  <!-- wall art -->
+  <rect x="150" y="70" width="120" height="150" rx="4" fill="#fff" stroke="#d8cdb9" stroke-width="3"/>
+  <circle cx="195" cy="120" r="22" fill="#e7c98f"/>
+  <path d="M165 190 q30 -46 50 -10 q14 24 40 6 v14 h-90z" fill="#9bb89c"/>
+
+  <!-- shelf -->
+  <rect x="60" y="150" width="70" height="8" rx="2" fill="#caa978"/>
+  <rect x="64" y="120" width="10" height="30" rx="2" fill="#b7905f"/>
+  <rect x="80" y="128" width="14" height="22" rx="2" fill="#cf7a52"/>
+  <circle cx="110" cy="138" r="11" fill="#8fb6c9"/>
+
+  <!-- plant -->
+  <rect x="690" y="300" width="56" height="70" rx="6" fill="#cf7a52"/>
+  <path d="M718 300 q-46 -34 -30 -96 q26 18 30 60 q4 -52 34 -74 q12 50 -10 90 q30 -22 50 -8 q-22 30 -64 36z" fill="#5e8a63"/>
+  <path d="M718 300 q-46 -34 -30 -96 q26 18 30 60z" fill="#6f9e72"/>
+
+  <!-- sofa -->
+  <rect x="120" y="300" width="330" height="90" rx="22" fill="#e9e2d4"/>
+  <rect x="108" y="262" width="64" height="120" rx="22" fill="#ded5c4"/>
+  <rect x="398" y="262" width="64" height="120" rx="22" fill="#ded5c4"/>
+  <rect x="150" y="262" width="270" height="64" rx="18" fill="#f2ece0"/>
+  <!-- cushions -->
+  <rect x="172" y="280" width="64" height="64" rx="12" fill="#cf7a52" transform="rotate(-6 204 312)"/>
+  <rect x="336" y="280" width="64" height="64" rx="12" fill="#9bb89c" transform="rotate(6 368 312)"/>
+  <!-- sofa legs -->
+  <rect x="140" y="388" width="10" height="20" rx="3" fill="#a98a5f"/>
+  <rect x="420" y="388" width="10" height="20" rx="3" fill="#a98a5f"/>
+
+  <!-- coffee table -->
+  <ellipse cx="300" cy="448" rx="120" ry="22" fill="#000" opacity=".05"/>
+  <rect x="210" y="418" width="180" height="16" rx="8" fill="#caa978"/>
+  <rect x="224" y="434" width="8" height="26" rx="3" fill="#b7905f"/>
+  <rect x="368" y="434" width="8" height="26" rx="3" fill="#b7905f"/>
+  <rect x="250" y="404" width="36" height="14" rx="3" fill="#8fb6c9"/>
+  <rect x="316" y="408" width="22" height="10" rx="3" fill="#cf7a52"/>
+
+  <!-- robot vacuum on floor -->
+  <ellipse cx="600" cy="452" rx="48" ry="14" fill="#000" opacity=".06"/>
+  <ellipse cx="600" cy="440" rx="44" ry="20" fill="#2b313c"/>
+  <ellipse cx="600" cy="434" rx="44" ry="18" fill="#3a4150"/>
+  <circle cx="600" cy="430" r="9" fill="#11151d"/>
+  <circle cx="600" cy="430" r="3" fill="#E8A93C"/>
+
+  <!-- rug -->
+  <ellipse cx="320" cy="470" rx="220" ry="34" fill="#e3d6c0" opacity=".7"/>
+</svg>

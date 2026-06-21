@@ -78,7 +78,7 @@ body {
   color: var(--fg);
   background: var(--bg);
   font-family:
-    var(--font-geist-sans),
+    var(--font-sans),
     system-ui,
     -apple-system,
     Segoe UI,
@@ -88,6 +88,18 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display face — headings and the brand wordmark. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -269,6 +281,21 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/* On-brand vector illustration filling an image slot. */
+.img-ph__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 11%;
+}
+
+.img-ph__art--cover {
+  padding: 0;
+  object-fit: cover;
 }
 
 /* Header ----------------------------------------------------------------- */
@@ -852,13 +879,14 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
-.page a {
+/* Prose links inside a page — but never buttons (.btn keeps its own colour). */
+.page a:not(.btn) {
   color: var(--fg);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.page a:hover {
+.page a:not(.btn):hover {
   color: var(--accent-strong);
 }
 
@@ -1406,9 +1434,15 @@ a:hover {
 }
 
 .bp-tab--active {
-  background: var(--accent-soft);
-  color: var(--accent-strong);
-  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border-color: var(--btn-bg);
+}
+
+.bp-tab--active:hover {
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-bg-hover);
+  color: var(--btn-fg);
 }
 
 /* Product page ----------------------------------------------------------- */
