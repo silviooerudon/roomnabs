@@ -1,55 +1,50 @@
 import Link from "next/link";
 import Badge from "@/components/Badge";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
-import { getProductHref, type Product } from "@/lib/products";
+import type { PickView } from "@/lib/products";
 
 /**
- * A single featured product pick.
+ * A single product pick card, rendered from the shared `PickView` so the same
+ * card works for air fryers and robot vacuums (and anything we add later).
  *
  * No star rating or review count — the editorial `badge` ("Best overall") sits
  * where a rating would on a typical review site. The "Check price" CTA routes
  * through the /go/[linkId] redirect (rel="sponsored nofollow"). When the guide
  * hasn't confirmed a price we show "Check price" rather than invent a number.
  *
- * The product name links to the product's own page when it has one, otherwise
- * back to the source guide — so there are never dead-end links.
+ * The product photo is shown when `pick.image` is set, otherwise an on-brand
+ * illustration. The name links to the product's own page when it has one,
+ * otherwise back to the source guide — so there are never dead-end links.
  */
-export default function ProductCard({
-  product,
-  guideSlug,
-}: {
-  product: Product;
-  guideSlug: string;
-}) {
-  const href = getProductHref(product, guideSlug);
+export default function ProductCard({ pick }: { pick: PickView }) {
   return (
     <article className="product-card">
       <div className="product-card__media">
-        <ImagePlaceholder alt={product.imageAlt} label="Product" />
+        <ImagePlaceholder src={pick.image} alt={pick.imageAlt} label="Product" />
         <span className="product-card__badge">
-          <Badge>{product.badge}</Badge>
+          <Badge>{pick.badge}</Badge>
         </span>
       </div>
 
       <div className="product-card__body">
         <h3 className="product-card__name">
-          <Link href={href}>{product.name}</Link>
+          <Link href={pick.href}>{pick.name}</Link>
         </h3>
 
         <dl className="product-card__specs">
           <div className="spec">
-            <dt>Footprint</dt>
-            <dd>{product.footprint}</dd>
+            <dt>{pick.spec.label}</dt>
+            <dd>{pick.spec.value}</dd>
           </div>
           <div className="spec">
             <dt>Approx. price</dt>
-            <dd>{product.price ?? "Check price"}</dd>
+            <dd>{pick.price ?? "Check price"}</dd>
           </div>
         </dl>
 
         <a
           className="btn btn--primary btn--block product-card__cta"
-          href={`/go/${product.linkId}`}
+          href={`/go/${pick.linkId}`}
           rel="sponsored nofollow"
           target="_blank"
         >

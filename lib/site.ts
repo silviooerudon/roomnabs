@@ -250,6 +250,104 @@ export const LINKS: ShortLink[] = [
     label: "iRobot Roomba 694 at Amazon.ie",
     url: "https://www.amazon.ie/s?k=iRobot+Roomba+694",
   },
+
+  // Home Office picks (compact / renter-friendly WFH gear). URLs are the live
+  // Irish retailer listings checked June 2026. Same 302 + sponsored nofollow
+  // treatment as the links above.
+  {
+    id: "ikea-micke-desk",
+    label: "IKEA MICKE Desk 73×50 cm at IKEA",
+    url: "https://www.ikea.com/ie/en/p/micke-desk-white-30213076/",
+  },
+  {
+    id: "ikea-lagkapten-alex",
+    label: "IKEA LAGKAPTEN / ALEX Desk 120×60 cm at IKEA",
+    url: "https://www.ikea.com/ie/en/p/lagkapten-alex-desk-white-s69416817/",
+  },
+  {
+    id: "ikea-millberget-chair",
+    label: "IKEA MILLBERGET Swivel Chair at IKEA",
+    url: "https://www.ikea.com/ie/en/p/millberget-swivel-chair-murum-black-20489396/",
+  },
+  {
+    id: "allsop-redmond-stand",
+    label: "Allsop Redmond Curved Monitor Stand at Harvey Norman",
+    url: "https://www.harveynorman.ie/computing/computer-accessories/allsop-redmond-curved-monitor-stand.html",
+  },
+  {
+    id: "ikea-navlinge-lamp",
+    label: "IKEA NÄVLINGE LED Clamp Spotlight at IKEA",
+    url: "https://www.ikea.com/ie/en/p/naevlinge-led-clamp-spotlight-white-10449891/",
+  },
+  {
+    id: "ikea-dagotto-footrest",
+    label: "IKEA DAGOTTO Foot-rest at IKEA",
+    url: "https://www.ikea.com/ie/en/p/dagotto-foot-rest-black-40240989/",
+  },
+
+  // Smart Home picks (renter-friendly: plug-in / stick-on, no drilling).
+  {
+    id: "tapo-p110-plug",
+    label: "TP-Link Tapo P110 Mini Smart Plug at ElectroCity.ie",
+    url: "https://www.electrocity.ie/product/tapo-by-tp-link-p110-mini-smart-wi-fi-plug-with-energy-monitoring/",
+  },
+  {
+    id: "tapo-l530e-bulb",
+    label: "TP-Link Tapo L530E Smart Colour Bulb at Expert.ie",
+    url: "https://www.expert.ie/tplink-wifi-bulb-dimmable-white-screw-tapo-l530e/",
+  },
+  {
+    id: "echo-dot-5",
+    label: "Amazon Echo Dot (5th Gen) at Currys",
+    url: "https://www.currys.ie/products/amazon-echo-dot-5th-gen-smart-speaker-with-alexa-charcoal-10244665.html",
+  },
+  {
+    id: "tapo-l900-strip",
+    label: "TP-Link Tapo L900-5 Smart Light Strip (5 m) at DID.ie",
+    url: "https://www.did.ie/products/tp-link-smart-wifi-led-light-strip-multicolour-tapol9005",
+  },
+  {
+    id: "tapo-contact-sensor",
+    label: "TP-Link Tapo T110 Contact Sensor at Harvey Norman",
+    url: "https://www.harveynorman.ie/computing/connected-home-en/all-connected-home/tp-link-tapo-smart-contact-sensor.html",
+  },
+  {
+    id: "tado-radiator-v3",
+    label: "tado° Smart Radiator Thermostat Starter Kit V3+ at EnergyUpgrade.ie",
+    url: "https://www.energyupgrade.ie/products/tado-smart-radiator-thermostat-starter-kit-v3",
+  },
+
+  // Storage picks (space-saving, renter-safe, no fixings).
+  {
+    id: "ikea-samla-45",
+    label: "IKEA SAMLA Box transparent 45 L at IKEA",
+    url: "https://www.ikea.com/ie/en/p/samla-box-transparent-30102974/",
+  },
+  {
+    id: "ikea-skubb-case",
+    label: "IKEA SKUBB Storage Case at IKEA",
+    url: "https://www.ikea.com/ie/en/p/skubb-storage-case-white-60591047/",
+  },
+  {
+    id: "ikea-stuk-case",
+    label: "IKEA STUK Storage Case at IKEA",
+    url: "https://www.ikea.com/ie/en/p/stuk-storage-case-white-grey-50309577/",
+  },
+  {
+    id: "ikea-mulig-rail",
+    label: "IKEA MULIG Clothes Rack at IKEA",
+    url: "https://www.ikea.com/ie/en/p/mulig-clothes-rack-white-60179434/",
+  },
+  {
+    id: "ikea-skubb-shoe",
+    label: "IKEA SKUBB Hanging Organiser (16 pockets) at IKEA",
+    url: "https://www.ikea.com/ie/en/p/skubb-hanging-shoe-organiser-w-16-pockets-dark-grey-90400008/",
+  },
+  {
+    id: "jml-vac-pack-go",
+    label: "JML Vac Pack Go portable vacuum pump at Homevalue.ie",
+    url: "https://www.homevalue.ie/p/jml-vac-pack-go/17344",
+  },
 ];
 
 export function findLink(id: string): ShortLink | undefined {
