@@ -85,7 +85,11 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="product-page">
           <div className="product-page__media">
-            <ImagePlaceholder alt={product.imageAlt} label="Product" />
+            <ImagePlaceholder
+              src={product.image}
+              alt={product.imageAlt}
+              label="Product"
+            />
           </div>
 
           <div className="product-page__main">

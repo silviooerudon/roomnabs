@@ -11,7 +11,7 @@
  */
 import type { Metadata } from "next";
 import { getGuidesByCategory } from "./guides";
-import { getProductsByCategory } from "./products";
+import { getCategoryPicks } from "./products";
 import { findCategory } from "./site";
 
 /**
@@ -21,8 +21,7 @@ import { findCategory } from "./site";
  */
 export function categoryHasContent(slug: string): boolean {
   return (
-    getProductsByCategory(slug).length > 0 ||
-    getGuidesByCategory(slug).length > 0
+    getCategoryPicks(slug).length > 0 || getGuidesByCategory(slug).length > 0
   );
 }
 

@@ -5,11 +5,7 @@ import BestPicksFilter, {
 } from "@/components/BestPicksFilter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ConfidenceStrip from "@/components/ConfidenceStrip";
-import {
-  AIR_FRYER_GUIDE_SLUG,
-  getProductsByCategory,
-  PRICE_CHECKED,
-} from "@/lib/products";
+import { getCategoryPicks, PRICE_CHECKED } from "@/lib/products";
 import { CATEGORIES, SITE_URL } from "@/lib/site";
 
 const TITLE = "Best picks";
@@ -34,7 +30,7 @@ export default function BestPicksPage() {
   ).map((category) => ({
     slug: category.slug,
     name: category.name,
-    products: getProductsByCategory(category.slug),
+    products: getCategoryPicks(category.slug),
   }));
 
   return (
@@ -47,10 +43,7 @@ export default function BestPicksPage() {
 
         <ConfidenceStrip />
 
-        <BestPicksFilter
-          categories={categories}
-          guideSlug={AIR_FRYER_GUIDE_SLUG}
-        />
+        <BestPicksFilter categories={categories} />
 
         <p className="price-note">
           Prices are approximate and were last checked {PRICE_CHECKED}.

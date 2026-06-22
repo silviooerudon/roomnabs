@@ -3,12 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import type { Product } from "@/lib/products";
+import type { PickView } from "@/lib/products";
 
 export type FilterCategory = {
   slug: string;
   name: string;
-  products: Product[];
+  products: PickView[];
 };
 
 const ALL = "all";
@@ -20,10 +20,8 @@ const ALL = "all";
  */
 export default function BestPicksFilter({
   categories,
-  guideSlug,
 }: {
   categories: FilterCategory[];
-  guideSlug: string;
 }) {
   const [active, setActive] = useState<string>(ALL);
 
@@ -56,12 +54,8 @@ export default function BestPicksFilter({
       <div role="region" aria-live="polite">
         {products.length > 0 ? (
           <div className="product-grid">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                guideSlug={guideSlug}
-              />
+            {products.map((pick) => (
+              <ProductCard key={pick.id} pick={pick} />
             ))}
           </div>
         ) : (

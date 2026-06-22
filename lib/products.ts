@@ -54,6 +54,13 @@ export type Product = {
   linkId: string;
   /** Retailer name for the "Check price at …" CTA. */
   retailer: string;
+  /**
+   * Real product photo, served from `/public` (e.g. "/img/products/ninja-af100uk.jpg").
+   * Optional: when absent the UI falls back to the on-brand illustration picked
+   * from `imageAlt`. Use a licensed image (manufacturer/your own/affiliate API) —
+   * see `public/img/products/README.md`.
+   */
+  image?: string;
   imageAlt: string;
   /** Present only when we have enough real content for a product page. */
   details?: ProductDetails;
@@ -278,6 +285,8 @@ export type RobotVacuum = {
   linkId: string;
   /** Retailer name for the "Check price at …" CTA. */
   retailer: string;
+  /** Real product photo (see `Product.image`); falls back to an illustration. */
+  image?: string;
   imageAlt: string;
 };
 
@@ -410,14 +419,370 @@ export const ROBOT_VACUUMS: RobotVacuum[] = [
 ];
 
 /**
- * All robot-vacuum picks. Kept separate from `getAllProducts()` /
- * `getProductsByCategory()` on purpose: the source guide is still a draft, so
- * these must NOT surface on public pages (homepage, /compare, /best-picks, the
- * Cleaning category) yet — exactly like a draft guide stays reachable but
- * unlisted. When the guide is published, wire these into the category queries
- * (and build a spec-aware comparison, since the air-fryer `ComparisonTable`
- * columns don't fit this shape).
+ * All robot-vacuum picks. The source guide is now published, so these surface
+ * on the Cleaning category and the /best-picks "Cleaning" tab via
+ * `getCategoryPicks("cleaning")` (which maps them to the shared `PickView`).
+ *
+ * They are still kept OUT of `getAllProducts()` and the air-fryer `/compare`
+ * table on purpose: that `ComparisonTable` has air-fryer columns (capacity /
+ * footprint / run cost) that don't fit a vacuum's spec sheet. A spec-aware
+ * comparison for vacuums is a separate piece of work.
  */
 export function getRobotVacuums(): RobotVacuum[] {
   return ROBOT_VACUUMS;
+}
+
+/* ------------------------------------------------------------------------- *
+ * Category picks (Home Office / Smart Home / Storage)
+ *
+ * These categories don't have an air-fryer-style spec sheet or a robot-vacuum
+ * spec list — each pick is a single product with one headline spec, a price and
+ * a retailer link. So we model them with a light generic shape and surface them
+ * through the same `PickView`/ProductCard as everything else.
+ *
+ * Honesty rules still apply: `badge` is an editorial "best for" label (not a
+ * rating); `price` is `null` when we couldn't confirm a live Irish price (the UI
+ * shows "Check price"); every `linkId` resolves in lib/site.ts and routes
+ * through `/go/[linkId]` (rel="sponsored nofollow"). Specs/prices were checked
+ * on live Irish retailer pages in June 2026 — re-check before relying on them.
+ *
+ * NOTE: these don't yet have a source guide (a follow-up). Until one exists, the
+ * card title links to the category page rather than a dead end.
+ * ------------------------------------------------------------------------- */
+
+export type CategoryPick = {
+  id: string;
+  name: string;
+  /** Editorial "best for" label shown in place of a rating. */
+  badge: string;
+  /** Category slug (see lib/site.ts CATEGORIES). */
+  category: string;
+  /** The single headline spec shown on the card. */
+  spec: { label: string; value: string };
+  /** Approx. price string, or null when not confirmed (UI shows "Check price"). */
+  price: string | null;
+  /** Affiliate link id (see lib/site.ts) used by the /go redirect. */
+  linkId: string;
+  /** Retailer name for the "Check price at …" CTA. */
+  retailer: string;
+  /** Real product photo (see `Product.image`); falls back to an illustration. */
+  image?: string;
+  imageAlt: string;
+};
+
+export const CATEGORY_PICKS: CategoryPick[] = [
+  // --- Home Office (compact, renter-friendly WFH gear) ---------------------
+  {
+    id: "ikea-micke-desk",
+    name: "IKEA MICKE Desk 73×50 cm",
+    badge: "Smallest desk",
+    category: "home-office",
+    spec: { label: "Footprint", value: "73 × 50 cm" },
+    price: "~€55",
+    linkId: "ikea-micke-desk",
+    retailer: "IKEA",
+    imageAlt: "Illustration of a compact home-office desk",
+  },
+  {
+    id: "ikea-lagkapten-alex",
+    name: "IKEA LAGKAPTEN / ALEX Desk 120×60 cm",
+    badge: "Best desk with storage",
+    category: "home-office",
+    spec: { label: "Footprint", value: "120 × 60 cm" },
+    price: "~€115",
+    linkId: "ikea-lagkapten-alex",
+    retailer: "IKEA",
+    imageAlt: "Illustration of a home-office desk with a built-in drawer unit",
+  },
+  {
+    id: "ikea-millberget-chair",
+    name: "IKEA MILLBERGET Swivel Chair",
+    badge: "Best budget chair",
+    category: "home-office",
+    spec: { label: "Footprint", value: "70 × 70 cm" },
+    price: "~€99",
+    linkId: "ikea-millberget-chair",
+    retailer: "IKEA",
+    imageAlt: "Illustration of an ergonomic office chair",
+  },
+  {
+    id: "allsop-redmond-stand",
+    name: "Allsop Redmond Curved Monitor Stand",
+    badge: "Best monitor riser",
+    category: "home-office",
+    spec: { label: "Footprint", value: "37 × 28.6 cm" },
+    price: "~€44.90",
+    linkId: "allsop-redmond-stand",
+    retailer: "Harvey Norman",
+    imageAlt: "Illustration of a monitor riser on a home-office desk",
+  },
+  {
+    id: "ikea-navlinge-lamp",
+    name: "IKEA NÄVLINGE LED Clamp Spotlight",
+    badge: "Best desk lamp",
+    category: "home-office",
+    spec: { label: "Footprint", value: "Clamp-on (zero desk space)" },
+    price: "~€12",
+    linkId: "ikea-navlinge-lamp",
+    retailer: "IKEA",
+    imageAlt: "Illustration of a clamp-on desk lamp",
+  },
+  {
+    id: "ikea-dagotto-footrest",
+    name: "IKEA DAGOTTO Foot-rest",
+    badge: "Best footrest",
+    category: "home-office",
+    spec: { label: "Footprint", value: "49 × 38 cm" },
+    price: "~€13",
+    linkId: "ikea-dagotto-footrest",
+    retailer: "IKEA",
+    imageAlt: "Illustration of an under-desk foot rest for a home office",
+  },
+
+  // --- Smart Home (renter-friendly: plug-in / stick-on, no drilling) -------
+  {
+    id: "tapo-p110-plug",
+    name: "TP-Link Tapo P110 Mini Smart Plug",
+    badge: "Best smart plug",
+    category: "smart-home",
+    spec: { label: "Install", value: "Plug-in, no hub" },
+    price: "~€10.99",
+    linkId: "tapo-p110-plug",
+    retailer: "ElectroCity.ie",
+    imageAlt: "Illustration of a smart-home Wi-Fi plug",
+  },
+  {
+    id: "tapo-l530e-bulb",
+    name: "TP-Link Tapo L530E Smart Colour Bulb (E27)",
+    badge: "Cheapest smart bulb",
+    category: "smart-home",
+    spec: { label: "Connectivity", value: "Wi-Fi, no hub" },
+    price: "~€10.95",
+    linkId: "tapo-l530e-bulb",
+    retailer: "Expert.ie",
+    imageAlt: "Illustration of a smart-home Wi-Fi bulb",
+  },
+  {
+    id: "echo-dot-5",
+    name: "Amazon Echo Dot (5th Gen)",
+    badge: "Best smart speaker",
+    category: "smart-home",
+    spec: { label: "Install", value: "Plug-in, voice control" },
+    price: null,
+    linkId: "echo-dot-5",
+    retailer: "Currys",
+    imageAlt: "Illustration of a smart-home voice speaker",
+  },
+  {
+    id: "tapo-l900-strip",
+    name: "TP-Link Tapo L900-5 Smart Light Strip (5 m)",
+    badge: "Best light strip",
+    category: "smart-home",
+    spec: { label: "Mounting", value: "3M stick-on, no hub" },
+    price: "~€19.99",
+    linkId: "tapo-l900-strip",
+    retailer: "DID.ie",
+    imageAlt: "Illustration of a smart-home LED light strip",
+  },
+  {
+    id: "tapo-contact-sensor",
+    name: "TP-Link Tapo H100 Hub + T110 Contact Sensor",
+    badge: "Best door/window sensor",
+    category: "smart-home",
+    spec: { label: "Mounting", value: "3M stick-on, hub included" },
+    price: null,
+    linkId: "tapo-contact-sensor",
+    retailer: "Harvey Norman",
+    imageAlt: "Illustration of a smart-home door and window sensor",
+  },
+  {
+    id: "tado-radiator-v3",
+    name: "tado° Smart Radiator Thermostat Starter Kit V3+",
+    badge: "Best heating control",
+    category: "smart-home",
+    spec: { label: "Install", value: "Screws onto valve, no plumbing" },
+    price: "~€110",
+    linkId: "tado-radiator-v3",
+    retailer: "EnergyUpgrade.ie",
+    imageAlt: "Illustration of a smart-home radiator thermostat",
+  },
+
+  // --- Storage (space-saving, renter-safe, no fixings) ---------------------
+  {
+    id: "ikea-samla-45",
+    name: "IKEA SAMLA Box, transparent (45 L)",
+    badge: "Best stackable box",
+    category: "storage",
+    spec: { label: "Size", value: "56 × 39 × 28 cm (45 L)" },
+    price: "~€6",
+    linkId: "ikea-samla-45",
+    retailer: "IKEA",
+    imageAlt: "Illustration of a stackable storage box",
+  },
+  {
+    id: "ikea-skubb-case",
+    name: "IKEA SKUBB Storage Case",
+    badge: "Best under-bed box",
+    category: "storage",
+    spec: { label: "Size", value: "43 × 53 × 19 cm" },
+    price: "~€7",
+    linkId: "ikea-skubb-case",
+    retailer: "IKEA",
+    imageAlt: "Illustration of an under-bed storage box",
+  },
+  {
+    id: "ikea-stuk-case",
+    name: "IKEA STUK Storage Case",
+    badge: "Best slim under-bed case",
+    category: "storage",
+    spec: { label: "Size", value: "71 × 51 × 18 cm" },
+    price: null,
+    linkId: "ikea-stuk-case",
+    retailer: "IKEA",
+    imageAlt: "Illustration of a slim under-bed storage case",
+  },
+  {
+    id: "ikea-mulig-rail",
+    name: "IKEA MULIG Clothes Rack",
+    badge: "Best clothes rail",
+    category: "storage",
+    spec: { label: "Capacity", value: "20 kg · 99 × 46 × 152 cm" },
+    price: "~€8",
+    linkId: "ikea-mulig-rail",
+    retailer: "IKEA",
+    imageAlt: "Illustration of a freestanding storage clothes rail",
+  },
+  {
+    id: "ikea-skubb-shoe",
+    name: "IKEA SKUBB Hanging Organiser (16 pockets)",
+    badge: "Best vertical organiser",
+    category: "storage",
+    spec: { label: "Size", value: "16 pockets · 33 × 56 cm" },
+    price: "~€8",
+    linkId: "ikea-skubb-shoe",
+    retailer: "IKEA",
+    imageAlt: "Illustration of a hanging storage organiser",
+  },
+  {
+    id: "jml-vac-pack-go",
+    name: "JML Vac Pack Go (portable vacuum pump)",
+    badge: "Best space-saver",
+    category: "storage",
+    spec: { label: "Compression", value: "~3× more in the same bag" },
+    price: "~€24.95",
+    linkId: "jml-vac-pack-go",
+    retailer: "Homevalue.ie",
+    imageAlt: "Illustration of a vacuum storage space-saver",
+  },
+];
+
+/* ------------------------------------------------------------------------- *
+ * Unified card view
+ *
+ * Air fryers (`Product`) and robot vacuums (`RobotVacuum`) have different spec
+ * shapes, but the Best Picks grid and category pages render a single card for
+ * both. `PickView` is that shared, display-ready shape: one headline spec plus
+ * a price and a CTA. Mapping here keeps the components dumb and the honesty
+ * rules intact (price stays `null` → "Check price"; no invented numbers).
+ * ------------------------------------------------------------------------- */
+
+export type PickView = {
+  id: string;
+  name: string;
+  /** Editorial "best for" label shown in place of a rating. */
+  badge: string;
+  /** Real product photo when we have one; card falls back to an illustration. */
+  image?: string;
+  imageAlt: string;
+  /** The single headline spec shown on the card. */
+  spec: { label: string; value: string };
+  /** Approx. price string, or null → the card shows "Check price". */
+  price: string | null;
+  linkId: string;
+  /** Where the card title links (product page or source guide). */
+  href: string;
+};
+
+function airFryerToPick(product: Product): PickView {
+  return {
+    id: product.id,
+    name: product.name,
+    badge: product.badge,
+    image: product.image,
+    imageAlt: product.imageAlt,
+    spec: { label: "Footprint", value: product.footprint },
+    price: product.price,
+    linkId: product.linkId,
+    href: getProductHref(product, AIR_FRYER_GUIDE_SLUG),
+  };
+}
+
+/**
+ * The most space-relevant *confirmed* spec for a robot card: height if we have
+ * it (it's what decides whether it fits under low rented furniture), otherwise
+ * the type. Never surfaces a "—" placeholder as if it were a real figure.
+ */
+function vacuumHeadlineSpec(vacuum: RobotVacuum): { label: string; value: string } {
+  const height = vacuum.specs.find((s) => s.label === "Height" && s.value !== "—");
+  if (height) return height;
+  const type = vacuum.specs.find((s) => s.label === "Type");
+  return type ?? vacuum.specs[0];
+}
+
+function vacuumToPick(vacuum: RobotVacuum): PickView {
+  return {
+    id: vacuum.id,
+    name: vacuum.name,
+    badge: vacuum.badge,
+    image: vacuum.image,
+    imageAlt: vacuum.imageAlt,
+    spec: vacuumHeadlineSpec(vacuum),
+    price: vacuum.price,
+    linkId: vacuum.linkId,
+    href: `/guide/${ROBOT_VACUUM_GUIDE_SLUG}`,
+  };
+}
+
+function categoryPickToPick(item: CategoryPick): PickView {
+  return {
+    id: item.id,
+    name: item.name,
+    badge: item.badge,
+    image: item.image,
+    imageAlt: item.imageAlt,
+    spec: item.spec,
+    price: item.price,
+    linkId: item.linkId,
+    // No source guide/product page yet — link to the category page (not a dead
+    // end). Switch to `/guide/<slug>` when each category's guide is written.
+    href: `/${item.category}`,
+  };
+}
+
+/** Featured picks for the homepage grid, as display-ready cards. */
+export function getFeaturedPicks(): PickView[] {
+  return AIR_FRYERS.map(airFryerToPick);
+}
+
+/**
+ * Display-ready picks for a category slug, merging every product type that
+ * belongs to it. Robot vacuums now surface under "cleaning" (their guide is
+ * published). Add new categories' picks here as their guides ship.
+ */
+export function getCategoryPicks(category: string): PickView[] {
+  const picks: PickView[] = AIR_FRYERS.filter(
+    (product) => product.category === category,
+  ).map(airFryerToPick);
+
+  if (category === "cleaning") {
+    picks.push(...ROBOT_VACUUMS.map(vacuumToPick));
+  }
+
+  picks.push(
+    ...CATEGORY_PICKS.filter((item) => item.category === category).map(
+      categoryPickToPick,
+    ),
+  );
+
+  return picks;
 }

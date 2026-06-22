@@ -2,7 +2,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
 import { getGuidesByCategory } from "@/lib/guides";
-import { AIR_FRYER_GUIDE_SLUG, getProductsByCategory, PRICE_CHECKED } from "@/lib/products";
+import { getCategoryPicks, PRICE_CHECKED } from "@/lib/products";
 import { findCategory } from "@/lib/site";
 import { notFound } from "next/navigation";
 
@@ -21,7 +21,7 @@ export default function CategoryPage({ slug }: { slug: string }) {
     notFound();
   }
 
-  const products = getProductsByCategory(slug);
+  const products = getCategoryPicks(slug);
   const guides = getGuidesByCategory(slug);
   const hasContent = products.length > 0 || guides.length > 0;
 
@@ -42,12 +42,8 @@ export default function CategoryPage({ slug }: { slug: string }) {
               </Link>
             </div>
             <div className="product-grid">
-              {products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  guideSlug={AIR_FRYER_GUIDE_SLUG}
-                />
+              {products.map((pick) => (
+                <ProductCard key={pick.id} pick={pick} />
               ))}
             </div>
             <p className="price-note">

@@ -298,6 +298,17 @@ a:hover {
   object-fit: cover;
 }
 
+/* Real product photo filling an image slot. Contained on the soft gradient so
+   product shots with their own background still sit nicely in the frame. */
+.img-ph__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8%;
+}
+
 /* Header ----------------------------------------------------------------- */
 .site-header {
   position: sticky;

@@ -5,7 +5,7 @@ import EmailSignup from "@/components/EmailSignup";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import ProductCard from "@/components/ProductCard";
 import TrustStrip from "@/components/TrustStrip";
-import { AIR_FRYER_GUIDE_SLUG, getFeaturedProducts } from "@/lib/products";
+import { getFeaturedPicks, getFeaturedProducts } from "@/lib/products";
 import { CATEGORIES, SITE_NAME } from "@/lib/site";
 
 const HERO_BADGES = ["Researched picks", "Expert comparisons", "Real deals"];
@@ -31,6 +31,7 @@ function Tick() {
 
 export default function Home() {
   const featured = getFeaturedProducts();
+  const featuredPicks = getFeaturedPicks();
 
   return (
     <>
@@ -82,12 +83,8 @@ export default function Home() {
           </div>
 
           <div className="product-grid product-grid--featured">
-            {featured.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                guideSlug={AIR_FRYER_GUIDE_SLUG}
-              />
+            {featuredPicks.map((pick) => (
+              <ProductCard key={pick.id} pick={pick} />
             ))}
           </div>
         </div>

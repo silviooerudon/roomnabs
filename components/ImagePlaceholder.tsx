@@ -33,11 +33,18 @@ function pickArt(text: string): Art | null {
 }
 
 export default function ImagePlaceholder({
+  src,
   alt,
   label = "Image",
   fill = false,
   framed = true,
 }: {
+  /**
+   * Real photo URL (served from /public). When set, the photo is rendered and
+   * the illustration fallback is skipped. Leave undefined to show the on-brand
+   * illustration picked from `alt`/`label`.
+   */
+  src?: string;
   alt: string;
   label?: string;
   /** Absolutely fill the parent (for full-bleed hero slots). */
@@ -52,6 +59,16 @@ export default function ImagePlaceholder({
   ]
     .filter(Boolean)
     .join(" ");
+
+  // A real photo wins over the illustration fallback when we have one.
+  if (src) {
+    return (
+      <div className={classes}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} loading="lazy" className="img-ph__photo" />
+      </div>
+    );
+  }
 
   const art = pickArt(`${alt} ${label}`);
 
