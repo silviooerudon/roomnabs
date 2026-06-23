@@ -34,20 +34,24 @@ mkdir -p "$DEST"
 # product-id  ->  image URL   (leave the URL empty to skip)
 declare -A IMAGES=(
   # --- Air fryers (small-kitchen) ---
-  [ninja-af100uk]=""
-  [philips-na230]=""
-  [tefal-ey245840]=""
-  [morphy-480005]=""
-  [ninja-af180uk]=""
-  [ninja-crispi-fn101]=""
+  # Official manufacturer product images (verified HTTP 200, June 2026).
+  [ninja-af100uk]="https://www.ninjakitchen.ie/cdn/shop/files/AF100UK_1.png?v=1721288381&width=2048"
+  # philips-na230: Philips does NOT host a real photo on its own CDN — its
+  # official page pulls the image from Icecat (third party). This is that same
+  # official manufacturer image, served by Icecat.
+  [philips-na230]="https://images.icecat.biz/img/gallery/c5e535148f84198ff32a80cd848f35ce94f879a8.jpg"
+  [tefal-ey245840]="https://www.tefal.co.uk/medias/7211419106.jpg?context=bWFzdGVyfHJvb3R8NjE4MzN8aW1hZ2UvanBlZ3xhRFF5TDJoak9DOHhOamswTlRZNE1UZzVNVE0xT0M1cWNHY3xiNzFlNmJkODNkNTJjODkzNjFkNTk2NGYxOGM3NTU3ZWEzNzdkMjQxYjM0NmQ0NzBmMTcyY2Q3MGJlYjZjNGE5"
+  [morphy-480005]="https://www.morphyrichards.co.uk/cdn/shop/files/63_c774378b-9a10-479b-bc03-6981df1f53ef.png?v=1695712000"
+  [ninja-af180uk]="https://assets.sharkninja.com/image/upload/SharkNinja-EU/AF180UKBRN_01.jpg"
+  [ninja-crispi-fn101]="https://assets.sharkninja.com/image/upload/SharkNinja-EU/FN101UKGY_01.jpg"
   # --- Robot vacuums (cleaning) ---
   # Official manufacturer product images (verified HTTP 200, June 2026).
   [eufy-robovac-11s-max]="https://cdn.shopify.com/s/files/1/0504/7094/4954/files/11s_max.png?v=1723126852&width=1920"
   [lefant-m210-pro]="https://www.lefant.com/cdn/shop/files/210P_2.1.jpg?v=1737709094"
   [eufy-c10]="https://cdn.shopify.com/s/files/1/0504/7094/4954/files/C10.png?v=1758623383"
-  # roborock-q5: base Q5 page is gone from roborock.com (only the different Q5
-  # Max+ remains). Left blank on purpose — keeps the SVG illustration fallback.
-  [roborock-q5]=""
+  # roborock-q5: the base Q5 product page is gone, but the official base-Q5 image
+  # (no dock) still lives on Roborock's own CDN, linked from the Q5 Series page.
+  [roborock-q5]="https://us.roborock.com/cdn/shop/t/86/assets/robo_q5_q5.png?v=64955159893738628791694687836"
   [tapo-rv30-max-plus]="https://static.tp-link.com/upload/image-line/01_normal_20241019001632q.jpg"
   [irobot-roomba-694]="https://www.irobot.com/on/demandware.static/-/Sites-master-catalog-irobot/default/dwca56f678/images/large/roomba/R694020_1.jpg"
 )
