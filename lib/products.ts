@@ -313,7 +313,8 @@ export const ROBOT_VACUUMS: RobotVacuum[] = [
     price: null,
     linkId: "eufy-11s-max",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the Eufy RoboVac 11S MAX robot vacuum",
+    image: "/img/products/eufy-robovac-11s-max.webp",
+    imageAlt: "Eufy RoboVac 11S MAX robot vacuum",
   },
   {
     id: "lefant-m210-pro",
@@ -333,7 +334,8 @@ export const ROBOT_VACUUMS: RobotVacuum[] = [
     price: null,
     linkId: "lefant-m210-pro",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the Lefant M210 Pro robot vacuum",
+    image: "/img/products/lefant-m210-pro.webp",
+    imageAlt: "Lefant M210 Pro robot vacuum",
   },
   {
     id: "eufy-c10",
@@ -353,7 +355,8 @@ export const ROBOT_VACUUMS: RobotVacuum[] = [
     price: null,
     linkId: "eufy-c10",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the Eufy C10 robot vacuum",
+    image: "/img/products/eufy-c10.webp",
+    imageAlt: "Eufy C10 robot vacuum",
   },
   {
     id: "roborock-q5",
@@ -393,8 +396,8 @@ export const ROBOT_VACUUMS: RobotVacuum[] = [
     price: null,
     linkId: "tapo-rv30-max-plus",
     retailer: "Amazon.ie",
-    imageAlt:
-      "Placeholder image of the TP-Link Tapo RV30 Max Plus robot vacuum",
+    image: "/img/products/tapo-rv30-max-plus.webp",
+    imageAlt: "TP-Link Tapo RV30 Max Plus robot vacuum",
   },
   {
     id: "irobot-roomba-694",
@@ -414,7 +417,8 @@ export const ROBOT_VACUUMS: RobotVacuum[] = [
     price: null,
     linkId: "roomba-694",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the iRobot Roomba 694 robot vacuum",
+    image: "/img/products/irobot-roomba-694.webp",
+    imageAlt: "iRobot Roomba 694 robot vacuum",
   },
 ];
 
