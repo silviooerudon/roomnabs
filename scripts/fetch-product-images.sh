@@ -17,6 +17,14 @@
 #
 # The script names each file <id>.<ext> (extension taken from the URL, default
 # .jpg) and skips any entry whose URL is still the empty placeholder.
+#
+# OPTIMISE AFTER DOWNLOAD: the originals can be multi-MB. We convert each to a
+# resized WebP (max 1000px, quality 82) with `sharp` (a Next.js dependency) and
+# point the `image` fields at the .webp, e.g.:
+#   node -e 'const s=require("sharp");s("public/img/products/<id>.png")
+#     .resize({width:1000,height:1000,fit:"inside",withoutEnlargement:true})
+#     .webp({quality:82}).toFile("public/img/products/<id>.webp")'
+# This took the robot-vacuum set from ~3.8 MB to ~140 KB total.
 
 set -euo pipefail
 
@@ -33,12 +41,15 @@ declare -A IMAGES=(
   [ninja-af180uk]=""
   [ninja-crispi-fn101]=""
   # --- Robot vacuums (cleaning) ---
-  [eufy-robovac-11s-max]=""
-  [lefant-m210-pro]=""
-  [eufy-c10]=""
+  # Official manufacturer product images (verified HTTP 200, June 2026).
+  [eufy-robovac-11s-max]="https://cdn.shopify.com/s/files/1/0504/7094/4954/files/11s_max.png?v=1723126852&width=1920"
+  [lefant-m210-pro]="https://www.lefant.com/cdn/shop/files/210P_2.1.jpg?v=1737709094"
+  [eufy-c10]="https://cdn.shopify.com/s/files/1/0504/7094/4954/files/C10.png?v=1758623383"
+  # roborock-q5: base Q5 page is gone from roborock.com (only the different Q5
+  # Max+ remains). Left blank on purpose — keeps the SVG illustration fallback.
   [roborock-q5]=""
-  [tapo-rv30-max-plus]=""
-  [irobot-roomba-694]=""
+  [tapo-rv30-max-plus]="https://static.tp-link.com/upload/image-line/01_normal_20241019001632q.jpg"
+  [irobot-roomba-694]="https://www.irobot.com/on/demandware.static/-/Sites-master-catalog-irobot/default/dwca56f678/images/large/roomba/R694020_1.jpg"
 )
 
 for id in "${!IMAGES[@]}"; do
