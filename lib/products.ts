@@ -491,7 +491,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€55",
     linkId: "ikea-micke-desk",
     retailer: "IKEA",
-    imageAlt: "Illustration of a compact home-office desk",
+    image: "/img/products/ikea-micke-desk.webp",
+    imageAlt: "IKEA MICKE desk",
   },
   {
     id: "ikea-lagkapten-alex",
@@ -502,7 +503,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€115",
     linkId: "ikea-lagkapten-alex",
     retailer: "IKEA",
-    imageAlt: "Illustration of a home-office desk with a built-in drawer unit",
+    image: "/img/products/ikea-lagkapten-alex.webp",
+    imageAlt: "IKEA LAGKAPTEN desk with ALEX drawer unit",
   },
   {
     id: "ikea-millberget-chair",
@@ -513,7 +515,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€99",
     linkId: "ikea-millberget-chair",
     retailer: "IKEA",
-    imageAlt: "Illustration of an ergonomic office chair",
+    image: "/img/products/ikea-millberget-chair.webp",
+    imageAlt: "IKEA MILLBERGET swivel chair",
   },
   {
     id: "allsop-redmond-stand",
@@ -524,7 +527,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€44.90",
     linkId: "allsop-redmond-stand",
     retailer: "Harvey Norman",
-    imageAlt: "Illustration of a monitor riser on a home-office desk",
+    image: "/img/products/allsop-redmond-stand.webp",
+    imageAlt: "Allsop Redmond adjustable monitor/laptop stand",
   },
   {
     id: "ikea-navlinge-lamp",
@@ -535,7 +539,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€12",
     linkId: "ikea-navlinge-lamp",
     retailer: "IKEA",
-    imageAlt: "Illustration of a clamp-on desk lamp",
+    image: "/img/products/ikea-navlinge-lamp.webp",
+    imageAlt: "IKEA NÄVLINGE LED clamp spotlight",
   },
   {
     id: "ikea-dagotto-footrest",
@@ -546,7 +551,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€13",
     linkId: "ikea-dagotto-footrest",
     retailer: "IKEA",
-    imageAlt: "Illustration of an under-desk foot rest for a home office",
+    image: "/img/products/ikea-dagotto-footrest.webp",
+    imageAlt: "IKEA DAGOTTO foot-rest",
   },
 
   // --- Smart Home (renter-friendly: plug-in / stick-on, no drilling) -------
@@ -559,7 +565,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€10.99",
     linkId: "tapo-p110-plug",
     retailer: "ElectroCity.ie",
-    imageAlt: "Illustration of a smart-home Wi-Fi plug",
+    image: "/img/products/tapo-p110-plug.webp",
+    imageAlt: "TP-Link Tapo P110 smart plug",
   },
   {
     id: "tapo-l530e-bulb",
@@ -570,7 +577,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€10.95",
     linkId: "tapo-l530e-bulb",
     retailer: "Expert.ie",
-    imageAlt: "Illustration of a smart-home Wi-Fi bulb",
+    image: "/img/products/tapo-l530e-bulb.webp",
+    imageAlt: "TP-Link Tapo L530E smart bulb",
   },
   {
     id: "echo-dot-5",
@@ -592,7 +600,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€19.99",
     linkId: "tapo-l900-strip",
     retailer: "DID.ie",
-    imageAlt: "Illustration of a smart-home LED light strip",
+    image: "/img/products/tapo-l900-strip.webp",
+    imageAlt: "TP-Link Tapo L900-5 smart light strip",
   },
   {
     id: "tapo-contact-sensor",
@@ -603,7 +612,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: null,
     linkId: "tapo-contact-sensor",
     retailer: "Harvey Norman",
-    imageAlt: "Illustration of a smart-home door and window sensor",
+    image: "/img/products/tapo-contact-sensor.webp",
+    imageAlt: "TP-Link Tapo T110 contact sensor",
   },
   {
     id: "tado-radiator-v3",
@@ -614,7 +624,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€110",
     linkId: "tado-radiator-v3",
     retailer: "EnergyUpgrade.ie",
-    imageAlt: "Illustration of a smart-home radiator thermostat",
+    image: "/img/products/tado-radiator-v3.webp",
+    imageAlt: "tado° smart radiator thermostat starter kit",
   },
 
   // --- Storage (space-saving, renter-safe, no fixings) ---------------------
@@ -627,7 +638,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€6",
     linkId: "ikea-samla-45",
     retailer: "IKEA",
-    imageAlt: "Illustration of a stackable storage box",
+    image: "/img/products/ikea-samla-45.webp",
+    imageAlt: "IKEA SAMLA transparent storage box",
   },
   {
     id: "ikea-skubb-case",
@@ -638,7 +650,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€7",
     linkId: "ikea-skubb-case",
     retailer: "IKEA",
-    imageAlt: "Illustration of an under-bed storage box",
+    image: "/img/products/ikea-skubb-case.webp",
+    imageAlt: "IKEA SKUBB storage case",
   },
   {
     id: "ikea-stuk-case",
@@ -649,7 +662,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: null,
     linkId: "ikea-stuk-case",
     retailer: "IKEA",
-    imageAlt: "Illustration of a slim under-bed storage case",
+    image: "/img/products/ikea-stuk-case.webp",
+    imageAlt: "IKEA STUK storage case (white/black)",
   },
   {
     id: "ikea-mulig-rail",
@@ -660,7 +674,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€8",
     linkId: "ikea-mulig-rail",
     retailer: "IKEA",
-    imageAlt: "Illustration of a freestanding storage clothes rail",
+    image: "/img/products/ikea-mulig-rail.webp",
+    imageAlt: "IKEA MULIG clothes rack",
   },
   {
     id: "ikea-skubb-shoe",
@@ -671,7 +686,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€8",
     linkId: "ikea-skubb-shoe",
     retailer: "IKEA",
-    imageAlt: "Illustration of a hanging storage organiser",
+    image: "/img/products/ikea-skubb-shoe.webp",
+    imageAlt: "IKEA SKUBB hanging organiser with 16 pockets",
   },
   {
     id: "jml-vac-pack-go",
@@ -682,7 +698,8 @@ export const CATEGORY_PICKS: CategoryPick[] = [
     price: "~€24.95",
     linkId: "jml-vac-pack-go",
     retailer: "Homevalue.ie",
-    imageAlt: "Illustration of a vacuum storage space-saver",
+    image: "/img/products/jml-vac-pack-go.webp",
+    imageAlt: "JML Vac Pack Go portable vacuum storage system",
   },
 ];
 
