@@ -89,7 +89,8 @@ export const AIR_FRYERS: Product[] = [
     price: "~€94.95",
     linkId: "af100uk-amazon",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the Ninja 3.8L Air Fryer (AF100UK)",
+    image: "/img/products/ninja-af100uk.webp",
+    imageAlt: "Ninja 3.8L Air Fryer (AF100UK)",
     details: {
       tagline:
         "The pick we point most small-kitchen renters at: a genuinely compact footprint, a confirmed price, and one of the lowest running costs here.",
@@ -122,8 +123,8 @@ export const AIR_FRYERS: Product[] = [
     price: "~€92.68",
     linkId: "philips-na230-amazon",
     retailer: "Amazon.ie",
-    imageAlt:
-      "Placeholder image of the Philips 2000 Series air fryer (NA230/09)",
+    image: "/img/products/philips-na230.webp",
+    imageAlt: "Philips 2000 Series air fryer (NA230/09)",
     details: {
       tagline:
         "The most capacity per euro here: a 6.2 L drawer at the lowest confirmed price in the guide, if you can spare the worktop depth.",
@@ -156,7 +157,8 @@ export const AIR_FRYERS: Product[] = [
     price: null,
     linkId: "tefal-eyf-amazon",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the Tefal Easy Fry Max 5L air fryer",
+    image: "/img/products/tefal-ey245840.webp",
+    imageAlt: "Tefal Easy Fry Max 5L air fryer",
   },
   {
     id: "morphy-480005",
@@ -170,7 +172,8 @@ export const AIR_FRYERS: Product[] = [
     price: null,
     linkId: "morphy-480005-amazon",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the Morphy Richards Digital 3L air fryer",
+    image: "/img/products/morphy-480005.webp",
+    imageAlt: "Morphy Richards Digital 3L air fryer (Rose Gold)",
   },
   {
     id: "ninja-af180uk",
@@ -184,7 +187,8 @@ export const AIR_FRYERS: Product[] = [
     price: "~€149.99",
     linkId: "af180uk-amazon",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the Ninja MAX PRO 6.2L air fryer (AF180UK)",
+    image: "/img/products/ninja-af180uk.webp",
+    imageAlt: "Ninja MAX PRO 6.2L air fryer (AF180UK)",
   },
   {
     id: "ninja-crispi-fn101",
@@ -198,7 +202,8 @@ export const AIR_FRYERS: Product[] = [
     price: "~€179",
     linkId: "crispi-fn101-euronics",
     retailer: "Euronics",
-    imageAlt: "Placeholder image of the Ninja CRISPi portable glass air fryer",
+    image: "/img/products/ninja-crispi-fn101.webp",
+    imageAlt: "Ninja CRISPi portable glass air fryer",
   },
 ];
 
@@ -376,7 +381,8 @@ export const ROBOT_VACUUMS: RobotVacuum[] = [
     price: null,
     linkId: "roborock-q5",
     retailer: "Amazon.ie",
-    imageAlt: "Placeholder image of the Roborock Q5 robot vacuum",
+    image: "/img/products/roborock-q5.webp",
+    imageAlt: "Roborock Q5 robot vacuum",
   },
   {
     id: "tapo-rv30-max-plus",
