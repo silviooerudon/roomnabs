@@ -117,9 +117,13 @@ export default function Home() {
               </Link>
             </div>
             <div className="cat-grid">
-              {CATEGORIES.map((category) => (
-                <CategoryTile key={category.slug} category={category} />
-              ))}
+              {/* Product categories only — "Deals" is hidden while it has no
+                  real content (the /deals page still exists, just not in menus). */}
+              {CATEGORIES.filter((category) => category.slug !== "deals").map(
+                (category) => (
+                  <CategoryTile key={category.slug} category={category} />
+                ),
+              )}
             </div>
           </div>
         </div>
