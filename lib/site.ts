@@ -149,11 +149,12 @@ export const LINKS: ShortLink[] = [
     url: "https://www.amazon.ie/dp/B0CP43NP25",
   },
   {
-    // TODO: Amazon.ie ASIN não confirmado — pegar via SiteStripe e migrar para
-    // uma URL /dp/ASIN do Amazon.ie (como os demais). Mantido no Euronics por ora.
+    // Was a Euronics deeplink (broke on catalogue changes, no commission). Now an
+    // Amazon.ie search; the /go redirect appends our tag automatically.
+    // TODO: swap for an Amazon.ie /dp/ASIN once confirmed via SiteStripe.
     id: "crispi-fn101-euronics",
-    label: "Ninja Crispi 4-in-1 Portable (FN101) at Euronics",
-    url: "https://euronics.ie/products/ninja-crispi-4-in-1-portable-glass-air-fryer-cooking-system-blue-fn101ukgy",
+    label: "Ninja CRISPi FN101UKGY at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Ninja+CRISPi+FN101UKGY",
   },
   {
     id: "morphy-480005-amazon",
@@ -171,38 +172,39 @@ export const LINKS: ShortLink[] = [
     url: "https://www.amazon.ie/dp/B0CKLMQMYJ",
   },
 
-  // Compact coffee machines guide (Ireland). Plain Irish-retailer store URLs
-  // for now — affiliate deeplinks land in Phase 3. Same 302 + sponsored nofollow
-  // treatment as the air-fryer links above.
+  // Compact coffee machines guide (Ireland). Smaller Irish-retailer deeplinks
+  // kept 404'ing on catalogue changes (and earned no commission), so these are
+  // now Amazon.ie searches — the /go redirect appends our tag automatically.
+  // Same 302 + sponsored nofollow treatment as the air-fryer links above.
   {
     id: "essenza-mini",
-    label: "Nespresso by Krups Essenza Mini (XN110840) at Currys",
-    url: "https://www.currys.ie/ieen/household-appliances/small-kitchen-appliances/coffee-machines-and-accessories/coffee-machines/nespresso-by-krups-essenza-mini-xn110840-coffee-machine-piano-black-10159576-pdt.html",
+    label: "Nespresso Krups Essenza Mini XN110840 at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Nespresso+Krups+Essenza+Mini+XN110840",
   },
   {
     id: "vertuo-pop-hn",
-    label: "De'Longhi Nespresso Vertuo Pop (ENV90.B) at Harvey Norman",
-    url: "https://www.harveynorman.ie/small-appliances/coffee-machines/nespresso-en/delonghi-nespresso-vertuo-pop-coffee-machine-env90.b-black.html",
+    label: "De'Longhi Nespresso Vertuo Pop ENV90.B at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Delonghi+Nespresso+Vertuo+Pop+ENV90.B",
   },
   {
     id: "pixie-hn",
-    label: "Krups Nespresso Pixie (XN306T40) at Harvey Norman",
-    url: "https://www.harveynorman.ie/small-appliances/coffee-machines/nespresso-en/krups-nespresso-pixie-coffee-machine-xn306t40-titanium.html",
+    label: "Krups Nespresso Pixie XN306T40 at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Krups+Nespresso+Pixie+XN306T40",
   },
   {
     id: "dedica",
-    label: "De'Longhi Dedica (EC685M) at Currys",
-    url: "https://www.currys.ie/products/delonghi-dedica-ec685m-coffee-machine-silver-10172671.html",
+    label: "De'Longhi Dedica EC685M at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Delonghi+Dedica+EC685M",
   },
   {
     id: "bambino-plus-hn",
-    label: "Sage the Bambino Plus (SES500) at Harvey Norman",
-    url: "https://www.harveynorman.ie/small-appliances/coffee-machines/espresso/sage-the-bambino-plus-coffee-machine-ses500bss4guk1-brushed-stainless-steel.html",
+    label: "Sage the Bambino Plus SES500 at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Sage+Bambino+Plus+SES500",
   },
   {
     id: "magnifica-s",
-    label: "De'Longhi Magnifica S (ECAM22.320.SB) at Currys",
-    url: "https://www.currys.ie/ieen/household-appliances/small-kitchen-appliances/coffee-machines-and-accessories/coffee-machines/delonghi-magnifica-s-ecam-22-320-sb-bean-to-cup-coffee-machine-silver-21485747-pdt.html",
+    label: "De'Longhi Magnifica S ECAM22.320.SB at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Delonghi+Magnifica+S+ECAM22.320.SB",
   },
   {
     id: "dolce-gusto-genio",
@@ -211,8 +213,8 @@ export const LINKS: ShortLink[] = [
   },
   {
     id: "rh-buckingham-did",
-    label: "Russell Hobbs Buckingham Filter Coffee Maker (20680) at DID",
-    url: "https://www.did.ie/products/russell-hobbs-125l-buckingham-filter-coffee-maker-stainless-steel-20680",
+    label: "Russell Hobbs Buckingham Filter Coffee Maker 20680 at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Russell+Hobbs+Buckingham+Coffee+Maker+20680",
   },
 
   // Compact robot vacuums guide (small / rented apartments, Ireland-EU). We
@@ -251,9 +253,10 @@ export const LINKS: ShortLink[] = [
     url: "https://www.amazon.ie/s?k=iRobot+Roomba+694",
   },
 
-  // Home Office picks (compact / renter-friendly WFH gear). URLs are the live
-  // Irish retailer listings checked June 2026. Same 302 + sponsored nofollow
-  // treatment as the links above.
+  // Home Office picks (compact / renter-friendly WFH gear). IKEA items keep their
+  // direct product URLs; the non-IKEA pick (Allsop) is an Amazon.ie search since
+  // the retailer deeplink was fragile and earned no commission. Same 302 +
+  // sponsored nofollow treatment as the links above.
   {
     id: "ikea-micke-desk",
     label: "IKEA MICKE Desk 73×50 cm at IKEA",
@@ -271,8 +274,8 @@ export const LINKS: ShortLink[] = [
   },
   {
     id: "allsop-redmond-stand",
-    label: "Allsop Redmond Curved Monitor Stand at Harvey Norman",
-    url: "https://www.harveynorman.ie/computing/computer-accessories/allsop-redmond-curved-monitor-stand.html",
+    label: "Allsop Redmond Curved Monitor Stand at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Allsop+Redmond+Curved+Monitor+Stand",
   },
   {
     id: "ikea-navlinge-lamp",
@@ -285,36 +288,38 @@ export const LINKS: ShortLink[] = [
     url: "https://www.ikea.com/ie/en/p/dagotto-foot-rest-black-40240989/",
   },
 
-  // Smart Home picks (renter-friendly: plug-in / stick-on, no drilling).
+  // Smart Home picks (renter-friendly: plug-in / stick-on, no drilling). These
+  // were small-retailer deeplinks that broke on catalogue changes and earned no
+  // commission, so they're now Amazon.ie searches (tag appended by /go).
   {
     id: "tapo-p110-plug",
-    label: "TP-Link Tapo P110 Mini Smart Plug at ElectroCity.ie",
-    url: "https://www.electrocity.ie/product/tapo-by-tp-link-p110-mini-smart-wi-fi-plug-with-energy-monitoring/",
+    label: "TP-Link Tapo P110 Mini Smart Plug at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=TP-Link+Tapo+P110+Smart+Plug",
   },
   {
     id: "tapo-l530e-bulb",
-    label: "TP-Link Tapo L530E Smart Colour Bulb at Expert.ie",
-    url: "https://www.expert.ie/tplink-wifi-bulb-dimmable-white-screw-tapo-l530e/",
+    label: "TP-Link Tapo L530E Smart Colour Bulb (E27) at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=TP-Link+Tapo+L530E+Smart+Bulb+E27",
   },
   {
     id: "echo-dot-5",
-    label: "Amazon Echo Dot (5th Gen) at Currys",
-    url: "https://www.currys.ie/products/amazon-echo-dot-5th-gen-smart-speaker-with-alexa-charcoal-10244665.html",
+    label: "Amazon Echo Dot 5th Gen at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=Amazon+Echo+Dot+5th+Gen",
   },
   {
     id: "tapo-l900-strip",
-    label: "TP-Link Tapo L900-5 Smart Light Strip (5 m) at DID.ie",
-    url: "https://www.did.ie/products/tp-link-smart-wifi-led-light-strip-multicolour-tapol9005",
+    label: "TP-Link Tapo L900-5 Smart Light Strip (5 m) at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=TP-Link+Tapo+L900-5+Smart+Light+Strip",
   },
   {
     id: "tapo-contact-sensor",
-    label: "TP-Link Tapo T110 Contact Sensor at Harvey Norman",
-    url: "https://www.harveynorman.ie/computing/connected-home-en/all-connected-home/tp-link-tapo-smart-contact-sensor.html",
+    label: "TP-Link Tapo T110 Contact Sensor at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=TP-Link+Tapo+T110+Contact+Sensor",
   },
   {
     id: "tado-radiator-v3",
-    label: "tado° Smart Radiator Thermostat Starter Kit V3+ at EnergyUpgrade.ie",
-    url: "https://www.energyupgrade.ie/products/tado-smart-radiator-thermostat-starter-kit-v3",
+    label: "tado° Smart Radiator Thermostat Starter Kit V3+ at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=tado+Smart+Radiator+Thermostat+Starter+Kit+V3",
   },
 
   // Storage picks (space-saving, renter-safe, no fixings).
@@ -345,8 +350,8 @@ export const LINKS: ShortLink[] = [
   },
   {
     id: "jml-vac-pack-go",
-    label: "JML Vac Pack Go portable vacuum pump at Homevalue.ie",
-    url: "https://www.homevalue.ie/p/jml-vac-pack-go/17344",
+    label: "JML Vac Pack Go portable vacuum pump at Amazon.ie",
+    url: "https://www.amazon.ie/s?k=JML+Vac+Pack+Go",
   },
 ];
 
