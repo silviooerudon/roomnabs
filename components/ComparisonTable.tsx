@@ -5,7 +5,12 @@ import type { Product } from "@/lib/products";
  * Side-by-side comparison of the picks. Products as rows (scales past a handful)
  * with specs in columns. No ratings/scores by design — the editorial badge
  * stands in for them. Prices the guide hasn't confirmed show "Check price"
- * rather than an invented number. Scrolls horizontally on small screens.
+ * rather than an invented number.
+ *
+ * Responsive: on desktop it's a clean table with clear row separation. On small
+ * screens the horizontal table is unreadable, so each product collapses into a
+ * stacked card — every cell carries its column name (via `data-label`) so the
+ * value reads as "label: value" without a wide horizontal scroll.
  */
 export default function ComparisonTable({
   products,
@@ -16,7 +21,7 @@ export default function ComparisonTable({
 }) {
   return (
     <div className="compare">
-      <table>
+      <table className="compare__table">
         <caption className="sr-only">{caption}</caption>
         <thead>
           <tr>
@@ -33,14 +38,16 @@ export default function ComparisonTable({
         <tbody>
           {products.map((product) => (
             <tr key={product.id}>
-              <th scope="row">
+              <th scope="row" className="compare__pick">
                 <span className="compare__name">{product.name}</span>
                 <Badge>{product.badge}</Badge>
               </th>
-              <td>{product.capacity}</td>
-              <td>{product.footprint}</td>
-              <td>{product.runCost}</td>
-              <td>{product.price ?? "—"}</td>
+              <td data-label="Capacity">{product.capacity}</td>
+              <td data-label="Footprint">{product.footprint}</td>
+              <td data-label="Run cost">{product.runCost}</td>
+              <td data-label="Approx. price">
+                {product.price ?? "Check price"}
+              </td>
               <td className="compare__cta">
                 <a
                   className="btn btn--primary"
