@@ -355,14 +355,14 @@ export function findLink(id: string): ShortLink | undefined {
 }
 
 /**
- * Footer "Explore" column — the primary destinations, mirroring the reference
- * footer (Best Picks / Comparisons / Guides / Deals).
+ * Footer "Explore" column — the primary destinations (Best Picks / Comparisons
+ * / Guides). "Deals" is omitted on purpose while that page has no real content;
+ * re-add it here (and in the header nav) once there are verified deals to show.
  */
 export const EXPLORE_LINKS: { href: string; label: string }[] = [
   { href: "/best-picks", label: "Best Picks" },
   { href: "/compare", label: "Comparisons" },
   { href: "/guides", label: "Guides" },
-  { href: "/deals", label: "Deals" },
 ];
 
 /**

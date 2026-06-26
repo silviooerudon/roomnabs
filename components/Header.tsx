@@ -28,12 +28,15 @@ function Brand() {
   );
 }
 
-/** Primary navigation — mirrors the reference: Home / Best Picks / Comparisons / Deals / Guides. */
+/**
+ * Primary navigation — Home / Best Picks / Comparisons / Guides. "Deals" is
+ * intentionally omitted while that page has no real content (it still exists at
+ * /deals but is kept out of the menus so the site doesn't look abandoned).
+ */
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/best-picks", label: "Best Picks" },
   { href: "/compare", label: "Comparisons" },
-  { href: "/deals", label: "Deals" },
   { href: "/guides", label: "Guides" },
 ];
 
