@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { getPublishedGuides } from "@/lib/guides";
+import {
+  AIR_FRYER_GUIDE_SLUG,
+  ROBOT_VACUUM_GUIDE_SLUG,
+} from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 
 const TITLE = "Guides";
@@ -17,6 +22,17 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: `${SITE_URL}/guides`,
   },
+};
+
+/**
+ * A few guides have a clear "hero" product we already hold a real photo for, so
+ * their card shows that photo. Every other guide falls back to the on-brand
+ * category illustration that `ImagePlaceholder` picks from the title text — no
+ * invented imagery, and never an empty slot.
+ */
+const GUIDE_THUMBS: Record<string, string> = {
+  [AIR_FRYER_GUIDE_SLUG]: "/img/products/ninja-af100uk.webp",
+  [ROBOT_VACUUM_GUIDE_SLUG]: "/img/products/eufy-robovac-11s-max.webp",
 };
 
 export default function GuidesIndexPage() {
@@ -36,16 +52,33 @@ export default function GuidesIndexPage() {
             <p>New buying guides are on the way — check back soon.</p>
           </div>
         ) : (
-          <ul className="guide-index">
+          <ul className="guide-grid">
             {guides.map((guide) => (
-              <li key={guide.slug} className="guide-index__item">
-                <Link href={`/guide/${guide.slug}`} className="guide-index__card">
-                  <span className="badge">Guide</span>
-                  <h2 className="guide-index__title">{guide.frontmatter.title}</h2>
-                  <p className="guide-index__desc">
-                    {guide.frontmatter.description}
-                  </p>
-                  <span className="link-more">Read the guide →</span>
+              <li key={guide.slug} className="guide-grid__item">
+                <Link
+                  href={`/guide/${guide.slug}`}
+                  className="guide-card"
+                >
+                  <div className="guide-card__media">
+                    <ImagePlaceholder
+                      src={GUIDE_THUMBS[guide.slug]}
+                      alt={guide.frontmatter.title}
+                      label="Guide"
+                      framed={false}
+                    />
+                    <span className="guide-card__badge badge">Guide</span>
+                  </div>
+                  <div className="guide-card__body">
+                    <h2 className="guide-card__title">
+                      {guide.frontmatter.title}
+                    </h2>
+                    <p className="guide-card__desc">
+                      {guide.frontmatter.description}
+                    </p>
+                    <span className="link-more guide-card__cta">
+                      Read the guide →
+                    </span>
+                  </div>
                 </Link>
               </li>
             ))}
